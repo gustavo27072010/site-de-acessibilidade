@@ -3,80 +3,303 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Acessível</title>
-  <link rel="stylesheet" href="estilo.css">
+  <title>Portal do Cidadão - Acessível para todos</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header class="accessibility-bar">
-    <div class="container bar-content">
-      <span>Acessibilidade:</span>
-      <button id="btn-increase" aria-label="Aumentar texto">A+</button>
-      <button id="btn-decrease" aria-label="Diminuir texto">A-</button>
-      <button id="btn-contrast" aria-label="Alternar Alto Contraste">Alto Contraste</button>
-    </div>
-  </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">🛡️</div>
+        <div class="logo-text">
+          <strong>Portal do Cidadão</strong>
+          <span>Acessível para todos</span>
+        </div>
+      </a>
 
-  <header class="main-header">
-    <div class="container header-flex">
-      <div class="logo">
-        <h1>Portal Acessível</h1>
-      </div>
-      <nav aria-label="Navegação Principal">
-        <ul class="nav-list">
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#noticias">Notícias</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
+      <nav class="nav-menu">
+        <a href="#servicos" class="nav-link">Serviços</a>
+        <a href="#saude" class="nav-link">Saúde</a>
+        <a href="#noticias" class="nav-link">Notícias</a>
+        <a href="#contato" class="nav-link">Contato</a>
       </nav>
+
+      <div class="header-actions">
+        <button class="search-btn" aria-label="Buscar no portal">🔍</button>
+      </div>
     </div>
   </header>
 
-  <section id="inicio" class="hero">
-    <div class="container">
-      <h2>Bem-vindo ao Portal de Serviços</h2>
-      <p>Informação simples, clara e acessível para todos os cidadãos.</p>
-      <a href="#servicos" class="btn-primary">Explorar Serviços</a>
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="badge-wcag">
+        ♿ Portal 100% Acessível — WCAG 2.1 AAA
+      </div>
+      <h1 class="hero-title">
+        Bem-vindo ao<br>
+        <span class="highlight-blue">Portal do Cidadão</span>
+      </h1>
+      <p class="hero-subtitle">
+        Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.
+      </p>
+      <div class="hero-buttons">
+        <a href="#servicos" class="btn btn-primary">Ver Serviços &rarr;</a>
+        <a href="tel:156" class="btn btn-outline">📞 Ligar: 156</a>
+      </div>
     </div>
   </section>
 
-  <main id="servicos" class="container main-content">
-    <h3>Serviços em Destaque</h3>
-    <div class="card-grid">
+  <section class="publicos-section">
+    <div class="container">
       
-      <article class="card">
-        <h4>Agendamentos</h4>
-        <p>Consulte e agende seus atendimentos presenciais ou online de forma rápida.</p>
-        <a href="#" class="card-link">Saiba mais</a>
-      </article>
+      <div class="accessibility-banner">
+        <span class="banner-icon">♿</span>
+        <p>Use a <strong>Barra de Acessibilidade</strong> à direita para ajustar fonte, contraste, pausar animações e ativar modo dislexia a qualquer momento.</p>
+      </div>
 
-      <article class="card">
-        <h4>Documentos</h4>
-        <p>Solicite e emita a segunda via de certidões e comprovantes essenciais.</p>
-        <a href="#" class="card-link">Saiba mais</a>
-      </article>
-
-      <article class="card">
-        <h4>Direitos e Benefícios</h4>
-        <p>Veja os benefícios disponíveis para idosos e pessoas com deficiência.</p>
-        <a href="#" class="card-link">Saiba mais</a>
-      </article>
-
-      <article class="card">
-        <h4>Atendimento ao Cidadão</h4>
-        <p>Tire dúvidas diretamente com a nossa equipe de suporte acessível.</p>
-        <a href="#" class="card-link">Saiba mais</a>
-      </article>
-
+      <div class="publico-tags">
+        <button class="tag-btn">👴 Idosos</button>
+        <button class="tag-btn">🤰 Gestantes</button>
+        <button class="tag-btn">👦 Crianças</button>
+        <button class="tag-btn">🧑 Jovens</button>
+        <button class="tag-btn">👨‍💼 Trabalhadores</button>
+        <button class="tag-btn">♿ Pessoas com Deficiência</button>
+        <button class="tag-btn">👨‍👩‍👧 Famílias de Baixa Renda</button>
+        <button class="tag-btn">🌐 Imigrantes</button>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer class="main-footer">
-    <div class="container footer-content">
-      <p>&copy; 2026 Portal Acessível. Todos os direitos reservados.</p>
+  <section id="servicos" class="section-padding bg-light">
+    <div class="container">
+      <h2 class="section-title">Acesso Rápido</h2>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-icon icon-red">❤️</div>
+          <h3>Saúde</h3>
+          <p>Consultas, exames, vacinas e UBS próximas</p>
+          <a href="#saude" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-blue">📖</div>
+          <h3>Benefícios</h3>
+          <p>Aposentadoria, BPC, Bolsa Família e INSS</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-green">📖</div>
+          <h3>Educação</h3>
+          <p>Matrículas, bolsas e cursos profissionalizantes</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-yellow">🔔</div>
+          <h3>Avisos Oficiais</h3>
+          <p>Comunicados, editais e prazos importantes</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-purple">🏠</div>
+          <h3>Habitação</h3>
+          <p>Minha Casa Minha Vida e regularização fundiária</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-pink">👥</div>
+          <h3>Assistência Social</h3>
+          <p>CRAS, CREAS e acompanhamento familiar</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-cyan">🛡️</div>
+          <h3>Segurança</h3>
+          <p>Boletim de ocorrência e delegacia online</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon icon-lightgreen">📞</div>
+          <h3>Ouvidoria</h3>
+          <p>Reclamações, sugestões e atendimento 156</p>
+          <a href="#" class="card-link">Acessar &rarr;</a>
+        </article>
+      </div>
     </div>
-  </footer>
+  </section>
+
+  <section id="saude" class="section-padding">
+    <div class="container">
+      <h2 class="section-title">❤️ Saúde em Dia</h2>
+      <h3 class="subsection-title">📅 Atendimentos Disponíveis Esta Semana</h3>
+
+      <div class="agenda-list">
+        <div class="agenda-item">
+          <div class="date-badge">
+            <span class="day">12 Ago</span>
+            <span class="time">07:30</span>
+          </div>
+          <div class="agenda-info">
+            <h4>Vacinação Infantil (0–5 anos)</h4>
+            <p>UBS Jardim América</p>
+          </div>
+        </div>
+
+        <div class="agenda-item">
+          <div class="date-badge">
+            <span class="day">15 Ago</span>
+            <span class="time">09:00</span>
+          </div>
+          <div class="agenda-info">
+            <h4>Pré-natal — 2.º trimestre</h4>
+            <p>UBS Centro</p>
+          </div>
+        </div>
+
+        <div class="agenda-item">
+          <div class="date-badge">
+            <span class="day">20 Ago</span>
+            <span class="time">14:00</span>
+          </div>
+          <div class="agenda-info">
+            <h4>Saúde do Idoso (60+)</h4>
+            <p>Hospital das Clínicas</p>
+          </div>
+        </div>
+
+        <div class="agenda-item">
+          <div class="date-badge">
+            <span class="day">28 Ago</span>
+            <span class="time">08:30</span>
+          </div>
+          <div class="agenda-info">
+            <h4>Saúde Mental — CAPS</h4>
+            <p>CAPS Adulto Leste</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="btn-text-link">Agendar consulta ou exame &rarr;</a>
+
+      <div class="programas-container">
+        <h3>💊 Programas Gratuitos de Saúde</h3>
+
+        <div class="programa-card">
+          <div class="programa-icon">🏥</div>
+          <div>
+            <h4>Farmácia Popular</h4>
+            <p>Medicamentos gratuitos ou com até 90% de desconto</p>
+          </div>
+        </div>
+
+        <div class="programa-card">
+          <div class="programa-icon">🏥</div>
+          <div>
+            <h4>Rede Cegonha</h4>
+            <p>Acompanhamento completo da gestação ao parto</p>
+          </div>
+        </div>
+
+        <div class="programa-card">
+          <div class="programa-icon">🏥</div>
+          <div>
+            <h4>Saúde na Escola</h4>
+            <p>Triagem visual, auditiva e odontológica gratuita</p>
+          </div>
+        </div>
+
+        <div class="disque-saude-banner">
+          📞 <strong>Disque Saúde: 136</strong> — Atendimento gratuito 24 horas para dúvidas sobre serviços e encaminhamentos do SUS.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="noticias" class="section-padding bg-light">
+    <div class="container">
+      <h2 class="section-title">📰 Notícias e Avisos</h2>
+
+      <div class="news-grid">
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Médico utilizando celular para atendimento">
+          <div class="news-content">
+            <span class="news-tag tag-saude">SAÚDE</span>
+            <h3>Campanha de vacinação contra gripe aberta para toda a população</h3>
+            <p>Crianças, gestantes, adultos e idosos podem se vacinar gratuitamente nas UBS até 31 de agosto, das 7h às 19h.</p>
+            <div class="news-footer">
+              <span>11 Ago 2026</span>
+              <a href="#" class="news-link">Ler mais ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Pessoa assinando documento sobre a mesa">
+          <div class="news-content">
+            <span class="news-tag tag-beneficios">BENEFÍCIOS</span>
+            <h3>Inscrições abertas para o programa Bolsa Família em 2026</h3>
+            <p>Famílias em situação de vulnerabilidade social podem se cadastrar presencialmente no CRAS ou pelo aplicativo Meu INSS.</p>
+            <div class="news-footer">
+              <span>08 Ago 2026</span>
+              <a href="#" class="news-link">Ler mais ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Pessoas estudando com notebooks em sala">
+          <div class="news-content">
+            <span class="news-tag tag-educacao">EDUCAÇÃO</span>
+            <h3>Prefeitura abre 3.200 vagas em cursos profissionalizantes gratuitos</h3>
+            <p>Jovens e adultos podem se inscrever em cursos de tecnologia, saúde, construção civil e gastronomia com certificado.</p>
+            <div class="news-footer">
+              <span>03 Ago 2026</span>
+              <a href="#" class="news-link">Ler mais ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Maquete de casa e chaves sobre a mesa">
+          <div class="news-content">
+            <span class="news-tag tag-habitacao">HABITAÇÃO</span>
+            <h3>Novas unidades do Minha Casa Minha Vida entregues no bairro Leste</h3>
+            <p>480 famílias de baixa renda recebem as chaves de apartamentos com acessibilidade total e áreas de lazer adaptadas.</p>
+            <div class="news-footer">
+              <span>02 Ago 2026</span>
+              <a href="#" class="news-link">Ler mais ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="accessibility-widget">
+    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir opções de acessibilidade">
+      ♿
+    </button>
+
+    <div id="acc-menu" class="acc-menu hidden">
+      <h4>Ferramentas de Acessibilidade</h4>
+      <hr>
+      <button id="btn-increase-font">🔍A+ Aumentar Fonte</button>
+      <button id="btn-decrease-font">🔍A- Diminuir Fonte</button>
+      <button id="btn-high-contrast">🌓 Alto Contraste</button>
+      <button id="btn-dyslexic-font">📖 Fonte Dislexia</button>
+      <button id="btn-reset-acc">🔄 Restaurar Padrão</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
