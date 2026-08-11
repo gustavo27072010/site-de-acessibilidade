@@ -1,35 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const btnAumentar = document.getElementById('btn-fonte-aumentar');
-  const btnDiminuir = document.getElementById('btn-fonte-diminuir');
-  const btnReset = document.getElementById('btn-fonte-reset');
-  const btnContraste = document.getElementById('btn-contraste');
+document.addEventListener("DOMContentLoaded", () => {
+  const btnIncrease = document.getElementById("btn-increase");
+  const btnDecrease = document.getElementById("btn-decrease");
+  const btnContrast = document.getElementById("btn-contrast");
 
-  let tamanhoFonteAtual = 100;
+  let currentFontSize = 16;
 
-  // Ajustar Tamanho da Fonte
-  btnAumentar.addEventListener('click', () => {
-    if (tamanhoFonteAtual < 140) {
-      tamanhoFonteAtual += 10;
-      document.documentElement.style.fontSize = `${tamanhoFonteAtual}%`;
+  // Aumentar tamanho da fonte
+  btnIncrease.addEventListener("click", () => {
+    if (currentFontSize < 24) {
+      currentFontSize += 2;
+      document.documentElement.style.setProperty("--base-font-size", `${currentFontSize}px`);
     }
   });
 
-  btnDiminuir.addEventListener('click', () => {
-    if (tamanhoFonteAtual > 85) {
-      tamanhoFonteAtual -= 10;
-      document.documentElement.style.fontSize = `${tamanhoFonteAtual}%`;
+  // Diminuir tamanho da fonte
+  btnDecrease.addEventListener("click", () => {
+    if (currentFontSize > 12) {
+      currentFontSize -= 2;
+      document.documentElement.style.setProperty("--base-font-size", `${currentFontSize}px`);
     }
   });
 
-  btnReset.addEventListener('click', () => {
-    tamanhoFonteAtual = 100;
-    document.documentElement.style.fontSize = '100%';
-  });
-
-  // Alternar Modo Alto Contraste
-  btnContraste.addEventListener('click', () => {
-    document.body.classList.toggle('alto-contraste');
-    const ativo = document.body.classList.contains('alto-contraste');
-    btnContraste.setAttribute('aria-pressed', ativo);
+  // Alternar Alto Contraste
+  btnContrast.addEventListener("click", () => {
+    document.body.classList.toggle("high-contrast");
   });
 });
