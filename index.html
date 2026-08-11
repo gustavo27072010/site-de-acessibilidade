@@ -1,102 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Inclusivo e Acessível</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Acessível e Moderno</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+  <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
 
-    <header role="banner">
-        <div class="accessibility-toolbar" role="region" aria-label="Ferramentas de Acessibilidade">
-            <div class="toolbar-group">
-                <span class="toolbar-label">Acessibilidade:</span>
-                <button id="btn-contrast" aria-pressed="false" title="Ativar Alto Contraste">
-                    <span>🌓 Alto Contraste</span>
-                </button>
-            </div>
+  <aside class="barra-acessibilidade" aria-label="Ferramentas de acessibilidade">
+    <div class="container">
+      <span>Painel de Acessibilidade:</span>
+      <div class="botoes-acessibilidade">
+        <button id="btn-fonte-aumentar" aria-label="Aumentar tamanho do texto">A+</button>
+        <button id="btn-fonte-diminuir" aria-label="Diminuir tamanho do texto">A-</button>
+        <button id="btn-fonte-reset" aria-label="Restaurar tamanho da fonte">A</button>
+        <button id="btn-contraste" aria-pressed="false">Alto Contraste</button>
+      </div>
+    </div>
+  </aside>
 
-            <div class="toolbar-group">
-                <span class="toolbar-label">Tamanho do texto:</span>
-                <button id="btn-decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
-                <button id="btn-reset-font" aria-label="Redefinir tamanho da fonte">A</button>
-                <button id="btn-increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
-            </div>
-
-            <div class="toolbar-group">
-                <button id="btn-read-text" aria-pressed="false" title="Ouvir leitura da página">
-                    <span>🔊 Ler Página</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="header-main">
-            <h1>Portal Acessibilidade Digital</h1>
-        </div>
-    </header>
-
-    <nav aria-label="Navegação Principal" class="main-nav">
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#recursos">Recursos</a></li>
-            <li><a href="#contato">Contato</a></li>
+  <header class="cabecalho-principal">
+    <div class="container">
+      <h1 class="logo">Inclusão<span>Digital</span></h1>
+      <nav aria-label="Navegação principal">
+        <ul class="nav-lista">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#galeria">Galeria</a></li>
         </ul>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
-    <main id="main-content" tabindex="-1">
+  <main id="conteudo-principal" tabindex="-1">
+    
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-texto">
+          <h2>Tecnologia para Todos sem Barreiras</h2>
+          <p>Criamos experiências digitais atraentes, coloridas e totalmente acessíveis para qualquer usuário.</p>
+        </div>
+        <figure class="hero-imagem">
+          <img 
+            src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" 
+            alt="Mulher sorridente utilizando um computador portátil em um escritório iluminado."
+          >
+        </figure>
+      </div>
+    </section>
+
+    <section id="recursos" class="secao-cards">
+      <div class="container">
+        <h2>Nossos Pilares</h2>
         
-        <section id="inicio" class="card">
-            <h2>Construindo a Web para Todos</h2>
-            <p>
-                A acessibilidade digital não beneficia apenas pessoas com deficiência, mas melhora a 
-                experiência de uso para todos os usuários, independentemente de seus dispositivos ou contexto.
-            </p>
-        </section>
+        <div class="grid-cards">
+          
+          <article class="card">
+            <img 
+              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=500&q=80" 
+              alt="Mãos rascunhando um protótipo de site em um bloco de notas com canetas coloridas."
+            >
+            <div class="card-conteudo">
+              <h3>Design Inclusivo</h3>
+              <p>Cores planejadas para alto contraste e fácil leitura para pessoas com daltonismo ou baixa visão.</p>
+            </div>
+          </article>
 
-        <section id="recursos" class="card">
-            <h2>Recursos de Inclusão</h2>
-            <p>Conheça os principais pilares aplicados neste projeto:</p>
-            <ul>
-                <li><strong>Semântica HTML:</strong> Estrutura clara para leitores de tela.</li>
-                <li><strong>Contraste Adequado:</strong> Legibilidade testada para baixa visão.</li>
-                <li><strong>Foco Visível:</strong> Facilidade de navegação utilizando apenas o teclado.</li>
-            </ul>
-        </section>
+          <article class="card">
+            <img 
+              src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=500&q=80" 
+              alt="Pessoa usando um teclado de computador focando nas teclas em destaque."
+            >
+            <div class="card-conteudo">
+              <h3>Navegação por Teclado</h3>
+              <p>Toda a interface pode ser percorrida sem a necessidade de um mouse, usando a tecla Tab.</p>
+            </div>
+          </article>
 
-        <section id="contato" class="card">
-            <h2>Fale Conosco</h2>
-            <form id="contact-form" novalidate>
-                <div class="form-group">
-                    <label for="name">Nome completo <span class="required" aria-hidden="true">*</span></label>
-                    <input type="text" id="name" name="name" required aria-required="true">
-                </div>
+          <article class="card">
+            <img 
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500&q=80" 
+              alt="Tela de notebook exibindo linhas de código organizadas e estruturadas."
+            >
+            <div class="card-conteudo">
+              <h3>Código Semântico</h3>
+              <p>Marcadores e estruturas ARIA de alto padrão para leitura perfeita em leitor de tela.</p>
+            </div>
+          </article>
 
-                <div class="form-group">
-                    <label for="email">E-mail <span class="required" aria-hidden="true">*</span></label>
-                    <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-help">
-                    <small id="email-help" class="help-text">Exemplo: seunome@dominio.com</small>
-                </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="form-group">
-                    <label for="message">Mensagem <span class="required" aria-hidden="true">*</span></label>
-                    <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
-                </div>
+  </main>
 
-                <div id="form-status" role="status" aria-live="polite" class="status-message"></div>
+  <footer class="rodape">
+    <div class="container">
+      <p>&copy; 2026 Portal Inclusão Digital. Desenvolvido com foco em acessibilidade.</p>
+    </div>
+  </footer>
 
-                <button type="submit" class="btn-submit">Enviar Mensagem</button>
-            </form>
-        </section>
-
-    </main>
-
-    <footer role="contentinfo">
-        <p>&copy; 2026 Portal Acessível - Desenvolvido com foco na WCAG 2.1</p>
-    </footer>
-
-    <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
