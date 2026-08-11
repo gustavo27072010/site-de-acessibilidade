@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Acessível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+            <button id="btn-contrast" aria-pressed="false">Alto Contraste</button>
+            <button id="btn-increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+            <button id="btn-decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+            <button id="btn-reset-font" aria-label="Redefinir tamanho da fonte">A</button>
+        </div>
+        <h1>Portal Acessível</h1>
+    </header>
+
+    <nav aria-label="Menu principal">
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section id="inicio">
+            <h2>Bem-vindo ao nosso site</h2>
+            <p>Este portal foi desenvolvido focando na inclusão e na acessibilidade digital para todas as pessoas.</p>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre a Acessibilidade</h2>
+            <p>A acessibilidade web garante que pessoas com diferentes habilidades possam perceber, entender, navegar e interagir com a web de maneira autônoma.</p>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
