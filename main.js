@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleAccBtn = document.getElementById('toggle-acc-menu');
   const accMenu = document.getElementById('acc-menu');
 
-  // Botões de Ação
+  // Botões de Ação de Acessibilidade
   const btnIncreaseFont = document.getElementById('btn-increase-font');
   const btnDecreaseFont = document.getElementById('btn-decrease-font');
   const btnHighContrast = document.getElementById('btn-high-contrast');

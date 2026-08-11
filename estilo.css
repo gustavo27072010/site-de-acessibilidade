@@ -29,12 +29,15 @@ body.high-contrast .header,
 body.high-contrast .card,
 body.high-contrast .news-card,
 body.high-contrast .agenda-item,
-body.high-contrast .programa-card {
+body.high-contrast .programa-card,
+body.high-contrast .help-box,
+body.high-contrast .help-card {
   background-color: #121212 !important;
   color: #ffffff !important;
   border: 2px solid #ffffff !important;
 }
 body.high-contrast .hero-title,
+body.high-contrast .help-title,
 body.high-contrast h2,
 body.high-contrast h3,
 body.high-contrast h4 {
@@ -468,6 +471,68 @@ body {
   color: var(--primary-blue);
   font-weight: 700;
   text-decoration: none;
+}
+
+/* ================= SECÇÃO PRECISA DE AJUDA? (NOVA) ================= */
+.help-box {
+  background-color: #1b52e8;
+  color: #ffffff;
+  padding: 48px 32px;
+  border-radius: 24px;
+}
+
+.help-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.help-subtitle {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin-bottom: 36px;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.help-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.help-card:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.help-icon {
+  font-size: 2rem;
+}
+
+.help-info h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.help-info p {
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
 
 /* ================= ACESSIBILIDADE FLUTUANTE ================= */
