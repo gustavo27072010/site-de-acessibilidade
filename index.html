@@ -3,40 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Acessível</title>
+    <title>Portal Inclusivo e Acessível</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
-            <button id="btn-contrast" aria-pressed="false">Alto Contraste</button>
-            <button id="btn-increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
-            <button id="btn-decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
-            <button id="btn-reset-font" aria-label="Redefinir tamanho da fonte">A</button>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header role="banner">
+        <div class="accessibility-toolbar" role="region" aria-label="Ferramentas de Acessibilidade">
+            <div class="toolbar-group">
+                <span class="toolbar-label">Acessibilidade:</span>
+                <button id="btn-contrast" aria-pressed="false" title="Ativar Alto Contraste">
+                    <span>🌓 Alto Contraste</span>
+                </button>
+            </div>
+
+            <div class="toolbar-group">
+                <span class="toolbar-label">Tamanho do texto:</span>
+                <button id="btn-decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+                <button id="btn-reset-font" aria-label="Redefinir tamanho da fonte">A</button>
+                <button id="btn-increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+            </div>
+
+            <div class="toolbar-group">
+                <button id="btn-read-text" aria-pressed="false" title="Ouvir leitura da página">
+                    <span>🔊 Ler Página</span>
+                </button>
+            </div>
         </div>
-        <h1>Portal Acessível</h1>
+
+        <div class="header-main">
+            <h1>Portal Acessibilidade Digital</h1>
+        </div>
     </header>
 
-    <nav aria-label="Menu principal">
+    <nav aria-label="Navegação Principal" class="main-nav">
         <ul>
             <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#recursos">Recursos</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
 
-    <main id="main-content">
-        <section id="inicio">
-            <h2>Bem-vindo ao nosso site</h2>
-            <p>Este portal foi desenvolvido focando na inclusão e na acessibilidade digital para todas as pessoas.</p>
+    <main id="main-content" tabindex="-1">
+        
+        <section id="inicio" class="card">
+            <h2>Construindo a Web para Todos</h2>
+            <p>
+                A acessibilidade digital não beneficia apenas pessoas com deficiência, mas melhora a 
+                experiência de uso para todos os usuários, independentemente de seus dispositivos ou contexto.
+            </p>
         </section>
 
-        <section id="sobre">
-            <h2>Sobre a Acessibilidade</h2>
-            <p>A acessibilidade web garante que pessoas com diferentes habilidades possam perceber, entender, navegar e interagir com a web de maneira autônoma.</p>
+        <section id="recursos" class="card">
+            <h2>Recursos de Inclusão</h2>
+            <p>Conheça os principais pilares aplicados neste projeto:</p>
+            <ul>
+                <li><strong>Semântica HTML:</strong> Estrutura clara para leitores de tela.</li>
+                <li><strong>Contraste Adequado:</strong> Legibilidade testada para baixa visão.</li>
+                <li><strong>Foco Visível:</strong> Facilidade de navegação utilizando apenas o teclado.</li>
+            </ul>
         </section>
+
+        <section id="contato" class="card">
+            <h2>Fale Conosco</h2>
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Nome completo <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail <span class="required" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-help">
+                    <small id="email-help" class="help-text">Exemplo: seunome@dominio.com</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensagem <span class="required" aria-hidden="true">*</span></label>
+                    <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+                </div>
+
+                <div id="form-status" role="status" aria-live="polite" class="status-message"></div>
+
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </section>
+
     </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Portal Acessível - Desenvolvido com foco na WCAG 2.1</p>
+    </footer>
 
     <script src="main.js"></script>
 </body>

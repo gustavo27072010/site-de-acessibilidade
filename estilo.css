@@ -1,98 +1,238 @@
-/* Configurações Globais e Variáveis */
+/* ==========================================================================
+   1. VARIÁVEIS E RESET
+   ========================================================================== */
 :root {
-    --bg-color: #ffffff;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
     --text-color: #222222;
     --primary-color: #0056b3;
-    --focus-ring: #ffbf47;
-    --base-font-size: 100%; /* 16px por padrão */
+    --primary-hover: #003d80;
+    --border-color: #cccccc;
+    --focus-ring: #2557a7;
+    --error-color: #d9534f;
+    --success-color: #2e7d32;
+    --base-font-size: 100%; /* Default: 16px */
+}
+
+/* Modo Alto Contraste */
+body.high-contrast {
+    --bg-color: #000000;
+    --card-bg: #121212;
+    --text-color: #ffff00; /* Amarelo de alto contraste */
+    --primary-color: #ffffff;
+    --primary-hover: #dddddd;
+    --border-color: #ffff00;
+    --focus-ring: #00ffff;
+    --error-color: #ff6666;
+    --success-color: #66ff66;
 }
 
 html {
     font-size: var(--base-font-size);
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-/* Indicador Visível de Foco (Essencial para navegação por teclado) */
-a:focus, button:focus {
-    outline: 3px solid var(--focus-ring);
-    outline-offset: 2px;
+/* ==========================================================================
+   2. NAVEGAÇÃO E ACESSIBILIDADE DE TECLADO
+   ========================================================================== */
+/* Link oculto para pular para o conteúdo principal */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 1000;
+    text-decoration: none;
+    transition: top 0.2s;
 }
 
-/* Barra de Acessibilidade */
+.skip-link:focus {
+    top: 0;
+}
+
+/* Indicador de Foco Acessível e Visível */
+*:focus-visible {
+    outline: 4px solid var(--focus-ring) !important;
+    outline-offset: 3px !important;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO E FERRAMENTAS
+   ========================================================================== */
 header {
-    background-color: #f4f4f4;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--border-color);
     padding: 1rem;
-    border-bottom: 2px solid #ccc;
 }
 
-.accessibility-bar {
+.accessibility-toolbar {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.accessibility-bar button {
-    padding: 8px 12px;
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.toolbar-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: 2px solid transparent;
+    padding: 8px 14px;
     font-weight: bold;
     cursor: pointer;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    border: none;
     border-radius: 4px;
-}
-
-/* Navegação */
-nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    background-color: #333;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 14px 20px;
-    display: block;
-}
-
-nav a:hover, nav a:focus {
-    background-color: #555;
-}
-
-/* Conteúdo */
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Modo de Alto Contraste (Ativado via JS) */
-body.high-contrast {
-    --bg-color: #000000;
-    --text-color: #ffff00; /* Texto amarelo no fundo preto */
-    --primary-color: #ffffff;
-}
-
-body.high-contrast header, 
-body.high-contrast nav ul {
-    background-color: #000000;
-    border-bottom: 2px solid #ffff00;
+    font-size: 0.95rem;
 }
 
 body.high-contrast button {
-    background-color: #ffff00;
     color: #000000;
+    border-color: var(--border-color);
 }
 
-body.high-contrast a {
-    color: #ffff00;
+button:hover {
+    opacity: 0.9;
+}
+
+.header-main h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* ==========================================================================
+   4. MENU PRINCIPAL
+   ========================================================================== */
+.main-nav {
+    background-color: #333;
+}
+
+body.high-contrast .main-nav {
+    background-color: #000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-weight: bold;
+}
+
+body.high-contrast .main-nav a {
+    color: var(--text-color);
+}
+
+.main-nav a:hover, .main-nav a:focus {
+    background-color: #555;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   5. LAYOUT E FORMULÁRIOS
+   ========================================================================== */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.required {
+    color: var(--error-color);
+}
+
+.help-text {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 3px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.btn-submit {
+    margin-top: 10px;
+}
+
+.status-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.status-message.error {
+    color: var(--error-color);
+}
+
+.status-message.success {
+    color: var(--success-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
 }
