@@ -1,49 +1,74 @@
-/* ================= RESETS & VARIÁVEIS ================= */
+/* ================= VARIÁVEIS DE TEMA (CLARO / ESCURO / ALTO CONTRASTE) ================= */
 :root {
   --primary-blue: #1b52e8;
   --header-blue: #1343c6;
-  --bg-light: #f7f9fc;
+  --bg-page: #ffffff;
+  --bg-section: #f7f9fc;
   --bg-card: #ffffff;
-  --text-dark: #1e293b;
+  --text-main: #1e293b;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
-  --banner-yellow: #fef3c7;
+  
+  --banner-bg: #fef3c7;
   --banner-border: #fcd34d;
   --banner-text: #78350f;
+
   --radius-lg: 16px;
   --radius-md: 10px;
   --font-base-size: 16px;
+  --letter-spacing-base: normal;
 }
 
-/* Modo Dislexia */
-body.dyslexia-font {
-  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+/* 🌙 TEMA ESCURO (DARK MODE) */
+body[data-theme="dark"] {
+  --primary-blue: #4f83ff;
+  --header-blue: #0f172a;
+  --bg-page: #0b0f19;
+  --bg-section: #111827;
+  --bg-card: #1f2937;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #374151;
+
+  --banner-bg: #2d2305;
+  --banner-border: #78350f;
+  --banner-text: #fef08a;
 }
 
-/* Modo Alto Contraste */
+/* 🌓 MODO ALTO CONTRASTE (PARA BAIXA VISÃO EXTREMA) */
 body.high-contrast {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  --bg-page: #000000 !important;
+  --bg-section: #000000 !important;
+  --bg-card: #121212 !important;
+  --text-main: #ffffff !important;
+  --text-muted: #ffff80 !important;
+  --border-color: #ffffff !important;
+  --header-blue: #000000 !important;
+  --primary-blue: #ffff00 !important;
 }
-body.high-contrast .header,
-body.high-contrast .card,
-body.high-contrast .news-card,
-body.high-contrast .agenda-item,
-body.high-contrast .programa-card,
-body.high-contrast .help-box,
-body.high-contrast .help-card {
-  background-color: #121212 !important;
-  color: #ffffff !important;
-  border: 2px solid #ffffff !important;
-}
-body.high-contrast .hero-title,
-body.high-contrast .help-title,
+
+body.high-contrast h1,
 body.high-contrast h2,
 body.high-contrast h3,
-body.high-contrast h4 {
+body.high-contrast h4,
+body.high-contrast a,
+body.high-contrast button {
   color: #ffff00 !important;
 }
 
+/* 📖 FONTE PARA DISLEXIA */
+body.dyslexia-font {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Arial', sans-serif !important;
+  line-height: 1.8 !important;
+}
+
+/* ↔️ ESPAÇAMENTO AUMENTADO PARA BAIXA VISÃO */
+body.large-spacing {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.2em !important;
+}
+
+/* ================= BASE & RESET ================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -57,9 +82,11 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: var(--text-dark);
-  background-color: #ffffff;
+  color: var(--text-main);
+  background-color: var(--bg-page);
   line-height: 1.5;
+  letter-spacing: var(--letter-spacing-base);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -72,8 +99,8 @@ body {
   padding: 60px 0;
 }
 
-.bg-light {
-  background-color: var(--bg-light);
+.bg-section {
+  background-color: var(--bg-section);
 }
 
 /* ================= HEADER ================= */
@@ -84,6 +111,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.3s;
 }
 
 .header-container {
@@ -135,19 +163,35 @@ body {
   opacity: 0.8;
 }
 
-.search-btn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-btn-header, .search-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   color: #ffffff;
+  font-size: 18px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.theme-btn-header:hover, .search-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* ================= HERO ================= */
 .hero-section {
   padding: 60px 0 40px;
   text-align: center;
-  background-color: #ffffff;
 }
 
 .hero-container {
@@ -157,9 +201,9 @@ body {
 }
 
 .badge-wcag {
-  background-color: #edf2fe;
+  background-color: var(--bg-section);
   color: var(--primary-blue);
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-color);
   padding: 8px 20px;
   border-radius: 50px;
   font-size: 0.9rem;
@@ -170,7 +214,7 @@ body {
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--text-main);
   line-height: 1.15;
   margin-bottom: 20px;
 }
@@ -202,7 +246,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s;
 }
 
 .btn:hover {
@@ -212,22 +256,21 @@ body {
 .btn-primary {
   background-color: var(--primary-blue);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(27, 82, 232, 0.3);
 }
 
 .btn-outline {
-  background-color: #ffffff;
+  background-color: var(--bg-card);
   color: var(--primary-blue);
   border: 2px solid var(--primary-blue);
 }
 
-/* ================= PUBLICOS & BANNER ================= */
+/* ================= BANNER & TAGS ================= */
 .publicos-section {
   padding-bottom: 40px;
 }
 
 .accessibility-banner {
-  background-color: var(--banner-yellow);
+  background-color: var(--banner-bg);
   border: 1px solid var(--banner-border);
   color: var(--banner-text);
   padding: 16px 24px;
@@ -247,15 +290,14 @@ body {
 }
 
 .tag-btn {
-  background-color: #ffffff;
+  background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   padding: 10px 18px;
   border-radius: 50px;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-main);
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   transition: all 0.2s;
 }
 
@@ -269,7 +311,7 @@ body {
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 32px;
-  color: #0f172a;
+  color: var(--text-main);
 }
 
 .cards-grid {
@@ -285,12 +327,11 @@ body {
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .card-icon {
@@ -316,6 +357,7 @@ body {
 .card h3 {
   font-size: 1.25rem;
   margin-bottom: 8px;
+  color: var(--text-main);
 }
 
 .card p {
@@ -331,11 +373,11 @@ body {
   font-weight: 700;
 }
 
-/* ================= AGENDA & SAÚDE ================= */
+/* ================= SAÚDE & AGENDA ================= */
 .subsection-title {
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: var(--text-dark);
+  color: var(--text-main);
 }
 
 .agenda-list {
@@ -346,7 +388,7 @@ body {
 }
 
 .agenda-item {
-  background: var(--bg-light);
+  background: var(--bg-section);
   border: 1px solid var(--border-color);
   padding: 16px 20px;
   border-radius: var(--radius-md);
@@ -366,10 +408,7 @@ body {
   min-width: 90px;
 }
 
-.date-badge .day { font-weight: 700; font-size: 0.95rem; }
-.date-badge .time { font-size: 0.8rem; opacity: 0.9; }
-
-.agenda-info h4 { font-size: 1.1rem; }
+.agenda-info h4 { font-size: 1.1rem; color: var(--text-main); }
 .agenda-info p { color: var(--text-muted); font-size: 0.9rem; }
 
 .btn-text-link {
@@ -380,12 +419,8 @@ body {
   margin-bottom: 40px;
 }
 
-.programas-container {
-  margin-top: 20px;
-}
-
 .programa-card {
-  background-color: var(--bg-light);
+  background-color: var(--bg-section);
   border: 1px solid var(--border-color);
   padding: 16px;
   border-radius: var(--radius-md);
@@ -396,12 +431,11 @@ body {
 }
 
 .disque-saude-banner {
-  background-color: var(--banner-yellow);
+  background-color: var(--banner-bg);
   color: var(--banner-text);
   padding: 16px 20px;
   border-radius: var(--radius-md);
   margin-top: 20px;
-  font-size: 0.95rem;
 }
 
 /* ================= NOTÍCIAS ================= */
@@ -447,18 +481,8 @@ body {
 .tag-educacao { background: #dcfce7; color: #166534; }
 .tag-habitacao { background: #f3e8ff; color: #6b21a8; }
 
-.news-content h3 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-
-.news-content p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
+.news-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text-main); }
+.news-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; flex-grow: 1; }
 
 .news-footer {
   display: flex;
@@ -473,7 +497,7 @@ body {
   text-decoration: none;
 }
 
-/* ================= SECÇÃO PRECISA DE AJUDA? (NOVA) ================= */
+/* ================= CONTATO / PRECISA DE AJUDA ================= */
 .help-box {
   background-color: #1b52e8;
   color: #ffffff;
@@ -485,6 +509,7 @@ body {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 16px;
+  color: #ffffff !important;
 }
 
 .help-subtitle {
@@ -492,7 +517,6 @@ body {
   max-width: 800px;
   margin-bottom: 36px;
   opacity: 0.95;
-  line-height: 1.5;
 }
 
 .help-grid {
@@ -511,31 +535,19 @@ body {
   align-items: center;
   gap: 16px;
   text-decoration: none;
-  color: #ffffff;
-  transition: background-color 0.2s, transform 0.2s;
+  color: #ffffff !important;
+  transition: background-color 0.2s;
 }
 
 .help-card:hover {
   background-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
 }
 
-.help-icon {
-  font-size: 2rem;
-}
+.help-icon { font-size: 2rem; }
+.help-info h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; color: #ffffff !important; }
+.help-info p { font-size: 0.9rem; opacity: 0.85; }
 
-.help-info h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.help-info p {
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-
-/* ================= ACESSIBILIDADE FLUTUANTE ================= */
+/* ================= PAINEL FLUTUANTE DE ACESSIBILIDADE ================= */
 .accessibility-widget {
   position: fixed;
   right: 20px;
@@ -544,15 +556,15 @@ body {
 }
 
 .acc-floating-btn {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: var(--primary-blue);
   color: white;
-  border: none;
-  font-size: 24px;
+  border: 2px solid #ffffff;
+  font-size: 28px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -560,14 +572,14 @@ body {
 
 .acc-menu {
   position: absolute;
-  bottom: 70px;
+  bottom: 72px;
   right: 0;
-  width: 250px;
-  background-color: white;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  width: 280px;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -577,23 +589,59 @@ body {
   display: none;
 }
 
-.acc-menu h4 {
-  font-size: 0.95rem;
-  color: var(--text-dark);
+.acc-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acc-menu-header h4 {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.close-acc-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.acc-section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 6px;
 }
 
 .acc-menu button {
-  background-color: var(--bg-light);
+  background-color: var(--bg-section);
   border: 1px solid var(--border-color);
-  padding: 10px;
-  border-radius: 6px;
+  padding: 10px 12px;
+  border-radius: 8px;
   cursor: pointer;
   text-align: left;
   font-weight: 600;
   font-size: 0.85rem;
-  color: var(--text-dark);
+  color: var(--text-main);
+  transition: background-color 0.2s;
 }
 
 .acc-menu button:hover {
-  background-color: #e2e8f0;
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.acc-menu .btn-reset {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+  text-align: center;
+}
+
+.acc-menu .btn-reset:hover {
+  background-color: #fca5a5;
+  color: #7f1d1d;
 }

@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal do Cidadão - Acessível para todos</title>
-  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="estilo.css".css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="light">
 
   <header class="header">
     <div class="container header-container">
@@ -29,6 +29,9 @@
       </nav>
 
       <div class="header-actions">
+        <button id="theme-toggle-header" class="theme-btn-header" aria-label="Alternar Tema Claro/Escuro">
+          🌙
+        </button>
         <button class="search-btn" aria-label="Buscar no portal">🔍</button>
       </div>
     </div>
@@ -57,7 +60,7 @@
     <div class="container">
       <div class="accessibility-banner">
         <span class="banner-icon">♿</span>
-        <p>Use a <strong>Barra de Acessibilidade</strong> à direita para ajustar fonte, contraste, pausar animações e ativar modo dislexia a qualquer momento.</p>
+        <p>Use a <strong>Barra de Acessibilidade</strong> à direita para alterar o Tema (Claro/Escuro), ajustar fonte para Baixa Visão e ativar o modo Dislexia.</p>
       </div>
 
       <div class="publico-tags">
@@ -73,7 +76,7 @@
     </div>
   </section>
 
-  <section id="servicos" class="section-padding bg-light">
+  <section id="servicos" class="section-padding bg-section">
     <div class="container">
       <h2 class="section-title">Acesso Rápido</h2>
 
@@ -224,17 +227,17 @@
     </div>
   </section>
 
-  <section id="noticias" class="section-padding bg-light">
+  <section id="noticias" class="section-padding bg-section">
     <div class="container">
       <h2 class="section-title">📰 Notícias e Avisos</h2>
 
       <div class="news-grid">
         <article class="news-card">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Médico a utilizar telemóvel para atendimento">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Médico utilizando celular para atendimento">
           <div class="news-content">
             <span class="news-tag tag-saude">SAÚDE</span>
             <h3>Campanha de vacinação contra gripe aberta para toda a população</h3>
-            <p>Crianças, gestantes, adultos e idosos podem vacinar-se gratuitamente nas UBS até 31 de agosto, das 7h às 19h.</p>
+            <p>Crianças, gestantes, adultos e idosos podem se vacinar gratuitamente nas UBS até 31 de agosto, das 7h às 19h.</p>
             <div class="news-footer">
               <span>11 Ago 2026</span>
               <a href="#" class="news-link">Ler mais ↗</a>
@@ -243,11 +246,11 @@
         </article>
 
         <article class="news-card">
-          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Pessoa a assinar documento">
+          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Pessoa assinando documento">
           <div class="news-content">
             <span class="news-tag tag-beneficios">BENEFÍCIOS</span>
             <h3>Inscrições abertas para o programa Bolsa Família em 2026</h3>
-            <p>Famílias em situação de vulnerabilidade social podem registar-se presencialmente no CRAS ou pela aplicação Meu INSS.</p>
+            <p>Famílias em situação de vulnerabilidade social podem se cadastrar presencialmente no CRAS ou pelo aplicativo Meu INSS.</p>
             <div class="news-footer">
               <span>08 Ago 2026</span>
               <a href="#" class="news-link">Ler mais ↗</a>
@@ -260,7 +263,7 @@
           <div class="news-content">
             <span class="news-tag tag-educacao">EDUCAÇÃO</span>
             <h3>Prefeitura abre 3.200 vagas em cursos profissionalizantes gratuitos</h3>
-            <p>Jovens e adultos podem inscrever-se em cursos de tecnologia, saúde, construção civil e gastronomia com certificado.</p>
+            <p>Jovens e adultos podem se inscrever em cursos de tecnologia, saúde, construção civil e gastronomia com certificado.</p>
             <div class="news-footer">
               <span>03 Ago 2026</span>
               <a href="#" class="news-link">Ler mais ↗</a>
@@ -330,18 +333,32 @@
   </section>
 
   <div class="accessibility-widget">
-    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir opções de acessibilidade">
+    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir menu de acessibilidade">
       ♿
     </button>
 
-    <div id="acc-menu" class="acc-menu hidden">
-      <h4>Ferramentas de Acessibilidade</h4>
+    <div id="acc-menu" class="acc-menu hidden" role="dialog" aria-label="Opções de Acessibilidade">
+      <div class="acc-menu-header">
+        <h4>Opções de Acessibilidade</h4>
+        <button id="btn-close-acc" class="close-acc-btn">&times;</button>
+      </div>
       <hr>
+
+      <span class="acc-section-label">🎨 Modos de Visualização</span>
+      <button id="btn-theme-light">☀️ Tema Claro</button>
+      <button id="btn-theme-dark">🌙 Tema Escuro</button>
+      <button id="btn-high-contrast">🌓 Alto Contraste (Preto/Amarelo)</button>
+
+      <span class="acc-section-label">👁️ Baixa Visão</span>
       <button id="btn-increase-font">🔍 A+ Aumentar Fonte</button>
       <button id="btn-decrease-font">🔍 A- Diminuir Fonte</button>
-      <button id="btn-high-contrast">🌓 Alto Contraste</button>
-      <button id="btn-dyslexic-font">📖 Fonte Dislexia</button>
-      <button id="btn-reset-acc">🔄 Restaurar Padrão</button>
+      <button id="btn-letter-spacing">↔️ Aumentar Espaçamento</button>
+
+      <span class="acc-section-label">📖 Leitura & Dislexia</span>
+      <button id="btn-dyslexic-font">📖 Fonte para Dislexia</button>
+
+      <hr>
+      <button id="btn-reset-acc" class="btn-reset">🔄 Restaurar Padrões</button>
     </div>
   </div>
 
