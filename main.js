@@ -1,77 +1,157 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Elementos do DOM
+document.addEventListener("DOMContentLoaded", () => {
+  // ==========================================
+  // 1. ELEMEMENTOS E ESTADO INICIAL
+  // ==========================================
   const body = document.body;
-  const toggleAccBtn = document.getElementById('toggle-acc-menu');
-  const closeAccBtn = document.getElementById('btn-close-acc');
-  const accMenu = document.getElementById('acc-menu');
-  const themeToggleHeader = document.getElementById('theme-toggle-header');
-
+  const themeToggleHeader = document.getElementById("theme-toggle-header");
+  const searchBtn = document.querySelector(".search-btn");
+  
+  // Widget de Acessibilidade
+  const toggleAccMenuBtn = document.getElementById("toggle-acc-menu");
+  const accMenu = document.getElementById("acc-menu");
+  const btnCloseAcc = document.getElementById("btn-close-acc");
+  
   // Botões de Acessibilidade
-  const btnThemeLight = document.getElementById('btn-theme-light');
-  const btnThemeDark = document.getElementById('btn-theme-dark');
-  const btnHighContrast = document.getElementById('btn-high-contrast');
-  const btnIncreaseFont = document.getElementById('btn-increase-font');
-  const btnDecreaseFont = document.getElementById('btn-decrease-font');
-  const btnLetterSpacing = document.getElementById('btn-letter-spacing');
-  const btnDyslexicFont = document.getElementById('btn-dyslexic-font');
-  const btnResetAcc = document.getElementById('btn-reset-acc');
+  const btnThemeLight = document.getElementById("btn-theme-light");
+  const btnThemeDark = document.getElementById("btn-theme-dark");
+  const btnHighContrast = document.getElementById("btn-high-contrast");
+  const btnIncreaseFont = document.getElementById("btn-increase-font");
+  const btnDecreaseFont = document.getElementById("btn-decrease-font");
+  const btnLetterSpacing = document.getElementById("btn-letter-spacing");
+  const btnDyslexicFont = document.getElementById("btn-dyslexic-font");
+  const btnResetAcc = document.getElementById("btn-reset-acc");
 
-  // Alternar Menu Flutuante
-  toggleAccBtn.addEventListener('click', () => accMenu.classList.toggle('hidden'));
-  closeAccBtn.addEventListener('click', () => accMenu.classList.add('hidden'));
+  // Outros botões
+  const tagBtns = document.querySelectorAll(".tag-btn");
 
-  // 1. GERENCIAMENTO DE TEMAS (CLARO / ESCURO)
-  function setTheme(themeName) {
-    body.setAttribute('data-theme', themeName);
-    body.classList.remove('high-contrast'); // Remove alto contraste ao trocar tema regular
-    themeToggleHeader.textContent = themeName === 'dark' ? '☀️' : '🌙';
+  // Configuração padrão de estado
+  let currentFontSize = 100; // Porcentagem
+  let isCustomSpacing = false;
+  let isDyslexicFont = false;
+
+  // ==========================================
+  // 2. PAINEL DE ACESSIBILIDADE (ABRIR / FECHAR)
+  // ==========================================
+  if (toggleAccMenuBtn && accMenu) {
+    toggleAccMenuBtn.addEventListener("click", () => {
+      accMenu.classList.toggle("hidden");
+      const isExpanded = !accMenu.classList.contains("hidden");
+      toggleAccMenuBtn.setAttribute("aria-expanded", isExpanded);
+    });
   }
 
-  themeToggleHeader.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-  });
+  if (btnCloseAcc && accMenu) {
+    btnCloseAcc.addEventListener("click", () => {
+      accMenu.classList.add("hidden");
+      toggleAccMenuBtn.setAttribute("aria-expanded", "false");
+    });
+  }
 
-  btnThemeLight.addEventListener('click', () => setTheme('light'));
-  btnThemeDark.addEventListener('click', () => setTheme('dark'));
-
-  // 2. MODO ALTO CONTRASTE (PARA BAIXA VISÃO EXTREMA)
-  btnHighContrast.addEventListener('click', () => {
-    body.classList.toggle('high-contrast');
-  });
-
-  // 3. CONTROLE DE TAMANHO DE FONTE (BAIXA VISÃO)
-  let currentFontSize = 16;
-  btnIncreaseFont.addEventListener('click', () => {
-    if (currentFontSize < 26) {
-      currentFontSize += 2;
-      document.documentElement.style.fontSize = `${currentFontSize}px`;
+  // ==========================================
+  // 3. TEMA (CLARO / ESCURO / ALTO CONTRASTE)
+  // ==========================================
+  function setTheme(themeName) {
+    body.setAttribute("data-theme", themeName);
+    
+    // Atualiza o ícone do botão no cabeçalho
+    if (themeToggleHeader) {
+      themeToggleHeader.textContent = themeName === "dark" || themeName === "high-contrast" ? "☀️" : "🌙";
     }
-  });
+  }
 
-  btnDecreaseFont.addEventListener('click', () => {
-    if (currentFontSize > 12) {
-      currentFontSize -= 2;
-      document.documentElement.style.fontSize = `${currentFontSize}px`;
-    }
-  });
+  // Alternador do Cabeçalho
+  if (themeToggleHeader) {
+    themeToggleHeader.addEventListener("click", () => {
+      const currentTheme = body.getAttribute("data-theme");
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      setTheme(nextTheme);
+    });
+  }
 
-  // 4. ESPAÇAMENTO DE TEXTO (BAIXA VISÃO / LEITURA)
-  btnLetterSpacing.addEventListener('click', () => {
-    body.classList.toggle('large-spacing');
-  });
+  // Botões do Widget
+  if (btnThemeLight) btnThemeLight.addEventListener("click", () => setTheme("light"));
+  if (btnThemeDark) btnThemeDark.addEventListener("click", () => setTheme("dark"));
+  if (btnHighContrast) btnHighContrast.addEventListener("click", () => setTheme("high-contrast"));
 
-  // 5. FONTE PARA DISLEXIA
-  btnDyslexicFont.addEventListener('click', () => {
-    body.classList.toggle('dyslexia-font');
-  });
+  // ==========================================
+  // 4. BAICHA VISÃO & TIPOGRAFIA
+  // ==========================================
+  // Aumentar Fonte
+  if (btnIncreaseFont) {
+    btnIncreaseFont.addEventListener("click", () => {
+      if (currentFontSize < 150) {
+        currentFontSize += 10;
+        document.documentElement.style.fontSize = `${currentFontSize}%`;
+      }
+    });
+  }
 
-  // 6. RESTAURAR CONFIGURAÇÕES PADRÃO
-  btnResetAcc.addEventListener('click', () => {
-    currentFontSize = 16;
-    document.documentElement.style.fontSize = '16px';
-    body.setAttribute('data-theme', 'light');
-    body.classList.remove('high-contrast', 'dyslexia-font', 'large-spacing');
-    themeToggleHeader.textContent = '🌙';
+  // Diminuir Fonte
+  if (btnDecreaseFont) {
+    btnDecreaseFont.addEventListener("click", () => {
+      if (currentFontSize > 80) {
+        currentFontSize -= 10;
+        document.documentElement.style.fontSize = `${currentFontSize}%`;
+      }
+    });
+  }
+
+  // Espaçamento entre Letras
+  if (btnLetterSpacing) {
+    btnLetterSpacing.addEventListener("click", () => {
+      isCustomSpacing = !isCustomSpacing;
+      body.style.letterSpacing = isCustomSpacing ? "0.12em" : "normal";
+      body.style.wordSpacing = isCustomSpacing ? "0.16em" : "normal";
+    });
+  }
+
+  // Fonte para Dislexia
+  if (btnDyslexicFont) {
+    btnDyslexicFont.addEventListener("click", () => {
+      isDyslexicFont = !isDyslexicFont;
+      if (isDyslexicFont) {
+        body.style.fontFamily = "'Comic Sans MS', 'OpenDyslexic', sans-serif";
+      } else {
+        body.style.fontFamily = "'Inter', sans-serif";
+      }
+    });
+  }
+
+  // ==========================================
+  // 5. RESTAURAR PADRÕES
+  // ==========================================
+  if (btnResetAcc) {
+    btnResetAcc.addEventListener("click", () => {
+      currentFontSize = 100;
+      isCustomSpacing = false;
+      isDyslexicFont = false;
+
+      document.documentElement.style.fontSize = "100%";
+      body.style.letterSpacing = "normal";
+      body.style.wordSpacing = "normal";
+      body.style.fontFamily = "'Inter', sans-serif";
+      setTheme("light");
+    });
+  }
+
+  // ==========================================
+  // 6. BUSCA & DEMAIS BOTÕES
+  // ==========================================
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      const query = prompt("O que você procura no Portal do Cidadão?");
+      if (query && query.trim() !== "") {
+        alert(`Buscando por: "${query}"...`);
+      }
+    });
+  }
+
+  // Tags de Público (Ativa/Desativa ao clicar)
+  tagBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+      const status = btn.classList.contains("active") ? "selecionado" : "desmarcado";
+      console.log(`Filtro ${btn.textContent.trim()} ${status}`);
+    });
   });
 });

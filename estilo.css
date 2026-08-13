@@ -645,3 +645,31 @@ body {
   background-color: #fca5a5;
   color: #7f1d1d;
 }
+/* Esconde elementos com a classe .hidden */
+.hidden {
+  display: none !important;
+}
+
+/* Suporte ao Alto Contraste */
+[data-theme="high-contrast"] {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+[data-theme="high-contrast"] a,
+[data-theme="high-contrast"] button,
+[data-theme="high-contrast"] h1,
+[data-theme="high-contrast"] h2,
+[data-theme="high-contrast"] h3,
+[data-theme="high-contrast"] h4,
+[data-theme="high-contrast"] p {
+  color: #ffff00 !important;
+  background-color: #000000 !important;
+  border-color: #ffff00 !important;
+}
+
+/* Estado ativo dos botões de tag */
+.tag-btn.active {
+  background-color: #0056b3;
+  color: #ffffff;
+}
