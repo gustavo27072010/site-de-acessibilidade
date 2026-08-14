@@ -11,31 +11,43 @@
 </head>
 <body data-theme="light">
 
-  <header class="header">
-    <div class="container header-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">🛡️</div>
-        <div class="logo-text">
-          <strong>Portal do Cidadão</strong>
-          <span>Acessível para todos</span>
-        </div>
-      </a>
-
-      <nav class="nav-menu">
-        <a href="#servicos" class="nav-link">Serviços</a>
-        <a href="#saude" class="nav-link">Saúde</a>
-        <a href="#noticias" class="nav-link">Notícias</a>
-        <a href="#contato" class="nav-link">Contato</a>
-      </nav>
-
-      <div class="header-actions">
-        <button id="theme-toggle-header" class="theme-btn-header" aria-label="Alternar Tema Claro/Escuro">
-          🌙
-        </button>
-        <button class="search-btn" aria-label="Buscar no portal">🔍</button>
+<header class="header">
+  <div class="container header-container">
+    <a href="#" class="logo">
+      <div class="logo-icon">🛡️</div>
+      <div class="logo-text">
+        <strong>Portal do Cidadão</strong>
+        <span>Acessível para todos</span>
       </div>
+    </a>
+
+    <nav class="nav-menu">
+      <a href="#servicos" class="nav-link">Serviços</a>
+      <a href="#saude" class="nav-link">Saúde</a>
+      <a href="#noticias" class="nav-link">Notícias</a>
+      <a href="#contato" class="nav-link">Contato</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle-header" class="theme-btn-header" aria-label="Alternar Tema Claro/Escuro">
+        🌙
+      </button>
+      <button id="search-btn-toggle" class="search-btn" aria-label="Buscar no portal" aria-expanded="false">🔍</button>
     </div>
-  </header>
+  </div>
+
+  <div id="search-bar-container" class="search-bar-container hidden">
+    <div class="container search-bar-content">
+      <input 
+        type="search" 
+        id="search-input" 
+        placeholder="O que você procura? (ex: vacina, bolsa família, consulta...)" 
+        aria-label="Campo de busca"
+      >
+      <button id="search-close-btn" class="search-close-btn" aria-label="Fechar busca">&times;</button>
+    </div>
+  </div>
+</header>
 
   <section class="hero-section">
     <div class="container hero-container">

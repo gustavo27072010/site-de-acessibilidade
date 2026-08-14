@@ -155,3 +155,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const searchBtnToggle = document.getElementById('search-btn-toggle');
+  const searchBarContainer = document.getElementById('search-bar-container');
+  const searchInput = document.getElementById('search-input');
+  const searchCloseBtn = document.getElementById('search-close-btn');
+
+  // Seleciona todos os elementos pesquisáveis no portal
+  const searchableItems = document.querySelectorAll(
+    '.cards-grid .card, .agenda-item, .news-card, .help-card, .publico-tags .tag-btn'
+  );
+
+  // Exibir / Ocultar a barra de pesquisa
+  searchBtnToggle.addEventListener('click', () => {
+    const isHidden = searchBarContainer.classList.contains('hidden');
+    
+    if (isHidden) {
+      searchBarContainer.classList.remove('hidden');
+      searchBtnToggle.setAttribute('aria-expanded', 'true');
+      searchInput.focus(); // Foca direto no campo de texto
+    } else {
+      closeSearch();
+    }
+  });
+
+  // Fechar barra no botão X
+  searchCloseBtn.addEventListener('click', closeSearch);
+
+  // Filtragem em Tempo Real conforme o usuário digita
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
+
+    searchableItems.forEach((item) => {
+      // Captura todo o texto contido no card ou item
+      const itemText = item.textContent.toLowerCase();
+
+      if (itemText.includes(searchTerm)) {
+        item.classList.remove('search-hidden');
+      } else {
+        item.classList.add('search-hidden');
+      }
+    });
+  });
+
+  // Função para fechar e redefinir a busca
+  function closeSearch() {
+    searchBarContainer.classList.add('hidden');
+    searchBtnToggle.setAttribute('aria-expanded', 'false');
+    searchInput.value = '';
+    
+    // Restaura a visibilidade de todos os elementos
+    searchableItems.forEach((item) => {
+      item.classList.remove('search-hidden');
+    });
+  }
+});
