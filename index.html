@@ -3,14 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal do Cidadão Curitiba — Guia completo, unificado e acessível de serviços públicos municipais, estaduais e federais.">
-  <meta name="keywords" content="Curitiba, Prefeitura, Saúde Já, Serviços Públicos, Acessibilidade, WCAG, Cartão URBS, IPTU, DETRAN, PROCON, 156, CadÚnico, Sanepar, Copel">
-  <meta name="author" content="Prefeitura Municipal de Curitiba">
-  
-  <title>Portal do Cidadão — Serviços Públicos Simplificados para Você</title>
-  
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <title>Portal do Cidadão</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <header class="main-header">
+    <div class="logo">
+      <h1>Portal do Cidadão</h1>
+    </div>
+
+    <div class="header-actions">
+      <button id="search-btn-toggle" class="btn-icon" aria-expanded="false" aria-label="Abrir busca">
+        🔍 Buscar
+      </button>
+
+      <button id="toggle-acc-menu" class="btn-icon" aria-expanded="false" aria-label="Abrir menu de acessibilidade">
+        ♿ Acessibilidade
+      </button>
+
+      <button id="theme-toggle-header" class="btn-icon" aria-label="Alternar tema escuro/claro">
+        🌙 / ☀️
+      </button>
+    </div>
+  </header>
+
+  <div id="search-bar-container" class="search-container hidden">
+    <input type="text" id="search-input" placeholder="O que você procura hoje? (ex: RG, IPTU, Saúde...)" aria-label="Pesquisar serviços">
+    <button id="search-close-btn" class="btn-secondary">Fechar</button>
+  </div>
+
+  <div id="acc-menu" class="acc-panel hidden" role="dialog" aria-label="Opções de Acessibilidade">
+    <div class="acc-panel-header">
+      <h2>Acessibilidade</h2>
+      <button id="btn-close-acc" class="btn-secondary">&times;</button>
+    </div>
+    
+    <div class="acc-panel-body">
+      <h3>Tamanho do Texto</h3>
+      <div class="btn-group">
+        <button id="btn-increase-font" class="btn-option">Aumentar (+)</button>
+        <button id="btn-decrease-font" class="btn-option">Diminuir (-)</button>
+      </div>
+
+      <h3>Contraste e Tema</h3>
+      <div class="btn-group">
+        <button id="btn-theme-light" class="btn-option">Claro</button>
+        <button id="btn-theme-dark" class="btn-option">Escuro</button>
+        <button id="btn-high-contrast" class="btn-option">Alto Contraste</button>
+      </div>
+
+      <h3>Tipografia</h3>
+      <button id="btn-dyslexic-font" class="btn-option">Fonte para Dislexia</button>
+
+      <hr>
+      <button id="btn-reset-acc" class="btn-danger">Restaurar Padrão</button>
+    </div>
+  </div>
+
+  <main class="content">
+    <section class="hero">
+      <h2>Serviços e Atendimento ao Cidadão</h2>
+      <p>Acesse de forma rápida e simplificada os principais serviços públicos.</p>
+    </section>
+
+    <section class="services-section">
+      <h3>Acesso Rápido</h3>
+      
+      <div id="cards-container" class="cards-grid">
+        
+        <article class="card" data-keywords="rg carteira identidade documento emissao">
+          <div class="card-icon">🪪</div>
+          <h3>Emissão de RG</h3>
+          <p>Agende o atendimento para tirar a 1ª ou 2ª via da carteira de identidade.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="iptu imposto casa imovel tributo carne">
+          <div class="card-icon">🏠</div>
+          <h3>Consultar IPTU</h3>
+          <p>Consulte débitos, emita a 2ª via do carnê ou pague via Pix.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="saude sus consulta medico posto vacina">
+          <div class="card-icon">🏥</div>
+          <h3>Agendamento de Saúde</h3>
+          <p>Marque consultas e exames na rede municipal de saúde.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="cnh carteira motorista trânsito detran multas">
+          <div class="card-icon">🚗</div>
+          <h3>Serviços de Trânsito / CNH</h3>
+          <p>Consulte pontos na carteira, pague multas ou solicite renovação.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="trabalho emprego vaga currículo seguro desemprego">
+          <div class="card-icon">💼</div>
+          <h3>Vagas de Emprego</h3>
+          <p>Confira o painel de vagas da cidade e cadastre seu currículo.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="escola creche matricula aluno educacao vaga">
+          <div class="card-icon">🎒</div>
+          <h3>Matrícula Escolar</h3>
+          <p>Consulte vagas em creches e escolas da rede pública municipal.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="certidao nascimento casamento obito cartorio">
+          <div class="card-icon">📜</div>
+          <h3>Certidões e Documentos</h3>
+          <p>Solicite a 2ª via de certidões de nascimento, casamento ou óbito.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+        <article class="card" data-keywords="iluminacao lampada rua buraco ouvidoria relato">
+          <div class="card-icon">📣</div>
+          <h3>Ouvidoria e Solicitações</h3>
+          <p>Relate problemas como falta de iluminação pública ou buracos na via.</p>
+          <a href="#" class="card-link">Acessar serviço &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+ 
+</body>
+</html>
   <style>
     /* ==========================================================================
        1. VARIÁVEIS DE TEMA & CONFIGURAÇÃO GLOBAL (WCAG AAA)
