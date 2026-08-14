@@ -224,3 +224,65 @@ function parseJwt (token) {
 
   return JSON.parse(jsonPayload);
 }
+// ==========================================
+// ATALHOS DE TECLADO (1, 2, 3, 4)
+// ==========================================
+document.addEventListener("keydown", (e) => {
+  // Impede o acionamento caso o usuário esteja digitando em um campo de texto ou caixa de busca
+  const activeElement = document.activeElement;
+  const isTyping = activeElement.tagName === "INPUT" || 
+                  activeElement.tagName === "TEXTAREA" || 
+                  activeElement.isContentEditable;
+
+  if (isTyping) return;
+
+  switch (e.key) {
+    case "1": {
+      // 1: Ir para o Conteúdo/Menu Principal
+      const mainContent = document.getElementById("main-content") || document.querySelector("main");
+      if (mainContent) {
+        mainContent.scrollIntoView({ behavior: "smooth" });
+        mainContent.focus();
+      }
+      break;
+    }
+
+    case "2": {
+      // 2: Ir para o Menu de Navegação
+      const navMenu = document.getElementById("main-nav") || document.querySelector("nav");
+      if (navMenu) {
+        navMenu.scrollIntoView({ behavior: "smooth" });
+        navMenu.focus();
+      }
+      break;
+    }
+
+    case "3": {
+      // 3: Abrir a Barra de Pesquisa
+      e.preventDefault(); // Impede digitação acidental da tecla '3'
+      const searchBtnToggle = document.getElementById("search-btn-toggle");
+      const searchBarContainer = document.getElementById("search-bar-container");
+      const searchInput = document.getElementById("search-input");
+
+      if (searchBarContainer && searchInput) {
+        // Exibe o painel de pesquisa
+        searchBarContainer.classList.remove("hidden");
+        if (searchBtnToggle) searchBtnToggle.setAttribute("aria-expanded", "true");
+        
+        // Foca diretamente no campo de busca
+        setTimeout(() => searchInput.focus(), 100);
+      }
+      break;
+    }
+
+    case "4": {
+      // 4: Ir para o Rodapé do Site
+      const footer = document.getElementById("footer") || document.querySelector("footer");
+      if (footer) {
+        footer.scrollIntoView({ behavior: "smooth" });
+        footer.focus();
+      }
+      break;
+    }
+  }
+});
