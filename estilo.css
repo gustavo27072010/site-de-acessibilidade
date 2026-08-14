@@ -25,7 +25,30 @@
   --letter-spacing-base: normal;
 }
 
-/* 🌙 TEMA ESCURO (DARK MODE) */
+/* 🌙 TEMA ESCURO AUTOMÁTICO (Caso o usuário prefira no SO) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary-blue: #3b82f6;
+    --primary-hover: #60a5fa;
+    --header-blue: #0f172a;
+    --bg-page: #0b0f19;
+    --bg-section: #111827;
+    --bg-card: #1f2937;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --border-color: #374151;
+
+    --banner-bg: #2d2305;
+    --banner-border: #78350f;
+    --banner-text: #fef08a;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* 🌙 TEMA ESCURO MANUALLY DEFINIDO */
 body[data-theme="dark"] {
   --primary-blue: #3b82f6;
   --primary-hover: #60a5fa;
@@ -46,7 +69,7 @@ body[data-theme="dark"] {
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* 🌓 MODO ALTO CONTRASTE (PARA BAIXA VISÃO EXTREMA) */
+/* 🌓 MODO ALTO CONTRASTE (WCAG AAA) */
 body.high-contrast,
 [data-theme="high-contrast"] {
   --bg-page: #000000 !important;
@@ -113,7 +136,22 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Acessibilidade para Foco via Teclado (WCAG) */
+/* BARRA DE ROLAGEM PERSONALIZADA */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+/* FOCO PARA NAVEGAÇÃO POR TECLADO (WCAG) */
 :focus-visible {
   outline: 3px solid var(--primary-blue);
   outline-offset: 3px;
@@ -191,7 +229,7 @@ body {
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
@@ -740,6 +778,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  animation: fadeInMenu 0.2s ease-out forwards;
+}
+
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .acc-menu.hidden {
@@ -811,6 +855,34 @@ body {
   display: none !important;
 }
 
+/* ================= ESTILOS DE IMPRESSÃO (@MEDIA PRINT) ================= */
+@media print {
+  .header,
+  .accessibility-widget,
+  .search-bar-container,
+  .hero-buttons,
+  .acc-menu {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+
+  .card, .news-card, .help-box {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
 /* ================= RESPONSIVIDADE ================= */
 @media (max-width: 768px) {
   .header-container {
@@ -858,7 +930,7 @@ body {
   }
 }
 
-/* Redução de movimento para preferência do sistema */
+/* REDUÇÃO DE MOVIMENTO PARA PREFERÊNCIA DO SISTEMA */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
