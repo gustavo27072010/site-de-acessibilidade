@@ -3,45 +3,553 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal do Cidadão — Acesso rápido, claro e acessível aos serviços públicos de Curitiba e do Paraná.">
-  <title>Portal do Cidadão — Curitiba</title>
+  <meta name="description" content="Portal do Cidadão Curitiba — Guia completo, unificado e acessível de serviços públicos municipais, estaduais e federais.">
+  <meta name="keywords" content="Curitiba, Prefeitura, Saúde Já, Serviços Públicos, Acessibilidade, WCAG, Cartão URBS, IPTU, DETRAN, PROCON, 156, CadÚnico, Sanepar, Copel">
+  <meta name="author" content="Prefeitura Municipal de Curitiba">
   
-  <link rel="stylesheet" href="estilo.css">
+  <title>Portal do Cidadão — Serviços Públicos Simplificados para Você</title>
+  
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS DE TEMA & CONFIGURAÇÃO GLOBAL (WCAG AAA)
+       ========================================================================== */
+    :root {
+      --primary-color: #0056b3;
+      --primary-hover: #003d82;
+      --bg-color: #f8f9fa;
+      --bg-card: #ffffff;
+      --text-color: #1a1a1a;
+      --text-muted: #595959;
+      --border-color: #dcdcdc;
+      --accent-color: #008055;
+      --warning-color: #d9381e;
+      --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --font-dyslexic: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+      --font-size-base: 1rem;
+      --letter-spacing: normal;
+    }
+
+    [data-theme="dark"] {
+      --primary-color: #4d9fff;
+      --primary-hover: #80bfff;
+      --bg-color: #121212;
+      --bg-card: #1e1e1e;
+      --text-color: #f0f0f0;
+      --text-muted: #b0b0b0;
+      --border-color: #333333;
+      --accent-color: #26a69a;
+      --warning-color: #ff6b6b;
+    }
+
+    [data-theme="high-contrast"] {
+      --primary-color: #ffff00;
+      --primary-hover: #ffffff;
+      --bg-color: #000000;
+      --bg-card: #000000;
+      --text-color: #ffff00;
+      --text-muted: #ffffff;
+      --border-color: #ffff00;
+      --accent-color: #00ffff;
+      --warning-color: #ff0055;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      letter-spacing: var(--letter-spacing);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    a:hover, a:focus {
+      color: var(--primary-hover);
+    }
+
+    /* Skip Links de Acessibilidade */
+    .skip-links {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      z-index: 10000;
+    }
+    .skip-link {
+      background: #000;
+      color: #fff;
+      padding: 12px 20px;
+      display: inline-block;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* ==========================================================================
+       2. CABEÇALHO & BARRA DE BUSCA
+       ========================================================================== */
+    .header {
+      background-color: var(--bg-card);
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+    .logo-icon {
+      font-size: 2rem;
+    }
+    .logo-text strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+    .logo-text span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 15px;
+    }
+    .nav-link {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-color);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .nav-link:hover, .nav-link:focus {
+      background-color: var(--border-color);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .action-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    .action-btn:hover {
+      background-color: var(--border-color);
+    }
+
+    .search-bar-container {
+      background-color: var(--bg-card);
+      border-bottom: 2px solid var(--primary-color);
+      padding: 15px 0;
+    }
+    .search-bar-container.hidden {
+      display: none;
+    }
+    .search-bar-content {
+      display: flex;
+      gap: 10px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+    .search-input:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+
+    /* ==========================================================================
+       3. SEÇÕES HERO & AVISOS/NOTÍCIAS
+       ========================================================================== */
+    .hero-section {
+      padding: 50px 0;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-color) 100%);
+    }
+    .badge-wcag {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .hero-title {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    .highlight-blue {
+      color: var(--primary-color);
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 25px auto;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      color: #fff;
+    }
+    .btn-outline {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .section-padding {
+      padding: 50px 0;
+    }
+    .bg-section {
+      background-color: var(--bg-card);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .section-description {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* Grid de Notícias */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .news-card {
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .news-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .tag-saude { background-color: #d9381e; }
+    .tag-beneficios { background-color: #e67e22; }
+    .tag-documentos { background-color: #2980b9; }
+    .tag-consumidor { background-color: #27ae60; }
+    
+    .news-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .news-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .news-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .news-footer span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       4. CARDS DE SERVIÇOS & REGIONAIS
+       ========================================================================== */
+    .publico-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tag-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+    .tag-btn:hover {
+      border-color: var(--primary-color);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+    .card-features {
+      list-style: none;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+    .card-link {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .regionais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+    .regional-card {
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    /* FAQ & EMERGÊNCIAS */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      margin-bottom: 10px;
+      padding: 15px;
+    }
+    .faq-question {
+      cursor: pointer;
+      font-size: 1.05rem;
+    }
+    .faq-answer {
+      margin-top: 10px;
+      color: var(--text-muted);
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .help-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+    .help-card:hover {
+      border-color: var(--primary-color);
+    }
+
+    /* ==========================================================================
+       5. WIDGET DE ACESSIBILIDADE & RODAPÉ
+       ========================================================================== */
+    .accessibility-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2000;
+    }
+    .acc-floating-btn {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .acc-menu {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      width: 260px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .acc-menu.hidden {
+      display: none;
+    }
+    .acc-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .acc-menu button {
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .footer {
+      background: var(--bg-card);
+      border-top: 2px solid var(--border-color);
+      padding: 40px 0 20px 0;
+      margin-top: 50px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hero-title { font-size: 1.6rem; }
+    }
+  </style>
 </head>
 <body>
 
   <div class="skip-links" id="topo">
-    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal [1]</a>
-    <a href="#nav-menu" class="skip-link">Ir para o menu de navegação [2]</a>
-    <a href="#search-input" class="skip-link">Ir para a busca [3]</a>
-    <a href="#rodape" class="skip-link">Ir para o rodapé [4]</a>
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo [1]</a>
+    <a href="#noticias-avisos" class="skip-link">Pular para Notícias e Avisos [2]</a>
+    <a href="#servicos" class="skip-link">Pular para Serviços [3]</a>
+    <a href="#search-input" class="skip-link">Pular para a busca [4]</a>
+    <a href="#rodape" class="skip-link">Pular para o rodapé [5]</a>
   </div>
 
   <header class="header" role="banner">
     <div class="container header-container">
-      <a href="#" class="logo" aria-label="Página inicial do Portal do Cidadão">
+      <a href="#" class="logo" aria-label="Início — Portal do Cidadão">
         <div class="logo-icon" aria-hidden="true">🛡️</div>
         <div class="logo-text">
           <strong>Portal do Cidadão</strong>
-          <span>Curitiba & Paraná</span>
+          <span>Curitiba & Paraná para todos</span>
         </div>
       </a>
 
       <nav id="nav-menu" class="nav-menu" aria-label="Navegação Principal">
-        <a href="#servicos-essenciais" class="nav-link">Mais Acessados</a>
+        <a href="#noticias-avisos" class="nav-link">Notícias & Avisos</a>
+        <a href="#servicos" class="nav-link">Serviços</a>
         <a href="#saude" class="nav-link">Saúde</a>
-        <a href="#transito" class="nav-link">Trânsito e Transporte</a>
-        <a href="#regionais" class="nav-link">Ruas da Cidadania</a>
-        <a href="#faq" class="nav-link">Dúvidas</a>
+        <a href="#regionais" class="nav-link">Atendimento Presencial</a>
+        <a href="#faq" class="nav-link">Dúvidas Frequentes</a>
         <a href="#contato" class="nav-link">Emergências</a>
       </nav>
 
       <div class="header-actions">
-        <button id="theme-toggle-header" class="theme-btn-header" aria-label="Alternar Tema Claro e Escuro" title="Alternar Tema">
+        <button id="theme-toggle-header" class="action-btn" aria-label="Alternar modo claro e escuro" title="Alternar Modo">
           🌙
         </button>
-        <button id="search-btn-toggle" class="search-btn" aria-label="Abrir campo de busca" aria-expanded="false" aria-controls="search-bar-container">
+        <button id="search-btn-toggle" class="action-btn" aria-label="Abrir campo de busca" aria-expanded="false" aria-controls="search-bar-container">
           🔍
         </button>
       </div>
@@ -53,390 +561,375 @@
         <input 
           type="search" 
           id="search-input" 
-          placeholder="O que você precisa? (ex: RG, Vacina, IPTU, Ônibus, Sanepar...)" 
-          aria-label="Buscar serviços públicos"
+          class="search-input"
+          placeholder="O que você precisa resolver hoje? (ex: 2ª via do IPTU, agendar RG, vacinas, conta de luz...)" 
+          aria-label="Buscar serviço ou informação no portal"
           autocomplete="off"
         >
-        <button id="search-close-btn" class="search-close-btn" aria-label="Fechar busca">&times;</button>
+        <button id="search-close-btn" class="action-btn" aria-label="Fechar busca">&times;</button>
       </div>
     </div>
   </header>
 
   <main id="conteudo-principal">
 
-    <section class="hero-section" aria-labelledby="hero-title">
+    <section class="hero-section" aria-labelledby="hero-title-hd">
       <div class="container hero-container">
         <div class="badge-wcag" role="doc-subtitle">
-          ♿ Acessibilidade WCAG 2.1 — Atalhos numéricos ativos (1, 2, 3, 4)
+          ♿ Portal fácil, intuitivo e 100% acessível
         </div>
-        <h1 id="hero-title" class="hero-title">
-          Serviços Públicos de Curitiba<br>
-          <span class="highlight-blue">Rápidos, simples e acessíveis.</span>
+        <h1 id="hero-title-hd" class="hero-title">
+          Resolva seus serviços públicos<br>
+          <span class="highlight-blue">sem complicação e sem filas.</span>
         </h1>
         <p class="hero-subtitle">
-          Encontre os principais serviços da Prefeitura de Curitiba e do Governo do Paraná em poucos cliques.
+          Encontre agendamentos, emissão de documentos e utilidades de Curitiba, do Estado do Paraná e do Governo Federal em um só lugar.
         </p>
         <div class="hero-buttons">
-          <a href="#servicos-essenciais" class="btn btn-primary">Ver Serviços Principais &rarr;</a>
-          <a href="tel:156" class="btn btn-outline">📞 Central 156</a>
+          <a href="#servicos" class="btn btn-primary">Buscar Serviço Desejado &rarr;</a>
+          <a href="tel:156" class="btn btn-outline">📞 Ligar para a Central 156</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="noticias-avisos" class="section-padding" aria-labelledby="noticias-title">
+      <div class="container">
+        <h2 id="noticias-title" class="section-title">📰 Avisos Importantes e Notícias Úteis</h2>
+        <p class="section-description">Mantenha-se informado sobre prazos, campanhas de saúde e atualizações de serviços do governo.</p>
+
+        <div class="news-grid">
+
+          <article class="news-card">
+            <div>
+              <span class="news-tag tag-saude">SAÚDE PÚBLICA</span>
+              <h3>Campanha de Multivacinação nas Unidades de Saúde</h3>
+              <p>Saiba quais vacinas estão disponíveis nesta semana, horários de atendimento dos postos e documentação necessária para imunização de adultos e crianças.</p>
+            </div>
+            <div class="news-footer">
+              <span>Orientação completa de saúde</span>
+              <a href="https://saude.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="news-link" aria-label="Acessar informações completas sobre a campanha de vacinação">Acessar e Ver Locais &rarr;</a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div>
+              <span class="news-tag tag-beneficios">ASSISTÊNCIA SOCIAL</span>
+              <h3>Atualização Obrigatória do CadÚnico e Bolsa Família</h3>
+              <p>Entenda o passo a passo para atualizar seus dados cadastrais no CRAS, evite o bloqueio do benefício e confira a lista de documentos cobrados.</p>
+            </div>
+            <div class="news-footer">
+              <span>Guia para beneficiários</span>
+              <a href="https://www.gov.br/pt-br/servicos/atualizar-cadastro-unico" target="_blank" rel="noopener noreferrer" class="news-link" aria-label="Acessar o guia explicativo para atualização do Cadastro Único">Acessar Explicativo &rarr;</a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div>
+              <span class="news-tag tag-documentos">DOCUMENTOS</span>
+              <h3>Nova Carteira de Identidade Nacional (CIN): Como Emitir</h3>
+              <p>Confira quais são os requisitos para solicitar a primeira via gratuita do novo RG unificado com CPF, agendamento online e documentos aceitos.</p>
+            </div>
+            <div class="news-footer">
+              <span>Passo a passo de emissão</span>
+              <a href="https://www.policiacivil.pr.gov.br/RG" target="_blank" rel="noopener noreferrer" class="news-link" aria-label="Acessar o portal de agendamento e dúvidas da Carteira de Identidade Nacional">Acessar e Agendar &rarr;</a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div>
+              <span class="news-tag tag-consumidor">DIREITOS DO CONSUMIDOR</span>
+              <h3>Como Registrar Reclamações Online no PROCON-PR</h3>
+              <p>Teve problemas com cobranças indevidas de luz, água ou telefonia? Veja como registrar sua queixa formalmente sem sair de casa.</p>
+            </div>
+            <div class="news-footer">
+              <span>Orientação do Consumidor</span>
+              <a href="https://www.procon.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="news-link" aria-label="Acessar orientação e registro de reclamações do PROCON Paraná">Acessar Orientação &rarr;</a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
     <section class="publicos-section" aria-labelledby="publicos-title">
       <div class="container">
-        <h2 id="publicos-title" class="section-subtitle">Filtrar por Perfil de Atendimento</h2>
-        <div class="publico-tags" aria-label="Filtros por perfil do cidadão">
-          <button class="tag-btn active" data-filter="todos">🌐 Todos os Serviços</button>
-          <button class="tag-btn" data-filter="saude">❤️ Saúde</button>
-          <button class="tag-btn" data-filter="documentos">🪪 Documentos</button>
-          <button class="tag-btn" data-filter="transporte">🚌 Transporte e Trânsito</button>
-          <button class="tag-btn" data-filter="impostos">💰 Impostos e Casa</button>
+        <h2 id="publicos-title" class="sr-only">Atalhos rápidos por perfil</h2>
+
+        <div class="publico-tags" aria-label="Serviços por perfil de cidadão">
+          <a href="https://www.curitiba.pr.gov.br/servicos/pessoa-idosa" target="_blank" rel="noopener noreferrer" class="tag-btn">👴 Sou Idoso / Aposentado</a>
+          <a href="https://saude.curitiba.pr.gov.br/linha-de-cuidado-da-gestante.html" target="_blank" rel="noopener noreferrer" class="tag-btn">🤰 Estou Gestante</a>
+          <a href="https://educacao.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="tag-btn">🧑 Sou Estudante / Responsável</a>
+          <a href="https://empregabrasil.mte.gov.br/" target="_blank" rel="noopener noreferrer" class="tag-btn">👨‍💼 Procuro Emprego / Sou MEI</a>
+          <a href="https://www.gov.br/mdh/pt-br/assuntos/pessoa-com-deficiencia" target="_blank" rel="noopener noreferrer" class="tag-btn">♿ Pessoa com Deficiência (PCD)</a>
         </div>
       </div>
     </section>
 
-    <section id="servicos-essenciais" class="section-padding bg-section" aria-labelledby="servicos-title">
+    <section id="servicos" class="section-padding bg-section" aria-labelledby="servicos-title">
       <div class="container">
-        <h2 id="servicos-title" class="section-title">Serviços Mais Solicitados</h2>
-        <p class="section-description">Acesse diretamente os portais oficiais para agendamento e emissão de documentos.</p>
+        <h2 id="servicos-title" class="section-title">O que você precisa fazer hoje?</h2>
+        <p class="section-description">Clique na opção desejada para ser direcionado com segurança ao portal oficial responsável.</p>
 
-        <div class="cards-grid">
+        <div class="cards-grid" id="cards-container">
           
-          <article class="card" data-category="saude">
-            <div class="card-icon icon-red" aria-hidden="true">❤️</div>
-            <h3>Saúde Já Curitiba</h3>
-            <p>Agendamento de consultas, carteira de vacinação digital e exames.</p>
-            <ul class="card-features">
-              <li>• Consultas e vacinas</li>
-              <li>• Atendimento de enfermagem</li>
-            </ul>
-            <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar Saúde Já &rarr;</a>
+          <article class="card" data-keywords="saude vacina consulta posto medico sus saude ja">
+            <div>
+              <div class="card-icon" aria-hidden="true">❤️</div>
+              <h3>Consultas e Vacinas (Saúde Já)</h3>
+              <p>Agende atendimento na sua Unidade de Saúde e acompanhe sua carteira de vacinação digital.</p>
+              <ul class="card-features">
+                <li>• Agendar consulta básica</li>
+                <li>• Ver histórico de vacinas</li>
+              </ul>
+            </div>
+            <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Agendar no Saúde Já &rarr;</a>
           </article>
 
-          <article class="card" data-category="documentos">
-            <div class="card-icon icon-blue" aria-hidden="true">🪪</div>
-            <h3>Carteira de Identidade (CIN / RG)</h3>
-            <p>Agendamento para emissão da nova Carteira de Identidade Nacional no PR.</p>
-            <ul class="card-features">
-              <li>• 1ª e 2ª via da identidade</li>
-              <li>• Agendamento Polícia Civil</li>
-            </ul>
-            <a href="https://www.policiacivil.pr.gov.br/RG" target="_blank" rel="noopener noreferrer" class="card-link">Agendar RG &rarr;</a>
+          <article class="card" data-keywords="rg carteira de identidade cin policia civil documento">
+            <div>
+              <div class="card-icon" aria-hidden="true">🪪</div>
+              <h3>Carteira de Identidade (CIN / RG)</h3>
+              <p>Marque um horário para fazer a 1ª ou 2ª via da sua Nova Carteira de Identidade Nacional no PR.</p>
+              <ul class="card-features">
+                <li>• Reservar horário no posto</li>
+                <li>• Pedir 2ª via rápida online</li>
+              </ul>
+            </div>
+            <a href="https://www.policiacivil.pr.gov.br/RG" target="_blank" rel="noopener noreferrer" class="card-link">Agendar Horário do RG &rarr;</a>
           </article>
 
-          <article class="card" data-category="transporte">
-            <div class="card-icon icon-orange" aria-hidden="true">🚗</div>
-            <h3>DETRAN-PR</h3>
-            <p>Renovação de CNH, pontuação da carteira, licenciamento e IPVA.</p>
-            <ul class="card-features">
-              <li>• Habilitação e veículos</li>
-              <li>• Emissão de CRLV</li>
-            </ul>
-            <a href="https://www.detran.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar DETRAN &rarr;</a>
+          <article class="card" data-keywords="copel luz energia eletrica fatura 2 via conta">
+            <div>
+              <div class="card-icon" aria-hidden="true">⚡</div>
+              <h3>Conta de Luz (Copel)</h3>
+              <p>Emita a 2ª via da fatura, avise sobre falta de energia ou troque o nome do titular da conta.</p>
+              <ul class="card-features">
+                <li>• Emitir 2ª via da conta</li>
+                <li>• Avisar falta de luz</li>
+              </ul>
+            </div>
+            <a href="https://www.copel.com/" target="_blank" rel="noopener noreferrer" class="card-link">Emitir Conta de Luz &rarr;</a>
           </article>
 
-          <article class="card" data-category="transporte">
-            <div class="card-icon icon-yellow" aria-hidden="true">🚌</div>
-            <h3>URBS & Cartão Transporte</h3>
-            <p>Horários de ônibus, recarga online via PIX e solicitação de cartão idoso/PCD.</p>
-            <ul class="card-features">
-              <li>• Recarga imediata</li>
-              <li>• Itinerários em tempo real</li>
-            </ul>
-            <a href="https://www.urbs.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar URBS &rarr;</a>
+          <article class="card" data-keywords="sanepar agua esgoto fatura 2 via conta vazamento">
+            <div>
+              <div class="card-icon" aria-hidden="true">💧</div>
+              <h3>Conta de Água (Sanepar)</h3>
+              <p>Baixe a segunda via da conta, consulte prazos de religação ou informe vazamentos na rua.</p>
+              <ul class="card-features">
+                <li>• Emitir 2ª via da fatura</li>
+                <li>• Informar vazamento</li>
+              </ul>
+            </div>
+            <a href="https://site.sanepar.com.br/" target="_blank" rel="noopener noreferrer" class="card-link">Emitir Conta de Água &rarr;</a>
           </article>
 
-          <article class="card" data-category="impostos">
-            <div class="card-icon icon-blue" aria-hidden="true">💰</div>
-            <h3>IPTU & Nota Curitibana</h3>
-            <p>Emissão de 2ª via do carnet de IPTU e resgate de créditos da Nota Curitibana.</p>
-            <ul class="card-features">
-              <li>• Parcelamento e certidões</li>
-              <li>• Resgate de prêmios</li>
-            </ul>
-            <a href="https://iptu.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar IPTU &rarr;</a>
+          <article class="card" data-keywords="urbs onibus transporte passe recarga passe livre idoso pcd">
+            <div>
+              <div class="card-icon" aria-hidden="true">🚌</div>
+              <h3>Ônibus e Cartão URBS</h3>
+              <p>Coloque créditos no cartão via PIX, veja os horários dos ônibus ou peça cartão de isenção.</p>
+              <ul class="card-features">
+                <li>• Recarregar cartão online</li>
+                <li>• Ver horário dos ônibus</li>
+              </ul>
+            </div>
+            <a href="https://www.urbs.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Recarregar / Ver Horários &rarr;</a>
           </article>
 
-          <article class="card" data-category="impostos">
-            <div class="card-icon icon-cyan" aria-hidden="true">💧</div>
-            <h3>Sanepar & Copel</h3>
-            <p>2ª via de faturas de água e luz, comunicado de falta de serviço e religação.</p>
-            <ul class="card-features">
-              <li>• Segundas vias rápidas</li>
-              <li>• Atendimento emergencial</li>
-            </ul>
-            <a href="https://site.sanepar.com.br/" target="_blank" rel="noopener noreferrer" class="card-link">Fatura Sanepar &rarr;</a>
+          <article class="card" data-keywords="iptu imposto prefeitura boleto divida certidao">
+            <div>
+              <div class="card-icon" aria-hidden="true">💰</div>
+              <h3>IPTU e Débitos Municipais</h3>
+              <p>Emita as parcelas do IPTU do seu imóvel, negocie dívidas ativas ou resgate créditos do imposto.</p>
+              <ul class="card-features">
+                <li>• Emitir 2ª via do IPTU</li>
+                <li>• Resgatar Nota Curitibana</li>
+              </ul>
+            </div>
+            <a href="https://iptu.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Emitir Boleto IPTU &rarr;</a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <section id="regionais" class="section-padding" aria-labelledby="regionais-title">
+    <section id="saude" class="section-padding" aria-labelledby="saude-title">
       <div class="container">
-        <h2 id="regionais-title" class="section-title">🏛️ Ruas da Cidadania de Curitiba</h2>
-        <p class="section-description">Atendimento presencial descentralizado nos bairros.</p>
+        <h2 id="saude-title" class="section-title">❤️ Atendimento de Saúde na Rede Pública (SUS)</h2>
+        <p class="section-description">Confira onde ir de acordo com a sua necessidade de atendimento médico:</p>
+
+        <div class="help-grid">
+          <div class="regional-card">
+            <h4>Unidades Básicas de Saúde (Postos)</h4>
+            <p><strong>Funcionamento:</strong> Seg a Sex, das 07h às 19h</p>
+            <p><strong>Atendimento:</strong> Consultas de rotina, vacinas, curativos e renovação de receitas.</p>
+          </div>
+          <div class="regional-card">
+            <h4>UPAs (Pronto Atendimento)</h4>
+            <p><strong>Funcionamento:</strong> 24 Horas (Ininterrupto)</p>
+            <p><strong>Atendimento:</strong> Urgências, dores fortes no peito, acidentes, febre alta e falta de ar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="regionais" class="section-padding bg-section" aria-labelledby="regionais-title">
+      <div class="container">
+        <h2 id="regionais-title" class="section-title">🏛️ Ruas da Cidadania (Atendimento Presencial)</h2>
+        <p class="section-description">Endereços das principais unidades descentralizadas de atendimento:</p>
 
         <div class="regionais-grid">
           <div class="regional-card">
-            <h4>Matriz</h4>
-            <p>📍 Praça Rui Barbosa, 101 - Centro</p>
-            <p>📞 (41) 3313-5800</p>
+            <h4>Rua da Cidadania Matriz</h4>
+            <p>Praça Rui Barbosa, 101 - Centro</p>
+            <p><strong>Tel:</strong> (41) 3313-5800</p>
           </div>
           <div class="regional-card">
-            <h4>Boa Vista</h4>
-            <p>📍 Av. Paraná, 3600 - Boa Vista</p>
-            <p>📞 (41) 3313-5680</p>
+            <h4>Rua da Cidadania Boa Vista</h4>
+            <p>Av. Paraná, 3600 - Boa Vista</p>
+            <p><strong>Tel:</strong> (41) 3313-5680</p>
           </div>
           <div class="regional-card">
-            <h4>Boqueirão</h4>
-            <p>📍 Av. Marechal Floriano Peixoto, 8430</p>
-            <p>📞 (41) 3313-5500</p>
+            <h4>Rua da Cidadania Boqueirão</h4>
+            <p>Av. Marechal Floriano Peixoto, 8430</p>
+            <p><strong>Tel:</strong> (41) 3313-5500</p>
           </div>
           <div class="regional-card">
-            <h4>Pinheirinho</h4>
-            <p>📍 Av. Winston Churchill, 2033</p>
-            <p>📞 (41) 3313-5400</p>
+            <h4>Rua da Cidadania Pinheirinho</h4>
+            <p>Av. Winston Churchill, 2033 - Capão Raso</p>
+            <p><strong>Tel:</strong> (41) 3313-5400</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section-padding bg-section" aria-labelledby="faq-title">
+    <section id="faq" class="section-padding" aria-labelledby="faq-title">
       <div class="container">
         <h2 id="faq-title" class="section-title">❓ Dúvidas Frequentes</h2>
 
         <div class="faq-container">
           <details class="faq-item">
-            <summary class="faq-question"><strong>Como solicitar a 2ª via da carteira de identidade (CIN)?</strong></summary>
+            <summary class="faq-question"><strong>Como tirar a 2ª via da conta de luz ou água rapidamente?</strong></summary>
             <div class="faq-answer">
-              <p>O agendamento prévio é feito diretamente no site da Polícia Civil do Paraná. Compareça no dia agendado com documento com foto e certidão de nascimento ou casamento.</p>
+              <p>Você não precisa ir até um posto presencial. Acesse o card correspondente à Copel ou Sanepar nesta página, informe seu CPF e código do cliente para baixar o PDF ou copiar a chave PIX.</p>
             </div>
           </details>
 
           <details class="faq-item">
-            <summary class="faq-question"><strong>Como recarregar o Cartão Transporte da URBS?</strong></summary>
+            <summary class="faq-question"><strong>Como agendar atendimento para o novo RG?</strong></summary>
             <div class="faq-answer">
-              <p>A recarga pode ser feita online com pagamento via PIX pelo aplicativo ou site oficial da URBS, além dos pontos de atendimento nas Ruas da Cidadania.</p>
+              <p>Clique no link de agendamento do card da Carteira de Identidade. Os horários são liberados diariamente pelo portal da Polícia Civil do Paraná.</p>
             </div>
           </details>
         </div>
       </div>
     </section>
 
-    <section id="contato" class="section-padding" aria-labelledby="contato-title">
+    <section id="contato" class="section-padding bg-section" aria-labelledby="contato-title">
       <div class="container">
-        <div class="help-box">
-          <h2 id="contato-title" class="help-title">Telefones de Emergência e Utilidade</h2>
-          <div class="help-grid">
-            <a href="tel:156" class="help-card" aria-label="Ligar 156 Central da Prefeitura">
-              <div class="help-icon" aria-hidden="true">📞</div>
-              <div class="help-info">
-                <h3>Central 156</h3>
-                <p>Prefeitura de Curitiba (24h)</p>
-              </div>
-            </a>
+        <h2 id="contato-title" class="section-title">📞 Telefones Úteis e Emergências</h2>
+        <p class="section-description">Clique para ligar diretamente do seu dispositivo:</p>
 
-            <a href="tel:153" class="help-card" aria-label="Ligar 153 Guarda Municipal">
-              <div class="help-icon" aria-hidden="true">🛡️</div>
-              <div class="help-info">
-                <h3>Guarda Municipal</h3>
-                <p>Ligue 153</p>
-              </div>
-            </a>
+        <div class="help-grid">
+          <a href="tel:156" class="help-card">
+            <span style="font-size: 2rem;">📞</span>
+            <div>
+              <h3>Central 156</h3>
+              <p>Prefeitura de Curitiba (24h)</p>
+            </div>
+          </a>
 
-            <a href="tel:192" class="help-card" aria-label="Ligar 192 SAMU">
-              <div class="help-icon" aria-hidden="true">🚑</div>
-              <div class="help-info">
-                <h3>SAMU</h3>
-                <p>Ligue 192 (Urgências)</p>
-              </div>
-            </a>
-          </div>
+          <a href="tel:192" class="help-card">
+            <span style="font-size: 2rem;">🚑</span>
+            <div>
+              <h3>SAMU — 192</h3>
+              <p>Emergência Médica</p>
+            </div>
+          </a>
+
+          <a href="tel:153" class="help-card">
+            <span style="font-size: 2rem;">🛡️</span>
+            <div>
+              <h3>Guarda Municipal — 153</h3>
+              <p>Segurança Municipal</p>
+            </div>
+          </a>
+
+          <a href="tel:180" class="help-card">
+            <span style="font-size: 2rem;">👩</span>
+            <div>
+              <h3>Central da Mulher — 180</h3>
+              <p>Violência Doméstica</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <div class="accessibility-widget" role="region" aria-label="Menu de Acessibilidade">
-    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir menu de acessibilidade" aria-expanded="false" aria-controls="acc-menu">
+  <div class="accessibility-widget" role="region" aria-label="Painel de Acessibilidade">
+    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir menu de acessibilidade" aria-expanded="false">
       ♿
     </button>
 
-    <div id="acc-menu" class="acc-menu hidden" role="dialog" aria-label="Controles de acessibilidade">
+    <div id="acc-menu" class="acc-menu hidden" role="dialog">
       <div class="acc-menu-header">
-        <h4>Acessibilidade Visual</h4>
-        <button id="btn-close-acc" class="close-acc-btn" aria-label="Fechar menu">&times;</button>
+        <strong>Acessibilidade</strong>
+        <button id="btn-close-acc" aria-label="Fechar menu">&times;</button>
       </div>
-      <hr>
-
-      <span class="acc-section-label">🎨 Temas</span>
       <button id="btn-theme-light">☀️ Modo Claro</button>
       <button id="btn-theme-dark">🌙 Modo Escuro</button>
       <button id="btn-high-contrast">🌓 Alto Contraste</button>
-
-      <span class="acc-section-label">👁️ Fonte</span>
       <button id="btn-increase-font">🔍 Aumentar Texto (A+)</button>
       <button id="btn-decrease-font">🔍 Diminuir Texto (A-)</button>
       <button id="btn-dyslexic-font">📖 Fonte para Dislexia</button>
-
-      <hr>
-      <button id="btn-reset-acc" class="btn-reset">🔄 Restaurar Padrão</button>          
+      <button id="btn-reset-acc" style="margin-top: 5px; font-weight: bold;">🔄 Restaurar Padrões</button>
     </div>
   </div>
 
   <footer id="rodape" class="footer" role="contentinfo">
-    <div class="container footer-container">
-      <div class="footer-col">
-        <div class="logo-text">
+    <div class="container">
+      <div class="footer-container">
+        <div>
           <strong>Portal do Cidadão</strong>
-          <p>Prefeitura Municipal de Curitiba<br>Governo do Estado do Paraná</p>
+          <p>Curitiba — Paraná</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">
+            Palácio 29 de Março — Av. Cândido de Abreu, 817
+          </p>
+        </div>
+        <div>
+          <strong>Portais Oficiais</strong>
+          <ul style="list-style: none; margin-top: 10px;">
+            <li><a href="https://www.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer">Prefeitura de Curitiba</a></li>
+            <li><a href="https://www.aen.pr.gov.br/" target="_blank" rel="noopener noreferrer">Governo do Estado do Paraná</a></li>
+            <li><a href="https://www.gov.br/" target="_blank" rel="noopener noreferrer">Gov.br (Federal)</a></li>
+          </ul>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Portais Governamentais</h4>
-        <ul class="footer-links">
-          <li><a href="https://www.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer">Prefeitura de Curitiba</a></li>
-          <li><a href="https://www.aen.pr.gov.br/" target="_blank" rel="noopener noreferrer">Governo do Estado do PR</a></li>
-          <li><a href="https://www.gov.br/" target="_blank" rel="noopener noreferrer">Portal Gov.br</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; Portal do Cidadão — Informações e serviços públicos unificados com transparência e acessibilidade.</p>
+        <a href="#topo">⬆ Voltar ao Topo</a>
       </div>
     </div>
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const body = document.body;
-      const themeToggleHeader = document.getElementById("theme-toggle-header");
-      
-      // Menu Acessibilidade
-      const toggleAccMenuBtn = document.getElementById("toggle-acc-menu");
-      const accMenu = document.getElementById("acc-menu");
-      const btnCloseAcc = document.getElementById("btn-close-acc");
-      
-      const btnThemeLight = document.getElementById("btn-theme-light");
-      const btnThemeDark = document.getElementById("btn-theme-dark");
-      const btnHighContrast = document.getElementById("btn-high-contrast");
-      const btnIncreaseFont = document.getElementById("btn-increase-font");
-      const btnDecreaseFont = document.getElementById("btn-decrease-font");
-      const btnDyslexicFont = document.getElementById("btn-dyslexic-font");
-      const btnResetAcc = document.getElementById("btn-reset-acc");
-
-      let currentFontSize = 100;
-      let isDyslexicFont = false;
-
-      // Controle do Painel de Acessibilidade
-      if (toggleAccMenuBtn && accMenu) {
-        toggleAccMenuBtn.addEventListener("click", () => {
-          accMenu.classList.toggle("hidden");
-          toggleAccMenuBtn.setAttribute("aria-expanded", !accMenu.classList.contains("hidden"));
-        });
-      }
-
-      if (btnCloseAcc && accMenu) {
-        btnCloseAcc.addEventListener("click", () => {
-          accMenu.classList.add("hidden");
-          toggleAccMenuBtn.setAttribute("aria-expanded", "false");
-        });
-      }
-
-      // Gestão de Temas Visual
-      function setTheme(themeName) {
-        body.setAttribute("data-theme", themeName);
-        if (themeToggleHeader) {
-          themeToggleHeader.textContent = (themeName === "dark" || themeName === "high-contrast") ? "☀️" : "🌙";
-        }
-      }
-
-      if (themeToggleHeader) {
-        themeToggleHeader.addEventListener("click", () => {
-          const currentTheme = body.getAttribute("data-theme");
-          setTheme(currentTheme === "dark" ? "light" : "dark");
-        });
-      }
-
-      if (btnThemeLight) btnThemeLight.addEventListener("click", () => setTheme("light"));
-      if (btnThemeDark) btnThemeDark.addEventListener("click", () => setTheme("dark"));
-      if (btnHighContrast) btnHighContrast.addEventListener("click", () => setTheme("high-contrast"));
-
-      // Ajuste de Texto
-      if (btnIncreaseFont) {
-        btnIncreaseFont.addEventListener("click", () => {
-          if (currentFontSize < 140) {
-            currentFontSize += 10;
-            document.documentElement.style.fontSize = `${currentFontSize}%`;
-          }
-        });
-      }
-
-      if (btnDecreaseFont) {
-        btnDecreaseFont.addEventListener("click", () => {
-          if (currentFontSize > 90) {
-            currentFontSize -= 10;
-            document.documentElement.style.fontSize = `${currentFontSize}%`;
-          }
-        });
-      }
-
-      if (btnDyslexicFont) {
-        btnDyslexicFont.addEventListener("click", () => {
-          isDyslexicFont = !isDyslexicFont;
-          body.style.fontFamily = isDyslexicFont 
-            ? "'Comic Sans MS', 'OpenDyslexic', sans-serif" 
-            : "'Inter', system-ui, sans-serif";
-        });
-      }
-
-      if (btnResetAcc) {
-        btnResetAcc.addEventListener("click", () => {
-          currentFontSize = 100;
-          isDyslexicFont = false;
-          document.documentElement.style.fontSize = "100%";
-          body.style.fontFamily = "'Inter', system-ui, sans-serif";
-          setTheme("light");
-        });
-      }
-
-      // Busca Interativa em Tempo Real
-      const searchBtnToggle = document.getElementById('search-btn-toggle');
-      const searchBarContainer = document.getElementById('search-bar-container');
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Busca em tempo real nos cards de serviços
       const searchInput = document.getElementById('search-input');
-      const searchCloseBtn = document.getElementById('search-close-btn');
-
-      const searchableCards = document.querySelectorAll('.cards-grid .card');
-
-      function closeSearch() {
-        if (searchBarContainer) searchBarContainer.classList.add('hidden');
-        if (searchBtnToggle) searchBtnToggle.setAttribute('aria-expanded', 'false');
-        if (searchInput) searchInput.value = '';
-        searchableCards.forEach((card) => card.classList.remove('search-hidden'));
-      }
-
-      if (searchBtnToggle && searchBarContainer) {
-        searchBtnToggle.addEventListener('click', () => {
-          const isHidden = searchBarContainer.classList.contains('hidden');
-          if (isHidden) {
-            searchBarContainer.classList.remove('hidden');
-            searchBtnToggle.setAttribute('aria-expanded', 'true');
-            if (searchInput) searchInput.focus();
-          } else {
-            closeSearch();
-          }
-        });
-      }
-
-      if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
+      const cards = document.querySelectorAll('#cards-container .card');
 
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
           const term = e.target.value.toLowerCase().trim();
-          searchableCards.forEach((card) => {
-            const cardText = card.textContent.toLowerCase();
-            if (cardText.includes(term)) {
-              card.style.display = 'block';
+          cards.forEach(card => {
+            const keywords = card.getAttribute('data-keywords') || '';
+            const text = card.innerText.toLowerCase();
+            if (keywords.includes(term) || text.includes(term)) {
+              card.style.display = 'flex';
             } else {
               card.style.display = 'none';
             }
@@ -444,72 +937,85 @@
         });
       }
 
-      // Filtros por Categoria
-      const filterButtons = document.querySelectorAll('.publico-tags .tag-btn');
-      filterButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          filterButtons.forEach((b) => b.classList.remove('active'));
-          btn.classList.add('active');
+      // 2. Alternar Barra de Busca
+      const searchBtnToggle = document.getElementById('search-btn-toggle');
+      const searchBarContainer = document.getElementById('search-bar-container');
+      const searchCloseBtn = document.getElementById('search-close-btn');
 
-          const category = btn.getAttribute('data-filter');
-          searchableCards.forEach((card) => {
-            if (category === 'todos' || card.getAttribute('data-category') === category) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
-          });
+      if (searchBtnToggle && searchBarContainer) {
+        searchBtnToggle.addEventListener('click', () => {
+          const isHidden = searchBarContainer.classList.toggle('hidden');
+          searchBtnToggle.setAttribute('aria-expanded', !isHidden);
+          if (!isHidden) searchInput.focus();
         });
+
+        searchCloseBtn.addEventListener('click', () => {
+          searchBarContainer.classList.add('hidden');
+          searchBtnToggle.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      // 3. Menu Flutuante de Acessibilidade
+      const toggleAccMenu = document.getElementById('toggle-acc-menu');
+      const accMenu = document.getElementById('acc-menu');
+      const btnCloseAcc = document.getElementById('btn-close-acc');
+
+      if (toggleAccMenu && accMenu) {
+        toggleAccMenu.addEventListener('click', () => {
+          const isHidden = accMenu.classList.toggle('hidden');
+          toggleAccMenu.setAttribute('aria-expanded', !isHidden);
+        });
+
+        btnCloseAcc.addEventListener('click', () => {
+          accMenu.classList.add('hidden');
+          toggleAccMenu.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      // 4. Funções de Tema e Fonte
+      const root = document.documentElement;
+      let fontSizePercent = 100;
+
+      document.getElementById('btn-theme-light')?.addEventListener('click', () => {
+        root.setAttribute('data-theme', 'light');
       });
 
-      // Atalhos numéricos por teclado (UX Pattern: Power Users & Acessibilidade)
-      document.addEventListener("keydown", (e) => {
-        const activeElement = document.activeElement;
-        const isTyping = activeElement.tagName === "INPUT" || 
-                         activeElement.tagName === "TEXTAREA" || 
-                         activeElement.isContentEditable;
+      document.getElementById('btn-theme-dark')?.addEventListener('click', () => {
+        root.setAttribute('data-theme', 'dark');
+      });
 
-        if (isTyping) return;
+      document.getElementById('btn-high-contrast')?.addEventListener('click', () => {
+        root.setAttribute('data-theme', 'high-contrast');
+      });
 
-        switch (e.key) {
-          case "1": {
-            const mainContent = document.getElementById("conteudo-principal");
-            if (mainContent) {
-              mainContent.scrollIntoView({ behavior: "smooth" });
-              mainContent.focus();
-            }
-            break;
-          }
-          case "2": {
-            const navMenu = document.getElementById("nav-menu");
-            if (navMenu) {
-              navMenu.scrollIntoView({ behavior: "smooth" });
-              const firstLink = navMenu.querySelector("a");
-              if (firstLink) firstLink.focus();
-            }
-            break;
-          }
-          case "3": {
-            e.preventDefault();
-            if (searchBarContainer && searchInput) {
-              searchBarContainer.classList.remove("hidden");
-              if (searchBtnToggle) searchBtnToggle.setAttribute("aria-expanded", "true");
-              setTimeout(() => {
-                searchInput.focus();
-                searchInput.select();
-              }, 100);
-            }
-            break;
-          }
-          case "4": {
-            const footer = document.getElementById("rodape");
-            if (footer) {
-              footer.scrollIntoView({ behavior: "smooth" });
-              footer.focus();
-            }
-            break;
-          }
+      document.getElementById('theme-toggle-header')?.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        root.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      document.getElementById('btn-increase-font')?.addEventListener('click', () => {
+        if (fontSizePercent < 150) {
+          fontSizePercent += 10;
+          root.style.fontSize = fontSizePercent + '%';
         }
+      });
+
+      document.getElementById('btn-decrease-font')?.addEventListener('click', () => {
+        if (fontSizePercent > 80) {
+          fontSizePercent -= 10;
+          root.style.fontSize = fontSizePercent + '%';
+        }
+      });
+
+      document.getElementById('btn-dyslexic-font')?.addEventListener('click', () => {
+        document.body.style.fontFamily = "var(--font-dyslexic)";
+      });
+
+      document.getElementById('btn-reset-acc')?.addEventListener('click', () => {
+        root.removeAttribute('data-theme');
+        root.style.fontSize = '100%';
+        document.body.style.fontFamily = "var(--font-main)";
+        fontSizePercent = 100;
       });
     });
   </script>
