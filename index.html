@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portal de Serviços Públicos, Avisos e Notícias do Cidadão de Curitiba e do Estado do Paraná.">
   <meta name="keywords" content="Curitiba, Paraná, IPTU, Saúde Já, 156, Serviços Públicos, Notícias, Ruas da Cidadania">
-  <meta name="author" content="Governo e Prefeitura Municipal">
-  <meta id="meta-theme-color" name="theme-color" content="#0284c7">
+  <meta name="author" content="Prefeitura Municipal de Curitiba & Governo do Estado do Paraná">
+  <meta id="meta-theme-color" name="theme-color" content="#1D5BD8">
   <title>Portal do Cidadão — Curitiba & Governo do Estado do Paraná</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,23 +21,35 @@
   <nav class="skip-links" aria-label="Atalhos de Navegação Acessível">
     <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal (Atalho 1)</a>
     <a href="#nav-menu" class="skip-link">Ir para o menu de navegação (Atalho 2)</a>
-    <a href="#search-input" class="skip-link">Ir para a busca (Atalho 3)</a>
-    <a href="#avisos-sistema" class="skip-link">Ir para os avisos do sistema (Atalho 4)</a>
-    <a href="#noticias" class="skip-link">Ir para as notícias (Atalho 5)</a>
+    <a href="#search-input" class="skip-link">Ir para a busca de serviços (Atalho 3)</a>
+    <a href="#servicos" class="skip-link">Ir para a grade de serviços (Atalho 4)</a>
+    <a href="#avisos-noticias" class="skip-link">Ir para as notícias (Atalho 5)</a>
     <a href="#regionais" class="skip-link">Ir para as Ruas da Cidadania (Atalho 6)</a>
     <a href="#rodape" class="skip-link">Ir para o rodapé (Atalho 7)</a>
   </nav>
 
-  <aside id="avisos-sistema" class="system-alert-bar" aria-label="Avisos Importantes e Alertas de Serviço">
+  <aside class="accessibility-sidebar" aria-label="Barra de Ferramentas de Acessibilidade">
+    <span class="acc-sidebar-title">FONTE</span>
+    <button id="btn-increase-font" class="acc-btn" aria-label="Aumentar tamanho da fonte" title="Aumentar Fonte">A+</button>
+    <button id="btn-decrease-font" class="acc-btn" aria-label="Diminuir tamanho da fonte" title="Diminuir Fonte">A-</button>
+    
+    <span class="acc-sidebar-title" style="margin-top: 10px;">TEMA</span>
+    <button id="btn-toggle-contrast" class="acc-btn" aria-label="Alternar Alto Contraste" title="Alto Contraste">☀️</button>
+    <button id="btn-toggle-dyslexia" class="acc-btn" aria-label="Ativar Fonte para Dislexia" title="Fonte Dislexia">Dy</button>
+    
+    <button id="btn-reset-acc" class="acc-btn acc-btn-reset" aria-label="Resetar configurações de acessibilidade" title="Resetar">✕</button>
+  </aside>
+
+  <aside id="avisos-sistema" class="system-alert-bar" aria-label="Avisos Importantes">
     <div class="container system-alert-content">
       <div class="alert-item">
         <span class="alert-badge badge-urgente">ALERTA URGENTE</span>
         <p class="alert-text">
-          <strong>Manutenção Programada:</strong> O sistema de emissão de Certidões Negativas do IPTU e Agendamento Online da Saúde passará por manutenção neste domingo, das 02h às 06h. 
+          <strong>Manutenção Programada:</strong> O sistema de emissão de Certidões Negativas do IPTU passará por manutenção neste domingo, das 02h às 06h. 
           <a href="#faq" class="alert-link">Ver detalhes e horários alternativos</a>.
         </p>
       </div>
-      <button id="close-alert-btn" class="alert-close-btn" aria-label="Fechar painel de avisos do sistema">&times;</button>
+      <button id="close-alert-btn" class="alert-close-btn" aria-label="Fechar avisos">&times;</button>
     </div>
   </aside>
 
@@ -51,7 +63,7 @@
         </div>
       </a>
 
-      <nav id="nav-menu" class="nav-menu" aria-label="Navegação Principal do Portal">
+      <nav id="nav-menu" class="nav-menu" aria-label="Navegação Principal">
         <ul class="nav-list">
           <li><a href="#servicos" class="nav-link">Serviços Gerais</a></li>
           <li><a href="#avisos-noticias" class="nav-link">Avisos & Notícias</a></li>
@@ -62,24 +74,16 @@
       </nav>
 
       <div class="header-actions">
-        <button id="theme-toggle-header" class="btn-action-icon" aria-label="Alternar tema claro/escuro" title="Alternar Modo Noturno">
-          <span class="icon" aria-hidden="true">🌙</span>
-        </button>
-        <button id="search-btn-toggle" class="btn-action-icon" aria-label="Abrir caixa de pesquisa de serviços" aria-expanded="false" title="Buscar no Portal">
-          <span class="icon" aria-hidden="true">🔍</span>
-        </button>
-        <button id="acc-quick-toggle" class="btn-action-icon" aria-label="Abrir painel de acessibilidade visual" aria-expanded="false" title="Menu de Acessibilidade">
-          <span class="icon" aria-hidden="true">♿</span>
-        </button>
+        <button id="search-btn-toggle" class="btn-action-icon" aria-label="Abrir caixa de pesquisa" title="Buscar no Portal">🔍</button>
       </div>
     </div>
   </header>
 
-  <div id="search-bar-container" class="search-bar-container hidden" role="search" aria-label="Buscador de Serviços Públicos">
+  <div id="search-bar-container" class="search-bar-container hidden" role="search">
     <div class="container search-bar-content">
       <div class="input-wrapper">
         <span class="search-icon-inside" aria-hidden="true">🔍</span>
-        <input type="text" id="search-input" placeholder="O que você procura? (Ex: Agendar Consulta, Cartão Transporte, IPTU, Iluminação, Procon...)" aria-label="Digite a palavra-chave do serviço desejado">
+        <input type="text" id="search-input" placeholder="O que você procura? (Ex: Agendar Consulta, IPTU, Cartão Transporte, CNH, Vagas...)" aria-label="Digite o serviço desejado">
       </div>
       <button id="search-close-btn" class="search-close-btn" aria-label="Fechar barra de pesquisa">&times;</button>
     </div>
@@ -89,16 +93,17 @@
 
     <section class="hero-section" aria-label="Apresentação do Portal">
       <div class="container hero-container">
-        <div class="badge-status-container">
-          <span class="badge-status">
-            <span class="pulse-dot"></span> Todos os Serviços Online Operacionais
-          </span>
-        </div>
-        <h1 class="hero-title">Atendimento público centralizado, rápido e totalmente <span class="highlight-blue">acessível para você.</span></h1>
-        <p class="hero-subtitle">Consulte taxas, agende atendimentos presenciais, acompanhe notícias da sua região e resolva pendências sem filas de forma digital.</p>
+        <h1 class="hero-title">Bem-vindo ao <span class="highlight-blue">Portal do Cidadão</span></h1>
+        <p class="hero-subtitle">Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.</p>
+        
         <div class="hero-buttons">
-          <a href="#servicos" class="btn btn-primary">Acessar Serviços Populares</a>
-          <a href="#avisos-noticias" class="btn btn-secondary">Ver Avisos e Notícias</a>
+          <a href="#servicos" class="btn btn-primary">Ver Serviços <span>→</span></a>
+          <a href="tel:156" class="btn btn-secondary">📞 Ligar: 156</a>
+        </div>
+
+        <div class="hero-accessibility-notice">
+          <span class="notice-icon">♿</span>
+          <p>Use a <strong>Barra de Acessibilidade</strong> à direita para ajustar fonte, contraste, pausar animações e ativar modo dislexia a qualquer momento.</p>
         </div>
       </div>
     </section>
@@ -110,292 +115,134 @@
             <h2 class="section-subtitle">Categorias de Serviços Públicos</h2>
             <span id="filter-count-display" class="filter-count">Exibindo todas as opções disponíveis</span>
           </div>
-          <div class="publico-tags" role="tablist" aria-label="Seleção de Categoria de Serviços">
-            <button class="tag-btn active" role="tab" aria-selected="true" data-filter="todos">Todos os Serviços</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="saude">Saúde & Vacinação</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="educacao">Educação & Vagas</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="impostos">Impostos, Finanças & Taxas</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="transporte">Trânsito, Veículos & CNH</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="trabalho">Emprego, Renda & MEI</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="urbanismo">Obras, Meio Ambiente & Habitação</button>
-            <button class="tag-btn" role="tab" aria-selected="false" data-filter="atendimento">Atendimento ao Cidadão & Direitos</button>
+          <div class="publico-tags" role="tablist">
+            <button class="tag-btn active" role="tab" data-filter="todos">Todos os Serviços</button>
+            <button class="tag-btn" role="tab" data-filter="saude">Saúde & Vacinação</button>
+            <button class="tag-btn" role="tab" data-filter="educacao">Educação & Vagas</button>
+            <button class="tag-btn" role="tab" data-filter="impostos">Impostos & Taxas</button>
+            <button class="tag-btn" role="tab" data-filter="transporte">Trânsito & Veículos</button>
+            <button class="tag-btn" role="tab" data-filter="trabalho">Emprego & MEI</button>
+            <button class="tag-btn" role="tab" data-filter="urbanismo">Obras & Habitação</button>
+            <button class="tag-btn" role="tab" data-filter="atendimento">Atendimento & Direitos</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="servicos" class="section-padding bg-section" aria-label="Serviços Mais Solicitados">
+    <section id="servicos" class="section-padding bg-section" aria-label="Serviços Digitais">
       <div class="container">
         <div class="section-intro">
           <h2 class="section-title">Serviços Públicos Digitais</h2>
-          <p class="section-description">Selecione o serviço desejado para acessar os portais oficiais da Prefeitura de Curitiba e do Governo do Estado.</p>
+          <p class="section-description">Acesse diretamente os portais oficiais da Prefeitura de Curitiba e do Governo do Estado.</p>
         </div>
 
         <div id="grid-servicos" class="cards-grid">
           
           <article class="card" data-category="atendimento">
             <div class="card-header">
-              <div class="card-icon icon-blue" aria-hidden="true">📞</div>
+              <div class="card-icon" aria-hidden="true">📞</div>
               <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
               <h3>Central de Atendimento 156</h3>
-              <p>Abertura de solicitações, reclamações e acompanhamento de chamados municipais.</p>
+              <p>Solicitações de serviços urbanos, reparações na cidade e acompanhamento de protocolos.</p>
               <ul class="card-features">
-                <li>• Atendimento via chat e protocolo online</li>
-                <li>• Solicitações de serviços de rua e manutenção</li>
-                <li>• Acompanhamento em tempo real</li>
+                <li>• Atendimento via chat online 24h</li>
+                <li>• Acompanhamento por número de protocolo</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://156.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar Central 156 da Prefeitura de Curitiba em nova aba">Acessar Central 156 <span>→</span></a>
+              <a href="https://156.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar Central 156 <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="saude">
             <div class="card-header">
-              <div class="card-icon icon-cyan" aria-hidden="true">🏥</div>
+              <div class="card-icon" aria-hidden="true">🏥</div>
               <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
               <h3>Saúde Já Curitiba</h3>
-              <p>Agendamento de consultas médicas e odontológicas nas Unidades Básicas de Saúde (UBS).</p>
+              <p>Agendamento de consultas médicas e carteira de vacinação digital no SUS Curitiba.</p>
               <ul class="card-features">
                 <li>• Pré-agendamento de consultas sem fila</li>
-                <li>• Histórico e carteira de vacinação digital</li>
-                <li>• Lembretes de remédios contínuos na farmácia</li>
+                <li>• Lembretes de vacinas e consultas</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar aplicativo Saúde Já Curitiba em nova aba">Iniciar Atendimento <span>→</span></a>
+              <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Iniciar Atendimento <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="transporte">
             <div class="card-header">
-              <div class="card-icon icon-yellow" aria-hidden="true">🚌</div>
+              <div class="card-icon" aria-hidden="true">🚌</div>
               <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
               <h3>Cartão Transporte & URBS</h3>
-              <p>Recarga de créditos do Cartão Transporte, consulta de linhas, horários e itinerários de ônibus.</p>
+              <p>Recarga de créditos, agendamento de 2ª via e consulta às linhas de ônibus da cidade.</p>
               <ul class="card-features">
-                <li>• Recarga online do cartão transporte</li>
-                <li>• Agendamento para 1ª e 2ª via do cartão</li>
-                <li>• Horários e itinerários em tempo real</li>
+                <li>• Recarga online de saldo</li>
+                <li>• Itinerários e horários em tempo real</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://www.urbs.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar Portal da URBS em nova aba">Acessar URBS <span>→</span></a>
+              <a href="https://www.urbs.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar URBS <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="impostos">
             <div class="card-header">
-              <div class="card-icon icon-yellow" aria-hidden="true">📑</div>
+              <div class="card-icon" aria-hidden="true">📑</div>
               <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
               <h3>Emissão e Consulta do IPTU</h3>
-              <p>Emissão da 2ª via do carnê do IPTU, quitação de débitos anteriores e parcelamento de taxas imobiliárias.</p>
+              <p>Emissão de 2ª via do IPTU de Curitiba, parcelamento e Certidão Negativa de Débitos.</p>
               <ul class="card-features">
-                <li>• Desconto para pagamento à vista</li>
-                <li>• Emissão de Certidão Negativa de Débitos</li>
-                <li>• Atualização de cadastro de proprietário</li>
+                <li>• Pagamento simplificado via PIX</li>
+                <li>• Emissão rápida de guias mensais</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://iptu.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Emitir 2ª via do IPTU Curitiba em nova aba">Emitir Guia <span>→</span></a>
+              <a href="https://iptu.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Emitir Guia <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="transporte">
             <div class="card-header">
-              <div class="card-icon icon-blue" aria-hidden="true">🚗</div>
+              <div class="card-icon" aria-hidden="true">🚗</div>
               <span class="badge-tag estadual">ESTADUAL</span>
             </div>
             <div class="card-body">
               <h3>DETRAN-PR & IPVA Paraná</h3>
-              <p>Consultas de pontuação na CNH, agendamento de exames de renovação e emissão de guias do IPVA.</p>
+              <p>Consulta de pontos na CNH, renovação de habilitação e pagamento de IPVA e licenciamento.</p>
               <ul class="card-features">
-                <li>• Licenciamento anual 100% digital</li>
-                <li>• Transferência de propriedade de veículos</li>
-                <li>• Consulta de multas e recursos online</li>
+                <li>• Licenciamento anual digital</li>
+                <li>• Recursos de multas online</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://www.detran.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Consultar veículo no Detran Paraná em nova aba">Consultar Veículo <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="impostos">
-            <div class="card-header">
-              <div class="card-icon icon-purple" aria-hidden="true">🏛️</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Certidões & Processos (PROCEC)</h3>
-              <p>Emissão de certidões negativas de débitos municipais e abertura de processos administrativos.</p>
-              <ul class="card-features">
-                <li>• Certidão Negativa de Débitos Tributários</li>
-                <li>• Acompanhamento de processos eletrônicos</li>
-                <li>• Defesas e recursos administrativos</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://procec.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar Portal PROCEC da Prefeitura em nova aba">Acessar PROCEC <span>→</span></a>
+              <a href="https://www.detran.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Consultar Veículo <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="trabalho">
             <div class="card-header">
-              <div class="card-icon icon-orange" aria-hidden="true">💼</div>
+              <div class="card-icon" aria-hidden="true">💼</div>
               <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
-              <h3>Agência do Trabalhador & Sine</h3>
-              <p>Cadastro de currículos para intermediação de mão de obra, seguro-desemprego e cursos profissionalizantes.</p>
+              <h3>Agência do Trabalhador & SINE</h3>
+              <p>Cadastro de currículos, consulta a vagas diárias e agendamento para Seguro-Desemprego.</p>
               <ul class="card-features">
-                <li>• Vagas abertas atualizadas diariamente</li>
-                <li>• Agendamento de entrevista por regional</li>
-                <li>• Apoio ao Microempreendedor Individual (MEI)</li>
+                <li>• Encaminhamento para entrevistas</li>
+                <li>• Cursos de capacitação profissional</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/conteudo/agencia-do-trabalhador/281" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Buscar vagas na Agência do Trabalhador em nova aba">Buscar Vagas <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="urbanismo">
-            <div class="card-header">
-              <div class="card-icon icon-yellow" aria-hidden="true">💡</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Zeladoria & Iluminação Pública</h3>
-              <p>Solicitação de reparos na iluminação pública, tapa-buracos, poda de árvores e manutenção de vias.</p>
-              <ul class="card-features">
-                <li>• Troca de lâmpadas queimadas em vias públicas</li>
-                <li>• Limpeza, roçada e coleta de vegetais</li>
-                <li>• Reparo de calçadas e asfaltamento</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://156.curitiba.pr.gov.br/Servico/Iluma%C3%A7%C3%A3o-P%C3%BAblica/58/Veja-todos-tipos-servicos-para-atender-cidadao-da-central-156-prefeitura-curitiba" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Solicitar serviço de iluminação e zeladoria urbana em nova aba">Solicitar Reparo <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="educacao">
-            <div class="card-header">
-              <div class="card-icon icon-purple" aria-hidden="true">🎓</div>
-              <span class="badge-tag estadual">ESTADUAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Matrícula Escolar da Rede Estadual</h3>
-              <p>Inscrição, transferência e confirmação de vagas para o Ensino Fundamental e Médio no Paraná.</p>
-              <ul class="card-features">
-                <li>• Consulta de boletim e frequência escolar</li>
-                <li>• Histórico escolar com validação digital</li>
-                <li>• Inscrição no transporte escolar rural/urbano</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.educacao.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar portal de matrículas do estado em nova aba">Acessar Matrículas <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="impostos">
-            <div class="card-header">
-              <div class="card-icon icon-red" aria-hidden="true">🎟️</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Programa Nota Curitibana</h3>
-              <p>Insira seu CPF na nota fiscal de prestação de serviços para acumular créditos e concorrer a prêmios em dinheiro.</p>
-              <ul class="card-features">
-                <li>• Resgate de valores direto em conta bancária</li>
-                <li>• Abatimento no valor do IPTU do ano seguinte</li>
-                <li>• Sorteios mensais de prêmios em dinheiro</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://nota.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Cadastrar CPF na Nota Curitibana em nova aba">Cadastrar ou Resgatar <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="urbanismo">
-            <div class="card-header">
-              <div class="card-icon icon-cyan" aria-hidden="true">🏗️</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Alvará de Construção e Reformas</h3>
-              <p>Aprovação de projetos arquitetônicos, consulta prévia de viabilidade urbana e emissão de alvarás de obras.</p>
-              <ul class="card-features">
-                <li>• Análise simplificada de projetos residenciais</li>
-                <li>• Emissão de Habite-se sanitário e ambiental</li>
-                <li>• Certidão de zoneamento e uso do solo</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/servicos/alvara-de-construcao/383" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Solicitar Alvará de Construção em nova aba">Solicitar Licença <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="saude">
-            <div class="card-header">
-              <div class="card-icon icon-red" aria-hidden="true">🐕</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Proteção Animal & Castração Gratuita</h3>
-              <p>Agendamento do Programa Municipal de Castração Gratuita de Cães e Gatos e denúncias de maus-tratos.</p>
-              <ul class="card-features">
-                <li>• Cadastro de protetores independentes</li>
-                <li>• Microchipagem gratuita de animais</li>
-                <li>• Feiras municipais de adoção responsável</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://redeprotecao.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Agendar castração gratuita de animais em nova aba">Agendar Castração <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="atendimento">
-            <div class="card-header">
-              <div class="card-icon icon-blue" aria-hidden="true">⚖️</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>PROCON Curitiba (Direitos do Consumidor)</h3>
-              <p>Registro de reclamações do consumidor, denúncias de cobranças indevidas e orientação jurídica.</p>
-              <ul class="card-features">
-                <li>• Abertura de processos de reclamação de consumo</li>
-                <li>• Agendamento de audiências de conciliação</li>
-                <li>• Orientações sobre direitos do consumidor</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/conteudo/procon-curitiba/282" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar o Procon Curitiba em nova aba">Abrir Reclamação <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-category="urbanismo">
-            <div class="card-header">
-              <div class="card-icon icon-orange" aria-hidden="true">🏠</div>
-              <span class="badge-tag municipal">MUNICIPAL</span>
-            </div>
-            <div class="card-body">
-              <h3>Habitação Popular (COHAB)</h3>
-              <p>Inscrição e acompanhamento em programas habitacionais da Companhia de Habitação Popular de Curitiba.</p>
-              <ul class="card-features">
-                <li>• Inscrição na fila da casa própria</li>
-                <li>• Atualização de cadastro de inscritos</li>
-                <li>• Emissão de 2ª via de boletos COHAB</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.cohabct.com.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar o portal da COHAB Curitiba em nova aba">Acessar COHAB <span>→</span></a>
+              <a href="https://www.curitiba.pr.gov.br/conteudo/agencia-do-trabalhador/281" target="_blank" rel="noopener noreferrer" class="card-link">Buscar Vagas <span>→</span></a>
             </div>
           </article>
 
@@ -403,48 +250,82 @@
       </div>
     </section>
 
-    <section id="avisos-noticias" class="section-padding" aria-label="Central de Notícias e Avisos Oficiais">
+    <section id="avisos-noticias" class="section-padding" aria-label="Notícias e Comunicados">
       <div class="container">
         <div class="section-intro">
-          <h2 class="section-title">Avisos Oficiais e Últimas Notícias</h2>
-          <p class="section-description">Acompanhe as atualizações das Secretarias Municipais, Governo Estadual e alterações na infraestrutura da cidade.</p>
+          <h2 class="section-title">Últimas Notícias e Informações</h2>
+          <p class="section-description">Acompanhe as atualizações oficiais sobre saúde, educação, benefícios e obras.</p>
         </div>
 
         <div class="cards-grid">
           
-          <article class="card card-news">
-            <div class="card-header">
-              <span class="badge-tag municipal">PREFEITURA DE CURITIBA</span>
-              <time datetime="2026-08-14" class="news-date">14 de Agosto, 2026</time>
+          <article class="card card-news-img">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Profissional de saúde segurando celular" class="card-img">
             </div>
             <div class="card-body">
-              <h3>Obras de Pavimentação e Ampliação da Linha Verde Avançam no Lote Sul</h3>
-              <p>A Secretaria Municipal de Obras Públicas iniciou a aplicação da nova camada asfáltica. Motoristas devem ficar atentos aos desvios temporários de trânsito programados na região do Pinheirinho e Bairro Novo.</p>
-              <div class="news-meta-details">
-                <span>📍 Região: Pinheirinho / Linha Verde</span>
-                <span>⏱️ Duração prevista: 10 dias</span>
-              </div>
+              <span class="badge-pill pill-saude">SAÚDE</span>
+              <h3 class="news-title">Campanha de vacinação contra gripe aberta para toda a população</h3>
+              <p class="news-text">Crianças, gestantes, adultos e idosos podem se vacinar gratuitamente nas UBS até 31 de agosto, das 7h às 19h.</p>
             </div>
             <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/noticias/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Ler notícias oficiais da Prefeitura de Curitiba em nova aba">Portal de Notícias <span>→</span></a>
+              <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
             </div>
           </article>
 
-          <article class="card card-news">
-            <div class="card-header">
-              <span class="badge-tag estadual">GOVERNO DO PARANÁ</span>
-              <time datetime="2026-08-13" class="news-date">13 de Agosto, 2026</time>
+          <article class="card card-news-img">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Documentos sendo assinados" class="card-img">
             </div>
             <div class="card-body">
-              <h3>Inscrições Abertas para Cursos de Tecnologia e Gestão no Paraná</h3>
-              <p>O Programa Qualifica Paraná abriu novas turmas gratuitas em parceria com o Sistema S. As vagas contemplam desenvolvimento de sistemas, logística, marketing digital e administração básica.</p>
-              <div class="news-meta-details">
-                <span>🎓 Modalidade: Presencial e EAD</span>
-                <span>💰 Custo: 100% Gratuito</span>
-              </div>
+              <span class="badge-pill pill-beneficios">BENEFÍCIOS</span>
+              <h3 class="news-title">Inscrições abertas para o programa Bolsa Família em 2026</h3>
+              <p class="news-text">Famílias em situação de vulnerabilidade social podem se cadastrar presencialmente no CRAS ou pelo aplicativo Meu INSS.</p>
             </div>
             <div class="card-footer">
-              <a href="https://www.aen.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Ver notícias do Governo do Estado do Paraná em nova aba">Agência Estadual <span>→</span></a>
+              <a href="https://www.curitiba.pr.gov.br/conteudo/assistencia-social/283" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card card-news-img">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Estudantes reunidos com notebook" class="card-img">
+            </div>
+            <div class="card-body">
+              <span class="badge-pill pill-educacao">EDUCAÇÃO</span>
+              <h3 class="news-title">Prefeitura abre 3.200 vagas em cursos profissionalizantes gratuitos</h3>
+              <p class="news-text">Jovens e adultos podem se inscrever em cursos de tecnologia, saúde, construção civil e gastronomia com certificado.</p>
+            </div>
+            <div class="card-footer">
+              <a href="https://www.educacao.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card card-news-img">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Chaves e miniatura de casa" class="card-img">
+            </div>
+            <div class="card-body">
+              <span class="badge-pill pill-habitacao">HABITAÇÃO</span>
+              <h3 class="news-title">Programa de Moradia Popular abre novo lote de inscrições na COHAB</h3>
+              <p class="news-text">Famílias cadastradas podem atualizar dados e novos interessados podem realizar a pré-inscrição online.</p>
+            </div>
+            <div class="card-footer">
+              <a href="https://www.cohabct.com.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card card-news-img">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Pessoas trabalhando juntas em computador" class="card-img">
+            </div>
+            <div class="card-body">
+              <span class="badge-pill pill-inclusao">INCLUSÃO</span>
+              <h3 class="news-title">Programa de Inclusão Digital e Capacitação Tecnológica</h3>
+              <p class="news-text">Oficinas gratuitas de informática básica e ferramentas digitais nas Ruas da Cidadania para toda a comunidade.</p>
+            </div>
+            <div class="card-footer">
+              <a href="https://www.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
             </div>
           </article>
 
@@ -452,57 +333,32 @@
       </div>
     </section>
 
-    <section id="regionais" class="section-padding bg-section" aria-label="Unidades das Ruas da Cidadania e Regionais">
+    <section id="regionais" class="section-padding bg-section" aria-label="Ruas da Cidadania">
       <div class="container">
         <div class="section-intro">
-          <h2 class="section-title">Ruas da Cidadania & Unidades Regionais</h2>
-          <p class="section-description">Atendimento presencial descentralizado para emissão de documentos, impostos, assistência social e serviços municipais.</p>
+          <h2 class="section-title">Ruas da Cidadania & Regionais</h2>
+          <p class="section-description">Atendimento presencial descentralizado nas dez regionais de Curitiba.</p>
         </div>
 
-        <div id="grid-regionais" class="regionais-grid">
-          
+        <div class="regionais-grid">
           <div class="regional-card">
-            <div class="regional-header">
-              <h3>Rua da Cidadania Matriz</h3>
-              <span class="regional-badge">Centro</span>
-            </div>
-            <p class="regional-address">📍 Praça Rui Barbosa, 101 — Centro, Curitiba - PR</p>
-            <p class="regional-phone">📞 Telefone: <a href="tel:4133135800">(41) 3313-5800</a></p>
-            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
-            <div class="regional-services-list">
-              <strong>Serviços Principais:</strong>
-              <span>URBS, Fazenda, Cohab, Agência do Trabalhador, Sanepar, Copel</span>
-            </div>
+            <h3>Rua da Cidadania Matriz</h3>
+            <p>📍 Praça Rui Barbosa, 101 — Centro</p>
+            <p>📞 Telefone: (41) 3313-5800</p>
+            <p>🕒 Horário: 08h às 17h</p>
           </div>
-
           <div class="regional-card">
-            <div class="regional-header">
-              <h3>Rua da Cidadania Boqueirão</h3>
-              <span class="regional-badge">Zona Sul</span>
-            </div>
-            <p class="regional-address">📍 Av. Marechal Floriano Peixoto, 8430 — Boqueirão, Curitiba - PR</p>
-            <p class="regional-phone">📞 Telefone: <a href="tel:4133135500">(41) 3313-5500</a></p>
-            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
-            <div class="regional-services-list">
-              <strong>Serviços Principais:</strong>
-              <span>SINE, Saúde, Guarda Municipal, IPTU, Cartão Transporte</span>
-            </div>
+            <h3>Rua da Cidadania Boqueirão</h3>
+            <p>📍 Av. Marechal Floriano Peixoto, 8430 — Boqueirão</p>
+            <p>📞 Telefone: (41) 3313-5500</p>
+            <p>🕒 Horário: 08h às 17h</p>
           </div>
-
           <div class="regional-card">
-            <div class="regional-header">
-              <h3>Rua da Cidadania Santa Felicidade</h3>
-              <span class="regional-badge">Zona Norte</span>
-            </div>
-            <p class="regional-address">📍 Rua Santa Bertila Boscardin, 213 — Santa Felicidade, Curitiba - PR</p>
-            <p class="regional-phone">📞 Telefone: <a href="tel:4133745000">(41) 3374-5000</a></p>
-            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
-            <div class="regional-services-list">
-              <strong>Serviços Principais:</strong>
-              <span>Urbanismo, Meio Ambiente, Finanças, Agendamento 156</span>
-            </div>
+            <h3>Rua da Cidadania Santa Felicidade</h3>
+            <p>📍 Rua Santa Bertila Boscardin, 213 — Santa Felicidade</p>
+            <p>📞 Telefone: (41) 3374-5000</p>
+            <p>🕒 Horário: 08h às 17h</p>
           </div>
-
         </div>
       </div>
     </section>
@@ -510,26 +366,18 @@
     <section id="faq" class="section-padding" aria-label="Perguntas Frequentes">
       <div class="container">
         <div class="section-intro">
-          <h2 class="section-title">Perguntas Frequentes (FAQ)</h2>
-          <p class="section-description">Esclareça suas dúvidas sobre o funcionamento do portal, agendamentos presenciais e serviços digitais.</p>
+          <h2 class="section-title">Perguntas Frequentes</h2>
         </div>
 
         <div class="faq-container">
-          
           <details class="faq-item">
-            <summary class="faq-question">
-              <strong>Como realizo o agendamento para atendimento presencial na Rua da Cidadania?</strong>
-            </summary>
-            <p class="faq-answer">O agendamento prévio pode ser necessário para determinados serviços presenciais. Você pode consultar os horários e emitir sua senha diretamente pelos portais oficiais de cada secretaria.</p>
+            <summary class="faq-question">Como agendar atendimento presencial?</summary>
+            <p class="faq-answer">O agendamento pode ser feito acessando o serviço desejado acima e selecionando a opção de agendamento online na Rua da Cidadania mais próxima.</p>
           </details>
-
           <details class="faq-item">
-            <summary class="faq-question">
-              <strong>Quais são as formas de pagamento aceitas para a guia do IPTU?</strong>
-            </summary>
-            <p class="faq-answer">A guia do IPTU pode ser paga via PIX (utilizando o QR Code impresso no documento), em agências bancárias conveniadas, casas lotéricas ou pelo Internet Banking.</p>
+            <summary class="faq-question">Como pagar o IPTU com desconto?</summary>
+            <p class="faq-answer">Ao emitir a guia pela internet, você pode optar pelo pagamento à vista com desconto via PIX ou código de barras bancário.</p>
           </details>
-
         </div>
       </div>
     </section>
@@ -541,21 +389,20 @@
       <div class="footer-info">
         <h3>Portal do Cidadão</h3>
         <p>Prefeitura Municipal de Curitiba & Governo do Estado do Paraná.</p>
-        <p>Atendimento Centralizado ao Cidadão.</p>
       </div>
       <div class="footer-links">
-        <h4>Central 24h</h4>
+        <h4>Telefones Úteis</h4>
         <ul>
-          <li><strong>Central 156 (Curitiba):</strong> Disque 156</li>
-          <li><strong>SAMU:</strong> Disque 192</li>
-          <li><strong>Polícia Militar:</strong> Disque 190</li>
-          <li><strong>Corpo de Bombeiros:</strong> Disque 193</li>
+          <li>Central 156 (Curitiba)</li>
+          <li>SAMU 192</li>
+          <li>Polícia Militar 190</li>
+          <li>Bombeiros 193</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; Portal do Cidadão - Curitiba e Estado do Paraná. Todos os direitos reservados.</p>
+        <p>&copy; Portal do Cidadão. Todos os direitos reservados.</p>
       </div>
     </div>
   </footer>
