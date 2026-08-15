@@ -1,383 +1,297 @@
 <!DOCTYPE html>
-<html lang="pt-BR" dir="ltr" class="no-js">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal de Serviços Públicos, Avisos e Notícias do Cidadão de Curitiba e do Estado do Paraná.">
+  <meta name="keywords" content="Curitiba, Paraná, IPTU, Saúde Já, 156, Serviços Públicos, Notícias, Ruas da Cidadania">
+  <meta name="author" content="Governo e Prefeitura Municipal">
+  <meta id="meta-theme-color" name="theme-color" content="#0284c7">
+  <title>Portal do Cidadão — Curitiba & Governo do Estado do Paraná</title>
   
-  <title>Portal do Cidadão — Prefeitura de Curitiba & Governo do Estado do Paraná</title>
-  <meta name="description" content="Central de serviços públicos unificada e acessível de Curitiba e do Paraná. Emissão de RG, consultas de saúde, bilhete de transporte URBS e taxas do IPTU.">
-  <meta name="keywords" content="Curitiba, Serviços Públicos, Saúde Já, URBS, DETRAN PR, RG, IPTU, Ruas da Cidadania, Acessibilidade WCAG 2.1">
-  <meta name="author" content="Prefeitura Municipal de Curitiba">
-  <meta name="publisher" content="Governo do Estado do Paraná">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="theme-color" content="#0284c7" id="meta-theme-color">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.curitiba.pr.gov.br/">
-  <meta property="og:title" content="Portal do Cidadão — Curitiba & Paraná">
-  <meta property="og:description" content="Acesso unificado e desburocratizado aos serviços públicos municipais e estaduais com suporte completo à acessibilidade.">
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:site_name" content="Portal do Cidadão Curitiba">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Portal do Cidadão — Curitiba & Paraná">
-  <meta name="twitter:description" content="Acesso direto aos serviços da Prefeitura de Curitiba e Governo do Paraná.">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "GovernmentOrganization",
-        "@id": "https://www.curitiba.pr.gov.br/#organization",
-        "name": "Prefeitura Municipal de Curitiba",
-        "url": "https://www.curitiba.pr.gov.br",
-        "sameAs": [
-          "https://www.facebook.com/PrefeituraDeCuritiba",
-          "https://www.instagram.com/prefeituradecuritiba",
-          "https://twitter.com/curitiba_pmc"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Av. Cândido de Abreu, 817",
-          "addressLocality": "Curitiba",
-          "addressRegion": "PR",
-          "postalCode": "80530-908",
-          "addressCountry": "BR"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+55-41-156",
-          "contactType": "customer service",
-          "contactOption": "TollFree",
-          "areaServed": "BR",
-          "availableLanguage": "Portuguese"
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.curitiba.pr.gov.br/#website",
-        "url": "https://www.curitiba.pr.gov.br",
-        "name": "Portal do Cidadão de Curitiba",
-        "publisher": {
-          "@id": "https://www.curitiba.pr.gov.br/#organization"
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://www.curitiba.pr.gov.br/busca?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    ]
-  }
-  </script>
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilo.css">
 </head>
-<body data-theme="light" data-font-size="medium">
+<body>
 
+  <!-- REGIAO DE ANÚNCIO DINÂMICO PARA LEITORES DE TELA (ARIA-LIVE) -->
   <div id="aria-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-  <aside class="system-alert-bar" role="complementary" aria-label="Comunicados Urgentes">
+  <!-- ATALHOS DE TECLADO (SKIP LINKS WCAG 2.1) -->
+  <nav class="skip-links" aria-label="Atalhos de Navegação Acessível">
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal (Atalho 1)</a>
+    <a href="#nav-menu" class="skip-link">Ir para o menu de navegação (Atalho 2)</a>
+    <a href="#search-input" class="skip-link">Ir para a busca (Atalho 3)</a>
+    <a href="#avisos-sistema" class="skip-link">Ir para os avisos do sistema (Atalho 4)</a>
+    <a href="#noticias" class="skip-link">Ir para as notícias (Atalho 5)</a>
+    <a href="#regionais" class="skip-link">Ir para as Ruas da Cidadania (Atalho 6)</a>
+    <a href="#rodape" class="skip-link">Ir para o rodapé (Atalho 7)</a>
+  </nav>
+
+  <!-- SEÇÃO DE AVISOS DO SISTEMA E URGÊNCIAS -->
+  <aside id="avisos-sistema" class="system-alert-bar" aria-label="Avisos Importantes e Alertas de Serviço">
     <div class="container system-alert-content">
-      <span class="alert-badge" role="doc-subtitle">STATUS</span>
-      <p class="alert-text">
-        Atendimento presencial nas 10 Ruas da Cidadania funcionando normalmente das 08h às 17h.
-        <a href="#regionais" class="alert-link">Consulte os endereços e telefones</a>
-      </p>
-      <button id="close-alert-btn" class="alert-close-btn" aria-label="Fechar mensagem de aviso" type="button">&times;</button>
+      <div class="alert-item">
+        <span class="alert-badge badge-urgente">ALERTA URGENTE</span>
+        <p class="alert-text">
+          <strong>Manutenção Programada:</strong> O sistema de emissão de Certidões Negativas do IPTU e Agendamento Online da Saúde passará por manutenção neste domingo (16/08), das 02h às 06h. 
+          <a href="#faq" class="alert-link">Ver detalhes e horários alternativos</a>.
+        </p>
+      </div>
+      <button id="close-alert-btn" class="alert-close-btn" aria-label="Fechar painel de avisos do sistema">&times;</button>
     </div>
   </aside>
 
-  <nav class="skip-links" id="topo" aria-label="Atalhos de acessibilidade direta">
-    <a href="#conteudo-principal" class="skip-link" accesskey="1">Ir diretamente para o conteúdo principal [Teclas: 1]</a>
-    <a href="#nav-menu" class="skip-link" accesskey="2">Ir para o menu de navegação de serviços [Teclas: 2]</a>
-    <a href="#search-input" class="skip-link" accesskey="3">Ir para a caixa de busca universal [Teclas: 3]</a>
-    <a href="#rodape" class="skip-link" accesskey="4">Ir para as informações do rodapé [Teclas: 4]</a>
-  </nav>
-
-  <header class="header" role="banner">
+  <!-- CABEÇALHO PRINCIPAL DA APLICAÇÃO -->
+  <header class="header">
     <div class="container header-container">
-      
-      <a href="#topo" class="logo" aria-label="Retornar ao topo da página inicial do Portal do Cidadão de Curitiba">
-        <span class="logo-icon" aria-hidden="true">🛡️</span>
+      <a href="#" class="logo" aria-label="Portal do Cidadão - Página Inicial">
+        <span class="logo-icon" aria-hidden="true">🏛️</span>
         <div class="logo-text">
           <strong>Portal do Cidadão</strong>
           <span>Curitiba & Estado do Paraná</span>
         </div>
       </a>
 
-      <nav id="nav-menu" class="nav-menu" aria-label="Menu principal de navegação">
-        <ul class="nav-list" role="menubar">
-          <li role="none"><a href="#servicos-essenciais" class="nav-link" role="menuitem">Serviços Frequentes</a></li>
-          <li role="none"><a href="#filtro-categorias" class="nav-link" role="menuitem">Categorias</a></li>
-          <li role="none"><a href="#regionais" class="nav-link" role="menuitem">Ruas da Cidadania</a></li>
-          <li role="none"><a href="#faq" class="nav-link" role="menuitem">Dúvidas Frequentes</a></li>
-          <li role="none"><a href="#contato" class="nav-link" role="menuitem">Canais 24h</a></li>
+      <nav id="nav-menu" class="nav-menu" aria-label="Navegação Principal do Portal">
+        <ul class="nav-list">
+          <li><a href="#servicos" class="nav-link">Serviços Gerais</a></li>
+          <li><a href="#avisos-noticias" class="nav-link">Avisos & Notícias</a></li>
+          <li><a href="#regionais" class="nav-link">Ruas da Cidadania</a></li>
+          <li><a href="#agendamentos" class="nav-link">Agendamentos</a></li>
+          <li><a href="#transparencia" class="nav-link">Transparência</a></li>
+          <li><a href="#faq" class="nav-link">Dúvidas Frequentes</a></li>
+          <li><a href="#emergencia" class="nav-link nav-link-highlight">Centrais 24h</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button id="theme-toggle-header" class="btn-action-icon" aria-label="Alternar entre modo claro e escuro" title="Alternar Tema Visual" type="button">
+        <button id="theme-toggle-header" class="btn-action-icon" aria-label="Alternar tema claro/escuro" title="Alternar Modo Noturno">
           <span class="icon" aria-hidden="true">🌙</span>
         </button>
-        
-        <button id="search-btn-toggle" class="btn-action-icon" aria-label="Abrir campo de busca por serviços" aria-expanded="false" aria-controls="search-bar-container" type="button">
+        <button id="search-btn-toggle" class="btn-action-icon" aria-label="Abrir caixa de pesquisa de serviços" aria-expanded="false" title="Buscar no Portal">
           <span class="icon" aria-hidden="true">🔍</span>
         </button>
-
-        <button id="acc-quick-toggle" class="btn-action-icon" aria-label="Abrir o menu visual de acessibilidade" aria-expanded="false" aria-controls="acc-menu" type="button">
+        <button id="acc-quick-toggle" class="btn-action-icon" aria-label="Abrir painel de acessibilidade visual" aria-expanded="false" title="Menu de Acessibilidade">
           <span class="icon" aria-hidden="true">♿</span>
         </button>
-      </div>
-
-    </div>
-
-    <div id="search-bar-container" class="search-bar-container hidden" role="search" aria-label="Caixa de pesquisa de serviços">
-      <div class="container search-bar-content">
-        <label for="search-input" class="sr-only">Digite o serviço público que você procura:</label>
-        <div class="input-wrapper">
-          <span class="search-icon-inside" aria-hidden="true">🔎</span>
-          <input 
-            type="search" 
-            id="search-input" 
-            placeholder="O que você precisa hoje? (ex: RG, Vacina, Consultas, Ônibus, IPTU, Sanepar...)" 
-            aria-label="Campo de entrada para pesquisar serviços públicos"
-            autocomplete="off"
-            spellcheck="false"
-          >
-        </div>
-        <button id="search-close-btn" class="search-close-btn" aria-label="Fechar busca" type="button">&times;</button>
       </div>
     </div>
   </header>
 
-  <div class="breadcrumb-container" aria-label="Caminho de navegação">
-    <div class="container">
-      <ol class="breadcrumb-list">
-        <li><a href="#topo">Início</a></li>
-        <li aria-current="page">Portal do Cidadão - Central Integrada</li>
-      </ol>
+  <!-- BARRA DE PESQUISA EXPANSÍVEL INTEGRADA -->
+  <div id="search-bar-container" class="search-bar-container hidden" role="search" aria-label="Buscador de Serviços Públicos">
+    <div class="container search-bar-content">
+      <div class="input-wrapper">
+        <span class="search-icon-inside" aria-hidden="true">🔍</span>
+        <input type="text" id="search-input" placeholder="O que você procura? (Ex: Agendar Consulta, Emitir Guia IPTU, Renovação CNH, Vagas de Emprego...)" aria-label="Digite a palavra-chave do serviço desejado">
+      </div>
+      <button id="search-close-btn" class="search-close-btn" aria-label="Fechar barra de pesquisa">&times;</button>
     </div>
   </div>
 
+  <!-- CONTEÚDO PRINCIPAL (MAIN) -->
   <main id="conteudo-principal" tabindex="-1">
 
-    <section class="hero-section" aria-labelledby="hero-title">
+    <!-- HERO SECTION DE APRESENTAÇÃO -->
+    <section class="hero-section" aria-label="Apresentação do Portal">
       <div class="container hero-container">
         <div class="badge-status-container">
-          <div class="badge-status" role="status">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            <span>Atendimento online 24h &bull; Postos presenciais ativos</span>
-          </div>
+          <span class="badge-status">
+            <span class="pulse-dot"></span> Todos os Serviços Online Operacionais
+          </span>
         </div>
-        
-        <h1 id="hero-title" class="hero-title">
-          Serviços Públicos de Curitiba<br>
-          <span class="highlight-blue">Simplificados, ágeis e ao seu alcance.</span>
-        </h1>
-        
-        <p class="hero-subtitle">
-          Agende consultas de saúde, emita documentos, consulte linhas de ônibus e pague impostos da Prefeitura de Curitiba e do Governo do Estado do Paraná em uma única plataforma acessível.
-        </p>
-        
+        <h1 class="hero-title">Atendimento público centralizado, rápido e totalmente <span class="highlight-blue">acessível para você.</span></h1>
+        <p class="hero-subtitle">Consulte taxas, agende atendimentos presenciais, acompanhe notícias da sua região e resolva pendências sem filas de forma digital.</p>
         <div class="hero-buttons">
-          <a href="#servicos-essenciais" class="btn btn-primary">
-            <span>Explorar Serviços em Destaque</span>
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="tel:156" class="btn btn-secondary">
-            <span aria-hidden="true">📞</span>
-            <span>Atendimento Central 156</span>
-          </a>
+          <a href="#servicos" class="btn btn-primary">Acessar Serviços Populares</a>
+          <a href="#avisos-noticias" class="btn btn-secondary">Ver Avisos e Notícias</a>
         </div>
       </div>
     </section>
 
-    <section class="status-panel-section" aria-labelledby="status-panel-title">
+    <!-- PAINEIS DE FILTROS E CATEGORIAS -->
+    <section class="status-panel-section" aria-label="Filtro de Conteúdo por Categoria">
       <div class="container">
-        <h2 id="status-panel-title" class="sr-only">Status do Funcionamento dos Serviços</h2>
-        <div class="status-grid">
-          <div class="status-card">
-            <span class="status-indicator status-green" aria-hidden="true"></span>
-            <div class="status-info">
-              <strong>Saúde Já</strong>
-              <span>Consultas e Vacinas ativas</span>
-            </div>
+        <div class="publicos-section">
+          <div class="section-header-inline">
+            <h2 class="section-subtitle">Categorias de Serviços Públicos</h2>
+            <span id="filter-count-display" class="filter-count">Exibindo todas as opções disponíveis</span>
           </div>
-          <div class="status-card">
-            <span class="status-indicator status-green" aria-hidden="true"></span>
-            <div class="status-info">
-              <strong>Agendamento de RG</strong>
-              <span>Vagas liberadas diariamente</span>
-            </div>
-          </div>
-          <div class="status-card">
-            <span class="status-indicator status-green" aria-hidden="true"></span>
-            <div class="status-info">
-              <strong>Frota URBS</strong>
-              <span>100% da frota operando</span>
-            </div>
+          <div class="publico-tags" role="tablist" aria-label="Seleção de Categoria de Serviços">
+            <button class="tag-btn active" role="tab" aria-selected="true" data-filter="todos">Todos os Serviços</button>
+            <button class="tag-btn" role="tab" aria-selected="false" data-filter="saude">Saúde & Vacinação</button>
+            <button class="tag-btn" role="tab" aria-selected="false" data-filter="educacao">Educação & Vagas</button>
+            <button class="tag-btn" role="tab" aria-selected="false" data-filter="impostos">Impostos, Finanças & Taxas</button>
+            <button class="tag-btn" role="tab" aria-selected="false" data-filter="transporte">Trânsito, Veículos & CNH</button>
+            <button class="tag-btn" role="tab" aria-selected="false" data-filter="trabalho">Emprego, Renda & MEI</button>
+            <button class="tag-btn" role="tab" aria-selected="false" data-filter="urbanismo">Obras, Meio Ambiente & Habitação</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="filtro-categorias" class="publicos-section" aria-labelledby="publicos-title">
+    <!-- GRID DE CARDS DE SERVIÇOS DETALHADOS -->
+    <section id="servicos" class="section-padding bg-section" aria-label="Serviços Mais Solicitados">
       <div class="container">
-        <div class="section-header-inline">
-          <h2 id="publicos-title" class="section-subtitle">Filtrar Serviços por Categoria</h2>
-          <span class="filter-count" id="filter-count-display" aria-live="polite">Exibindo todos os serviços</span>
+        <div class="section-intro">
+          <h2 class="section-title">Serviços Públicos Digitais</h2>
+          <p class="section-description">Selecione o serviço desejado para emitir guias, realizar agendamentos ou consultar processos.</p>
         </div>
 
-        <div class="publico-tags" role="tablist" aria-label="Categorias temáticas dos serviços">
-          <button class="tag-btn active" role="tab" aria-selected="true" id="tab-todos" aria-controls="grid-servicos" data-filter="todos" type="button">🌐 Todos os Serviços</button>
-          <button class="tag-btn" role="tab" aria-selected="false" id="tab-saude" aria-controls="grid-servicos" data-filter="saude" type="button">❤️ Saúde e Bem-Estar</button>
-          <button class="tag-btn" role="tab" aria-selected="false" id="tab-doc" aria-controls="grid-servicos" data-filter="documentos" type="button">🪪 Documentação do Cidadão</button>
-          <button class="tag-btn" role="tab" aria-selected="false" id="tab-transp" aria-controls="grid-servicos" data-filter="transporte" type="button">🚌 Transporte e Trânsito</button>
-          <button class="tag-btn" role="tab" aria-selected="false" id="tab-imp" aria-controls="grid-servicos" data-filter="impostos" type="button">💰 Impostos, Casa e Cidade</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicos-essenciais" class="section-padding bg-section" aria-labelledby="servicos-title">
-      <div class="container">
-        <header class="section-intro">
-          <h2 id="servicos-title" class="section-title">Principais Atendimentos e Agendamentos</h2>
-          <p class="section-description">Selecione o serviço abaixo para prosseguir com o atendimento oficial.</p>
-        </header>
-
-        <div class="cards-grid" id="grid-servicos" role="tabpanel" aria-labelledby="tab-todos">
+        <div id="grid-servicos" class="cards-grid">
           
           <article class="card" data-category="saude">
             <div class="card-header">
-              <div class="card-icon icon-red" aria-hidden="true">❤️</div>
-              <span class="badge-tag municipal">Prefeitura de Curitiba</span>
+              <div class="card-icon icon-cyan" aria-hidden="true">🏥</div>
+              <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
               <h3>Saúde Já Curitiba</h3>
-              <p>Agendamento presencial e remoto de atendimento com enfermagem e odontologia, histórico de vacinas e acompanhamento do SUS.</p>
+              <p>Agendamento de consultas médicas e odontológicas nas Unidades Básicas de Saúde (UBS) de Curitiba.</p>
               <ul class="card-features">
-                <li><span aria-hidden="true">✓</span> Agendamento sem filas</li>
-                <li><span aria-hidden="true">✓</span> Carteira de Vacinação Digital</li>
+                <li>• Pré-agendamento de consultas sem fila</li>
+                <li>• Histórico e carteira de vacinação digital</li>
+                <li>• Lembretes de remédios contínuos na farmácia</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar o portal Saúde Já Curitiba em uma nova janela">
-                <span>Acessar Saúde Já</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="card" data-category="documentos">
-            <div class="card-header">
-              <div class="card-icon icon-blue" aria-hidden="true">🪪</div>
-              <span class="badge-tag estadual">Governo do Paraná</span>
-            </div>
-            <div class="card-body">
-              <h3>Carteira de Identidade (CIN / RG)</h3>
-              <p>Agendamento prévio obrigatorio para emissão da 1ª e 2ª via da Carteira de Identidade Nacional nos postos do Instituto de Identificação.</p>
-              <ul class="card-features">
-                <li><span aria-hidden="true">✓</span> Escolha do posto e horário</li>
-                <li><span aria-hidden="true">✓</span> Gratuito para primeira via nacional</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.policiacivil.pr.gov.br/RG" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Agendar emissão de RG no site da Polícia Civil do PR em uma nova janela">
-                <span>Agendar Emissão de RG</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="card" data-category="transporte">
-            <div class="card-header">
-              <div class="card-icon icon-orange" aria-hidden="true">🚗</div>
-              <span class="badge-tag estadual">Governo do Paraná</span>
-            </div>
-            <div class="card-body">
-              <h3>DETRAN-PR & Habilitação</h3>
-              <p>Renovação de CNH, verificação de pontuação da carteira de motorista, licenciamento de veículos e certidões estaduais.</p>
-              <ul class="card-features">
-                <li><span aria-hidden="true">✓</span> Emissão de CRLV-e Digital</li>
-                <li><span aria-hidden="true">✓</span> Consulta de multas e recursos</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.detran.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar os serviços online do DETRAN Paraná em uma nova janela">
-                <span>Acessar DETRAN-PR</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="card" data-category="transporte">
-            <div class="card-header">
-              <div class="card-icon icon-yellow" aria-hidden="true">🚌</div>
-              <span class="badge-tag municipal">Prefeitura de Curitiba</span>
-            </div>
-            <div class="card-body">
-              <h3>URBS & Cartão Transporte</h3>
-              <p>Recarga imediata do cartão via PIX, consulta a itinerários atualizados, horários de ônibus e solicitações de cartão idoso ou PCD.</p>
-              <ul class="card-features">
-                <li><span aria-hidden="true">✓</span> Recarga online sem tarifas adicionais</li>
-                <li><span aria-hidden="true">✓</span> Horários e rotas em tempo real</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.urbs.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar o portal oficial da URBS em uma nova janela">
-                <span>Acessar URBS Online</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+              <a href="#" class="card-link" aria-label="Acessar aplicativo Saúde Já Curitiba">Iniciar Atendimento <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="impostos">
             <div class="card-header">
-              <div class="card-icon icon-blue" aria-hidden="true">💰</div>
-              <span class="badge-tag municipal">Prefeitura de Curitiba</span>
+              <div class="card-icon icon-yellow" aria-hidden="true">📑</div>
+              <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
-              <h3>IPTU & Nota Curitibana</h3>
-              <p>Emissão das guias de arrecadação do IPTU, parcelamentos, consulta de certidões negativas e resgate de créditos da Nota Curitibana.</p>
+              <h3>Emissão e Consulta do IPTU</h3>
+              <p>Emissão da 2ª via do carnê do IPTU, quitação de débitos anteriores e parcelamento de taxas imobiliárias.</p>
               <ul class="card-features">
-                <li><span aria-hidden="true">✓</span> Emissão de 2ª via imediata</li>
-                <li><span aria-hidden="true">✓</span> Resgate de créditos do programa</li>
+                <li>• Desconto para pagamento à vista</li>
+                <li>• Emissão de Certidão Negativa de Débitos</li>
+                <li>• Atualização de cadastro de proprietário</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://iptu.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Consultar IPTU no portal da Secretaria de Finanças em uma nova janela">
-                <span>Consultar IPTU</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+              <a href="#" class="card-link" aria-label="Emitir 2ª via do IPTU Curitiba">Emitir Guia <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card" data-category="transporte">
+            <div class="card-header">
+              <div class="card-icon icon-blue" aria-hidden="true">🚗</div>
+              <span class="badge-tag estadual">ESTADUAL</span>
+            </div>
+            <div class="card-body">
+              <h3>DETRAN-PR & IPVA Paraná</h3>
+              <p>Consultas de pontuação na CNH, agendamento de exames de renovação e emissão de guias do IPVA do veículo.</p>
+              <ul class="card-features">
+                <li>• Licenciamento anual 100% digital</li>
+                <li>• Transferência de propriedade de veículos</li>
+                <li>• Consulta de multas e recursos online</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Consultar veículo no Detran Paraná">Consultar Veículo <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card" data-category="trabalho">
+            <div class="card-header">
+              <div class="card-icon icon-orange" aria-hidden="true">💼</div>
+              <span class="badge-tag municipal">MUNICIPAL</span>
+            </div>
+            <div class="card-body">
+              <h3>Agência do Trabalhador & Sine</h3>
+              <p>Cadastro de currículos para intermediação de mão de obra, seguro-desemprego e cursos profissionalizantes.</p>
+              <ul class="card-features">
+                <li>• Vagas abertas atualizadas diariamente</li>
+                <li>• Agendamento de entrevista por regional</li>
+                <li>• Apoio ao Microempreendedor Individual (MEI)</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Buscar vagas na Agência do Trabalhador">Buscar Vagas <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card" data-category="educacao">
+            <div class="card-header">
+              <div class="card-icon icon-purple" aria-hidden="true">🎓</div>
+              <span class="badge-tag estadual">ESTADUAL</span>
+            </div>
+            <div class="card-body">
+              <h3>Matrícula Escolar da Rede Estadual</h3>
+              <p>Inscrição, transferência e confirmação de vagas para o Ensino Fundamental e Médio nas escolas estaduais do Paraná.</p>
+              <ul class="card-features">
+                <li>• Consulta de boletim e frequência escolar</li>
+                <li>• Histórico escolar com validação digital</li>
+                <li>• Inscrição no transporte escolar rural/urbano</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Acessar portal de matrículas do estado">Acessar Matrículas <span>→</span></a>
             </div>
           </article>
 
           <article class="card" data-category="impostos">
             <div class="card-header">
-              <div class="card-icon icon-cyan" aria-hidden="true">💧</div>
-              <span class="badge-tag estadual">Governo do Paraná</span>
+              <div class="card-icon icon-red" aria-hidden="true">🎟️</div>
+              <span class="badge-tag municipal">MUNICIPAL</span>
             </div>
             <div class="card-body">
-              <h3>Sanepar & Copel (Água e Luz)</h3>
-              <p>Emissão de 2ª via de faturas, comunicação de falta de água ou energia elétrica e solicitações de religação do serviço.</p>
+              <h3>Programa Nota Curitibana</h3>
+              <p>Insira seu CPF na nota fiscal de prestação de serviços para acumular créditos e concorrer a prêmios em dinheiro.</p>
               <ul class="card-features">
-                <li><span aria-hidden="true">✓</span> Segunda via de contas por PIX</li>
-                <li><span aria-hidden="true">✓</span> Comunicação de vazamento ou avaria</li>
+                <li>• Resgate de valores direto em conta bancária</li>
+                <li>• Abatimento no valor do IPTU do ano seguinte</li>
+                <li>• Sorteios mensais de até R$ 150 mil</li>
               </ul>
             </div>
             <div class="card-footer">
-              <a href="https://site.sanepar.com.br/" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Acessar atalho de serviços da Sanepar em uma nova janela">
-                <span>Acessar Sanepar</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+              <a href="#" class="card-link" aria-label="Cadastrar CPF na Nota Curitibana">Cadastrar ou Resgatar <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card" data-category="urbanismo">
+            <div class="card-header">
+              <div class="card-icon icon-cyan" aria-hidden="true">🏗️</div>
+              <span class="badge-tag municipal">MUNICIPAL</span>
+            </div>
+            <div class="card-body">
+              <h3>Alvará de Construção e Reformas</h3>
+              <p>Aprovação de projetos arquitetônicos, consulta prévia de viabilidade urbana e emissão de alvarás de obras.</p>
+              <ul class="card-features">
+                <li>• Análise simplificada de projetos residenciais</li>
+                <li>• Emissão de Habite-se sanitário e ambiental</li>
+                <li>• Certidão de zoneamento e uso do solo</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Solicitar Alvará de Construção">Solicitar Licença <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card" data-category="saude">
+            <div class="card-header">
+              <div class="card-icon icon-red" aria-hidden="true">🐕</div>
+              <span class="badge-tag municipal">MUNICIPAL</span>
+            </div>
+            <div class="card-body">
+              <h3>Proteção Animal & Castração Gratuita</h3>
+              <p>Agendamento do Programa Municipal de Castração Gratuita de Cães e Gatos e denúncias de maus-tratos.</p>
+              <ul class="card-features">
+                <li>• Cadastro de protetores independentes</li>
+                <li>• Microchipagem gratuita de animais</li>
+                <li>• Feiras municipais de adoção responsável</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Agendar castração gratuita de animais">Agendar Castração <span>→</span></a>
             </div>
           </article>
 
@@ -385,118 +299,382 @@
       </div>
     </section>
 
-    <section id="regionais" class="section-padding" aria-labelledby="regionais-title">
+    <!-- SEÇÃO COMPLETA DE AVISOS OFICIAIS E NOTÍCIAS COMUNICADAS -->
+    <section id="avisos-noticias" class="section-padding" aria-label="Central de Notícias e Avisos Oficiais">
       <div class="container">
-        <header class="section-intro">
-          <h2 id="regionais-title" class="section-title">🏛️ Ruas da Cidadania de Curitiba</h2>
-          <p class="section-description">Unidades descentralizadas para atendimento presencial nos bairros.</p>
-        </header>
+        <div class="section-intro">
+          <h2 class="section-title">Avisos Oficiais e Últimas Notícias</h2>
+          <p class="section-description">Acompanhe as atualizações das Secretarias Municipais, Governo Estadual e alterações na infraestrutura da cidade.</p>
+        </div>
 
-        <div class="regionais-grid">
-          <article class="regional-card">
-            <h3>Rua da Cidadania Matriz</h3>
-            <p class="regional-address">📍 Praça Rui Barbosa, 101 - Centro</p>
-            <p class="regional-phone">📞 <a href="tel:4133135800" aria-label="Ligar para a Rua da Cidadania Matriz">(41) 3313-5800</a></p>
-            <p class="regional-hours">⏰ Segunda a Sexta: 08h às 17h</p>
+        <div class="cards-grid">
+          
+          <article class="card card-news">
+            <div class="card-header">
+              <span class="badge-tag municipal">PREFEITURA DE CURITIBA</span>
+              <time datetime="2026-08-14" class="news-date">14 de Agosto, 2026</time>
+            </div>
+            <div class="card-body">
+              <h3>Obras de Pavimentação e Ampliação da Linha Verde Avançam no Lote Sul</h3>
+              <p>A Secretaria Municipal de Obras Públicas iniciou nesta sexta-feira a aplicação da nova camada asfáltica. Motoristas devem ficar atentos aos desvios temporários de trânsito programados na região do Pinheirinho e Bairro Novo.</p>
+              <div class="news-meta-details">
+                <span>📍 Região: Pinheirinho / Linha Verde</span>
+                <span>⏱️ Duração prevista: 10 dias</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Ler notícia sobre as obras da Linha Verde">Ler Comunicado Completo <span>→</span></a>
+            </div>
           </article>
 
-          <article class="regional-card">
-            <h3>Rua da Cidadania Boa Vista</h3>
-            <p class="regional-address">📍 Av. Paraná, 3600 - Boa Vista</p>
-            <p class="regional-phone">📞 <a href="tel:4133135680" aria-label="Ligar para a Rua da Cidadania Boa Vista">(41) 3313-5680</a></p>
-            <p class="regional-hours">⏰ Segunda a Sexta: 08h às 17h</p>
+          <article class="card card-news">
+            <div class="card-header">
+              <span class="badge-tag estadual">GOVERNO DO PARANÁ</span>
+              <time datetime="2026-08-13" class="news-date">13 de Agosto, 2026</time>
+            </div>
+            <div class="card-body">
+              <h3>Inscrições Abertas para 5.000 Vagas em Cursos de Tecnologia e Gestão</h3>
+              <p>O Programa Qualifica Paraná abriu novas turmas gratuitas em parceria com o Sistema S. Os cursos abrem oportunidades na área de desenvolvimento de sistemas, logística, marketing digital e administração básica.</p>
+              <div class="news-meta-details">
+                <span>🎓 Modalidade: Presencial e EAD</span>
+                <span>💰 Custo: 100% Gratuito</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Inscrições para cursos do Governo do Estado">Ver Cursos e Inscrição <span>→</span></a>
+            </div>
           </article>
 
-          <article class="regional-card">
-            <h3>Rua da Cidadania Boqueirão</h3>
-            <p class="regional-address">📍 Av. Marechal Floriano Peixoto, 8430 - Boqueirão</p>
-            <p class="regional-phone">📞 <a href="tel:4133135500" aria-label="Ligar para a Rua da Cidadania Boqueirão">(41) 3313-5500</a></p>
-            <p class="regional-hours">⏰ Segunda a Sexta: 08h às 17h</p>
+          <article class="card card-news">
+            <div class="card-header">
+              <span class="badge-tag municipal">SECRETARIA DE SAÚDE</span>
+              <time datetime="2026-08-12" class="news-date">12 de Agosto, 2026</time>
+            </div>
+            <div class="card-body">
+              <h3>Dia D de Multivacinação Ocorre Neste Sábado nas Ruas da Cidadania</h3>
+              <p>Todas as 10 Ruas da Cidadania de Curitiba estarão abertas das 08h às 17h para a aplicação de vacinas do Calendário Nacional, incluindo Influenza, Tríplice Viral e reforço contra a Febre Amarela.</p>
+              <div class="news-meta-details">
+                <span>🏥 Locais: 10 Ruas da Cidadania</span>
+                <span>📄 Documentos: CPF e Carteira de Vacina</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Ver locais do Dia D de vacinação">Consultar Pontos de Vacinação <span>→</span></a>
+            </div>
           </article>
 
-          <article class="regional-card">
-            <h3>Rua da Cidadania Pinheirinho</h3>
-            <p class="regional-address">📍 Av. Winston Churchill, 2033 - Pinheirinho</p>
-            <p class="regional-phone">📞 <a href="tel:4133135400" aria-label="Ligar para a Rua da Cidadania Pinheirinho">(41) 3313-5400</a></p>
-            <p class="regional-hours">⏰ Segunda a Sexta: 08h às 17h</p>
+          <article class="card card-news">
+            <div class="card-header">
+              <span class="badge-tag municipal">MEIO AMBIENTE</span>
+              <time datetime="2026-08-10" class="news-date">10 de Agosto, 2026</time>
+            </div>
+            <div class="card-body">
+              <h3>Programa Câmbio Verde Divulga Calendário de Troca de Lixo Reciclável por Alimentos</h3>
+              <p>Cidadãos podem trocar 4kg de lixo reciclável ou 2 litros de óleo de cozinha usado por 1kg de frutas e hortaliças frescas vindas da agricultura familiar local. Confira as datas de atendimento nos bairros.</p>
+              <div class="news-meta-details">
+                <span>🥬 Benefício: Alimentos Sustentáveis</span>
+                <span>🚚 Atendimento: Caminhões Itinerantes</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Ver calendário do Programa Câmbio Verde">Consultar Rota do Câmbio Verde <span>→</span></a>
+            </div>
           </article>
+
+          <article class="card card-news">
+            <div class="card-header">
+              <span class="badge-tag estadual">URBS / TRANSPORTE</span>
+              <time datetime="2026-08-08" class="news-date">08 de Agosto, 2026</time>
+            </div>
+            <div class="card-body">
+              <h3>Frota de Ônibus Elétricos Ganha Novas Linhas Metropolitanas</h3>
+              <p>A Urbs e o Governo do Estado anunciam a ampliação da frota de ônibus 100% elétricos alimentados por energia limpa, conectando terminais de Curitiba aos municípios da Região Metropolitana.</p>
+              <div class="news-meta-details">
+                <span>🚌 Linhas: Ligeirões e Alimentadores</span>
+                <span>🌱 Impacto: Zero emissão de CO2</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Ler detalhes da frota de ônibus elétricos">Ver Linhas e Horários <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="card card-news">
+            <div class="card-header">
+              <span class="badge-tag municipal">FAZENDA MUNICIPAL</span>
+              <time datetime="2026-08-05" class="news-date">05 de Agosto, 2026</time>
+            </div>
+            <div class="card-body">
+              <h3>Sorteio da Nota Curitibana Contempla Morador do Bairro Alto com R$ 50 mil</h3>
+              <p>A Secretaria Municipal da Fazenda realizou o 68º sorteio do programa. Mais de 120 mil bilhetes concorreram nesta edição. Verifique se o seu CPF foi sorteado no painel do usuário.</p>
+              <div class="news-meta-details">
+                <span>🏆 Prêmio Principal: R$ 50.000,00</span>
+                <span>🎟️ Bilhetes Gerados: 124.500</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link" aria-label="Conferir resultado do sorteio da Nota Curitibana">Conferir Bilhetes Sorteados <span>→</span></a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section-padding bg-section" aria-labelledby="faq-title">
+    <!-- SEÇÃO COMPLETA DAS RUAS DA CIDADANIA / REGIONAIS -->
+    <section id="regionais" class="section-padding bg-section" aria-label="Unidades das Ruas da Cidadania e Regionais">
       <div class="container">
-        <header class="section-intro">
-          <h2 id="faq-title" class="section-title">❓ Perguntas Frequentes do Cidadão</h2>
-          <p class="section-description">Respostas rápidas sobre os procedimentos municipais e estaduais.</p>
-        </header>
+        <div class="section-intro">
+          <h2 class="section-title">Ruas da Cidadania & Unidades Regionais</h2>
+          <p class="section-description">Atendimento presencial descentralizado para emissão de documentos, impostos, assistência social e serviços municipais.</p>
+        </div>
+
+        <div id="grid-regionais" class="regionais-grid">
+          
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Matriz</h3>
+              <span class="regional-badge">Centro</span>
+            </div>
+            <p class="regional-address">📍 Praça Rui Barbosa, 101 — Centro, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4133135800">(41) 3313-5800</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>URBS, Fazenda, Cohab, Agência do Trabalhador, Sanepar, Copel</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Boqueirão</h3>
+              <span class="regional-badge">Zona Sul</span>
+            </div>
+            <p class="regional-address">📍 Av. Marechal Floriano Peixoto, 8430 — Boqueirão, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4133135500">(41) 3313-5500</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>SINE, Saúde, Guarda Municipal, IPTU, Cartão Transporte</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Santa Felicidade</h3>
+              <span class="regional-badge">Zona Norte</span>
+            </div>
+            <p class="regional-address">📍 Rua Santa Bertila Boscardin, 213 — Santa Felicidade, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4133745000">(41) 3374-5000</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>Urbanismo, Meio Ambiente, Finanças, Agendamento 156</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania CIC</h3>
+              <span class="regional-badge">Cidade Industrial</span>
+            </div>
+            <p class="regional-address">📍 Rua Manoel Valdomiro de Macedo, 2460 — CIC, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4133272525">(41) 3327-2525</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>Capacitação Profissional, Assistência Social, IPTU, Procon</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Bairro Novo</h3>
+              <span class="regional-badge">Sítio Cercado</span>
+            </div>
+            <p class="regional-address">📍 Rua Tijucas do Sul, 1700 — Sítio Cercado, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4132986000">(41) 3298-6000</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>SINE, Cohab, Espaço Empreendedor, Atendimento Saúde</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Cajuru</h3>
+              <span class="regional-badge">Zona Leste</span>
+            </div>
+            <p class="regional-address">📍 Av. Prefeito Maurício Fruet, 2150 — Cajuru, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4132212400">(41) 3221-2400</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>URBS, Finanças, Conselho Tutelar, Atendimento CRAS</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Boa Vista</h3>
+              <span class="regional-badge">Boa Vista</span>
+            </div>
+            <p class="regional-address">📍 Av. Paraná, 3600 — Boa Vista, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4133135400">(41) 3313-5400</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>IPTU, Fiscalização, Sanepar, Copel, Carteira de Identidade</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Pinheirinho</h3>
+              <span class="regional-badge">Pinheirinho</span>
+            </div>
+            <p class="regional-address">📍 Av. Winston Churchill, 2033 — Pinheirinho, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4133135300">(41) 3313-5300</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>Atendimento do Trabalhador, URBS, Emissão de RG, Procon</span>
+            </div>
+          </div>
+
+          <div class="regional-card">
+            <div class="regional-header">
+              <h3>Rua da Cidadania Tatuquara</h3>
+              <span class="regional-badge">Tatuquara</span>
+            </div>
+            <p class="regional-address">📍 Rua Olivardo Konoroski Bueno, 700 — Tatuquara, Curitiba - PR</p>
+            <p class="regional-phone">📞 Telefone: <a href="tel:4132212600">(41) 3221-2600</a></p>
+            <p class="regional-hours">🕒 Horário: Segunda a Sexta, das 08h às 17h</p>
+            <div class="regional-services-list">
+              <strong>Serviços Principais:</strong>
+              <span>CRAS, CREAS, SINE, Atendimento Finanças, Cohab</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO COMPLETA DE DUVIDAS FREQUENTES (FAQ ACCORDION) -->
+    <section id="faq" class="section-padding" aria-label="Perguntas Frequentes">
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="section-title">Perguntas Frequentes (FAQ)</h2>
+          <p class="section-description">Esclareça suas dúvidas sobre o funcionamento do portal, agendamentos presenciais e serviços digitais.</p>
+        </div>
 
         <div class="faq-container">
+          
           <details class="faq-item">
             <summary class="faq-question">
-              <strong>Como agendar a emissão da nova Carteira de Identidade (CIN)?</strong>
-              <span class="faq-icon" aria-hidden="true">➕</span>
+              <strong>Como realizo o agendamento para atendimento presencial na Rua da Cidadania?</strong>
             </summary>
-            <div class="faq-answer">
-              <p>O agendamento é feito de forma totalmente online no site oficial da Polícia Civil do Paraná. O sistema libera novos horários em dias úteis. Compareça ao posto selecionado com certidão original (nascimento ou casamento) e documento anterior.</p>
-            </div>
+            <p class="faq-answer">O agendamento prévio é obrigatório para a maioria dos serviços presenciais (como emissão de Carteira de Identidade e atendimento da Fazenda). Acesse a aba de Serviços Digitais, clique em "Agendamento de Atendimento", selecione a Rua da Cidadania mais próxima do seu bairro, escolha a data e horário disponíveis e confirme seu CPF.</p>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <strong>Como funciona a recarga por PIX do Cartão Transporte da URBS?</strong>
-              <span class="faq-icon" aria-hidden="true">➕</span>
+              <strong>Quais são as formas de pagamento aceitas para a guia do IPTU?</strong>
             </summary>
-            <div class="faq-answer">
-              <p>Você pode acessar o portal oficial da URBS ou usar aplicativos parceiros habilitados. Digite o número do seu cartão, selecione o valor desejado e efetue o pagamento da chave PIX gerada. Os créditos são liberados no validador dos ônibus e catracas em poucos instantes.</p>
-            </div>
+            <p class="faq-answer">A guia do IPTU pode ser paga via PIX (utilizando o QR Code impresso no documento), em qualquer agência bancária conveniada, lotéricas, ou através do débito automático cadastrado no seu banco. O pagamento à vista no mês de vencimento concede desconto especial estabelecido pela Prefeitura.</p>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <strong>Onde posso pagar ou solicitar o parcelamento do IPTU de Curitiba?</strong>
-              <span class="faq-icon" aria-hidden="true">➕</span>
+              <strong>Como funciona a marcação de consultas pelo aplicativo Saúde Já Curitiba?</strong>
             </summary>
-            <div class="faq-answer">
-              <p>No site da Prefeitura de Curitiba na aba de finanças e IPTU, informando a indicação fiscal do imóvel. É possível emitir as parcelas mensais com código de barras ou PIX, além de regularizar débitos anteriores.</p>
-            </div>
+            <p class="faq-answer">Baixe o aplicativo "Saúde Já Curitiba" na Play Store ou App Store ou acesse pelo link oficial no nosso portal. Faça o cadastro informando o número do seu Cartão SUS ou CPF e data de nascimento. No menu, selecione "Agendar Consulta", escolha a especialidade disponível na sua Unidade Básica de Saúde e confirme o dia.</p>
           </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <strong>Onde posso denunciar focos de dengue ou problemas de iluminação pública?</strong>
+            </summary>
+            <p class="faq-answer">Todas as solicitações de manutenção urbana, como troca de lâmpadas, tapa-buracos, poda de árvores e fiscalização de terrenos com água parada, devem ser registradas centralizadamente através da Central 156 (por telefone, aplicativo Central 156 Curitiba ou pelo site oficial do 156).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <strong>Como me cadastrar no programa Nota Curitibana para resgatar créditos?</strong>
+            </summary>
+            <p class="faq-answer">Acesse a seção do Nota Curitibana neste portal, clique em "Cadastrar-se" e informe seus dados pessoais e dados bancários para futuro depósito. Após o cadastro, lembre-se de pedir a inclusão do seu CPF em todas as notas fiscais de serviços (academias, escolas, estacionamentos, oficinas, salões de beleza, etc.).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <strong>O portal possui recursos de acessibilidade para pessoas com deficiência visual?</strong>
+            </summary>
+            <p class="faq-answer">Sim! O portal foi construído em conformidade integral com os padrões WCAG 2.1 (Nível AAA). Você pode utilizar o botão flutuante no canto inferior direito para ativar o modo de Alto Contraste, aumentar o tamanho das fontes, ativar tipografia para dislexia ou navegar totalmente utilizando os atalhos de teclado (Alt + 1 até Alt + 7).</p>
+          </details>
+
         </div>
       </div>
     </section>
 
-    <section id="contato" class="section-padding" aria-labelledby="contato-title">
+    <!-- SEÇÃO COMPLETA DE CENTRAIS DE EMERGÊNCIA 24H -->
+    <section id="emergencia" class="section-padding bg-section" aria-label="Telefones de Emergência e Utilidade Pública">
       <div class="container">
         <div class="help-box">
-          <header class="help-header">
-            <h2 id="contato-title" class="help-title">Centrais de Atendimento e Emergência</h2>
-            <p>Atendimento telefônico direto para urgências e solicitações de serviços da cidade.</p>
-          </header>
-
+          <div class="help-header">
+            <h2 class="help-title">Telefones e Centrais de Emergência 24 Horas</h2>
+            <p>Atendimento gratuito disponível 24 horas por dia, 7 dias por semana em todo o estado.</p>
+          </div>
           <div class="help-grid">
-            <a href="tel:156" class="help-card" aria-label="Ligar para a Central 156 da Prefeitura de Curitiba">
-              <div class="help-icon" aria-hidden="true">📞</div>
+            
+            <a href="tel:156" class="help-card">
+              <span class="help-icon" aria-hidden="true">📞</span>
               <div class="help-info">
                 <h3>Central 156</h3>
-                <p>Prefeitura de Curitiba — Atendimento Cidadão 24h</p>
+                <p>Atendimento ao Cidadão e Serviços Curitiba</p>
               </div>
             </a>
 
-            <a href="tel:153" class="help-card" aria-label="Ligar para a Guarda Municipal no telefone 153">
-              <div class="help-icon" aria-hidden="true">🛡️</div>
+            <a href="tel:153" class="help-card">
+              <span class="help-icon" aria-hidden="true">🛡️</span>
               <div class="help-info">
-                <h3>Guarda Municipal</h3>
-                <p>Ligue 153 — Segurança e Emergências Urbanas</p>
+                <h3>Guarda Municipal (153)</h3>
+                <p>Segurança Urbana, Parques e Prédios Públicos</p>
               </div>
             </a>
 
-            <a href="tel:192" class="help-card" aria-label="Ligar para o SAMU no telefone 192">
-              <div class="help-icon" aria-hidden="true">🚑</div>
+            <a href="tel:192" class="help-card">
+              <span class="help-icon" aria-hidden="true">🚑</span>
               <div class="help-info">
-                <h3>SAMU</h3>
-                <p>Ligue 192 — Emergências Médicas</p>
+                <h3>SAMU (192)</h3>
+                <p>Atendimento Médico de Urgência e Emergência</p>
               </div>
             </a>
+
+            <a href="tel:193" class="help-card">
+              <span class="help-icon" aria-hidden="true">🚒</span>
+              <div class="help-info">
+                <h3>Corpo de Bombeiros (193)</h3>
+                <p>Resgates, Incêndios e Acidentes de Trânsito</p>
+              </div>
+            </a>
+
+            <a href="tel:190" class="help-card">
+              <span class="help-icon" aria-hidden="true">🚔</span>
+              <div class="help-info">
+                <h3>Polícia Militar (190)</h3>
+                <p>Ocorrências Policiais e Emergências de Segurança</p>
+              </div>
+            </a>
+
+            <a href="tel:181" class="help-card">
+              <span class="help-icon" aria-hidden="true">🤫</span>
+              <div class="help-info">
+                <h3>Disque Denúncia (181)</h3>
+                <p>Denúncias Anônimas de Crimes e Tráfico</p>
+              </div>
+            </a>
+
           </div>
         </div>
       </div>
@@ -504,335 +682,96 @@
 
   </main>
 
-  <aside class="accessibility-widget" role="region" aria-label="Menu Flutuante de Acessibilidade Visual">
-    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir preferências de leitura e acessibilidade" aria-expanded="false" aria-controls="acc-menu" type="button">
-      <span aria-hidden="true">♿</span>
+  <!-- WIDGET FLUTUANTE COMPLETO DE ACESSIBILIDADE VISUAL -->
+  <aside class="accessibility-widget" aria-label="Painel Flutuante de Acessibilidade">
+    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir Menu de Acessibilidade Visual" aria-expanded="false">
+      ♿
     </button>
-
-    <div id="acc-menu" class="acc-menu hidden" role="dialog" aria-modal="false" aria-label="Painel de controle visual">
+    
+    <div id="acc-menu" class="acc-menu hidden" role="dialog" aria-label="Opções de Personalização Visual e Acessibilidade">
       <div class="acc-menu-header">
-        <h4>Preferências de Acessibilidade</h4>
-        <button id="btn-close-acc" class="close-acc-btn" aria-label="Fechar janela de acessibilidade" type="button">&times;</button>
+        <strong>Acessibilidade Visual</strong>
+        <button id="btn-close-acc" class="close-acc-btn" aria-label="Fechar menu de acessibilidade">&times;</button>
       </div>
-      <hr>
-
-      <span class="acc-section-label">Contraste e Cores</span>
+      
+      <span class="acc-section-label">Contraste de Tela</span>
       <div class="acc-btn-group">
-        <button id="btn-theme-light" type="button">☀️ Modo Claro</button>
-        <button id="btn-theme-dark" type="button">🌙 Modo Escuro</button>
-        <button id="btn-high-contrast" type="button">🌓 Alto Contraste</button>
+        <button id="btn-theme-light">Modo Claro Padrão</button>
+        <button id="btn-theme-dark">Modo Escuro (Dark)</button>
+        <button id="btn-high-contrast">Alto Contraste (AAA)</button>
       </div>
 
-      <span class="acc-section-label">Tamanho do Texto</span>
+      <span class="acc-section-label">Redimensionamento de Fonte</span>
       <div class="acc-btn-group">
-        <button id="btn-increase-font" type="button">A+ Ampliar Fonte</button>
-        <button id="btn-decrease-font" type="button">A- Reduzir Fonte</button>
-        <button id="btn-dyslexic-font" type="button">📖 Fonte para Dislexia</button>
+        <button id="btn-increase-font">Aumentar Fonte (+)</button>
+        <button id="btn-decrease-font">Diminuir Fonte (-)</button>
       </div>
 
-      <hr>
-      <button id="btn-reset-acc" class="btn-reset" type="button">🔄 Restaurar Padrões</button>          
+      <span class="acc-section-label">Acessibilidade Tipográfica</span>
+      <div class="acc-btn-group">
+        <button id="btn-dyslexic-font">Fonte para Dislexia</button>
+      </div>
+
+      <button id="btn-reset-acc" class="btn-reset">Restaurar Configurações Padrão</button>
     </div>
   </aside>
 
-  <footer id="rodape" class="footer" role="contentinfo" tabindex="-1">
+  <!-- RODAPÉ COMPLETO DA APLICAÇÃO -->
+  <footer id="rodape" class="footer" tabindex="-1">
     <div class="container footer-container">
+      
       <div class="footer-col">
-        <div class="logo-text">
-          <strong>Portal do Cidadão</strong>
-          <p>Plataforma oficial de integração de serviços públicos do município de Curitiba e do Estado do Paraná.</p>
-        </div>
+        <h4>Portal do Cidadão</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          Iniciativa oficial de integração de serviços digitais, transparência pública e acessibilidade irrestrita para o cidadão curitibano e paranaense.
+        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">
+          Atendimento presencial nas Ruas da Cidadania de segunda a sexta, das 08h às 17h.
+        </p>
       </div>
 
       <div class="footer-col">
-        <h4>Portais Oficiais</h4>
+        <h4>Portais Governamentais</h4>
         <ul class="footer-links">
-          <li><a href="https://www.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer">Prefeitura de Curitiba</a></li>
-          <li><a href="https://www.aen.pr.gov.br/" target="_blank" rel="noopener noreferrer">Governo do Estado do Paraná</a></li>
-          <li><a href="https://www.gov.br/" target="_blank" rel="noopener noreferrer">Portal Gov.br</a></li>
+          <li><a href="https://www.curitiba.pr.gov.br" target="_blank" rel="noopener noreferrer">Prefeitura Municipal de Curitiba</a></li>
+          <li><a href="https://www.pr.gov.br" target="_blank" rel="noopener noreferrer">Governo do Estado do Paraná</a></li>
+          <li><a href="https://www.camara.curitiba.pr.leg.br" target="_blank" rel="noopener noreferrer">Câmara Municipal de Curitiba</a></li>
+          <li><a href="https://www.transparencia.pr.gov.br" target="_blank" rel="noopener noreferrer">Portal da Transparência do Estado</a></li>
+          <li><a href="https://www.urbs.curitiba.pr.gov.br" target="_blank" rel="noopener noreferrer">URBS — Transporte Urbano</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Acesso Direto</h4>
+        <h4>Serviços Rápidos</h4>
         <ul class="footer-links">
-          <li><a href="#servicos-essenciais">Serviços Frequentes</a></li>
-          <li><a href="#regionais">Ruas da Cidadania</a></li>
-          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#servicos">Emissão de Guias de IPTU</a></li>
+          <li><a href="#servicos">Agendamento de Consultas SUS</a></li>
+          <li><a href="#servicos">Consultar Multas e CNH no Detran</a></li>
+          <li><a href="#servicos">Agência do Trabalhador e Vagas SINE</a></li>
+          <li><a href="#servicos">Programa Nota Curitibana</a></li>
         </ul>
       </div>
+
+      <div class="footer-col">
+        <h4>Suporte e Legislação</h4>
+        <ul class="footer-links">
+          <li><a href="#faq">Central de Dúvidas Frequentes</a></li>
+          <li><a href="#emergencia">Telefones de Emergência 24h</a></li>
+          <li><a href="#regionais">Endereços das Ruas da Cidadania</a></li>
+          <li><a href="#">Termos de Uso e Privacidade (LGPD)</a></li>
+          <li><a href="#">Declaração de Acessibilidade (WCAG 2.1)</a></li>
+        </ul>
+      </div>
+
     </div>
 
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; Portal de Serviços ao Cidadão de Curitiba e Paraná. Desenvolvido com padrões internacionais de acessibilidade (WCAG 2.1).</p>
+        <p>&copy; 2026 Portal do Cidadão — Curitiba & Estado do Paraná. Desenvolvido sob as normas de Acessibilidade Digital (WCAG 2.1 Nível AAA) e usabilidade responsiva.</p>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const body = document.body;
-      const ariaAnnouncer = document.getElementById("aria-announcer");
-
-      // Função de anúncio para leitores de tela
-      function announceToScreenReader(message) {
-        if (ariaAnnouncer) {
-          ariaAnnouncer.textContent = message;
-        }
-      }
-
-      // Controle do Aviso de Alerta do Sistema
-      const closeAlertBtn = document.getElementById("close-alert-btn");
-      if (closeAlertBtn) {
-        closeAlertBtn.addEventListener("click", () => {
-          const alertBar = closeAlertBtn.closest(".system-alert-bar");
-          if (alertBar) {
-            alertBar.style.display = "none";
-            announceToScreenReader("Aviso do sistema fechado.");
-          }
-        });
-      }
-
-      // Elementos do Painel de Acessibilidade
-      const themeToggleHeader = document.getElementById("theme-toggle-header");
-      const toggleAccMenuBtn = document.getElementById("toggle-acc-menu");
-      const accQuickToggle = document.getElementById("acc-quick-toggle");
-      const accMenu = document.getElementById("acc-menu");
-      const btnCloseAcc = document.getElementById("btn-close-acc");
-      
-      const btnThemeLight = document.getElementById("btn-theme-light");
-      const btnThemeDark = document.getElementById("btn-theme-dark");
-      const btnHighContrast = document.getElementById("btn-high-contrast");
-      const btnIncreaseFont = document.getElementById("btn-increase-font");
-      const btnDecreaseFont = document.getElementById("btn-decrease-font");
-      const btnDyslexicFont = document.getElementById("btn-dyslexic-font");
-      const btnResetAcc = document.getElementById("btn-reset-acc");
-
-      let currentFontSize = 100;
-      let isDyslexicFont = false;
-
-      function toggleAccWidget() {
-        if (!accMenu) return;
-        const isHidden = accMenu.classList.contains("hidden");
-        if (isHidden) {
-          accMenu.classList.remove("hidden");
-          if (toggleAccMenuBtn) toggleAccMenuBtn.setAttribute("aria-expanded", "true");
-          if (accQuickToggle) accQuickToggle.setAttribute("aria-expanded", "true");
-          announceToScreenReader("Painel de acessibilidade aberto.");
-        } else {
-          accMenu.classList.add("hidden");
-          if (toggleAccMenuBtn) toggleAccMenuBtn.setAttribute("aria-expanded", "false");
-          if (accQuickToggle) accQuickToggle.setAttribute("aria-expanded", "false");
-          announceToScreenReader("Painel de acessibilidade fechado.");
-        }
-      }
-
-      if (toggleAccMenuBtn) toggleAccMenuBtn.addEventListener("click", toggleAccWidget);
-      if (accQuickToggle) accQuickToggle.addEventListener("click", toggleAccWidget);
-      if (btnCloseAcc) btnCloseAcc.addEventListener("click", toggleAccWidget);
-
-      // Gestão de Temas
-      function setTheme(themeName) {
-        body.setAttribute("data-theme", themeName);
-        const metaThemeColor = document.getElementById("meta-theme-color");
-        
-        if (metaThemeColor) {
-          metaThemeColor.setAttribute("content", themeName === "dark" ? "#0f172a" : "#0284c7");
-        }
-
-        if (themeToggleHeader) {
-          const iconSpan = themeToggleHeader.querySelector(".icon");
-          if (iconSpan) {
-            iconSpan.textContent = (themeName === "dark" || themeName === "high-contrast") ? "☀️" : "🌙";
-          }
-        }
-        announceToScreenReader(`Tema alterado para ${themeName}`);
-      }
-
-      if (themeToggleHeader) {
-        themeToggleHeader.addEventListener("click", () => {
-          const currentTheme = body.getAttribute("data-theme");
-          setTheme(currentTheme === "dark" ? "light" : "dark");
-        });
-      }
-
-      if (btnThemeLight) btnThemeLight.addEventListener("click", () => setTheme("light"));
-      if (btnThemeDark) btnThemeDark.addEventListener("click", () => setTheme("dark"));
-      if (btnHighContrast) btnHighContrast.addEventListener("click", () => setTheme("high-contrast"));
-
-      // Tamanho de Fonte
-      if (btnIncreaseFont) {
-        btnIncreaseFont.addEventListener("click", () => {
-          if (currentFontSize < 140) {
-            currentFontSize += 10;
-            document.documentElement.style.fontSize = `${currentFontSize}%`;
-            announceToScreenReader(`Tamanho do texto aumentado para ${currentFontSize} por cento`);
-          }
-        });
-      }
-
-      if (btnDecreaseFont) {
-        btnDecreaseFont.addEventListener("click", () => {
-          if (currentFontSize > 85) {
-            currentFontSize -= 10;
-            document.documentElement.style.fontSize = `${currentFontSize}%`;
-            announceToScreenReader(`Tamanho do texto reduzido para ${currentFontSize} por cento`);
-          }
-        });
-      }
-
-      if (btnDyslexicFont) {
-        btnDyslexicFont.addEventListener("click", () => {
-          isDyslexicFont = !isDyslexicFont;
-          body.style.fontFamily = isDyslexicFont 
-            ? "'Comic Sans MS', 'OpenDyslexic', sans-serif" 
-            : "'Inter', system-ui, sans-serif";
-          announceToScreenReader(isDyslexicFont ? "Fonte para dislexia ativada" : "Fonte padrão restaurada");
-        });
-      }
-
-      if (btnResetAcc) {
-        btnResetAcc.addEventListener("click", () => {
-          currentFontSize = 100;
-          isDyslexicFont = false;
-          document.documentElement.style.fontSize = "100%";
-          body.style.fontFamily = "'Inter', system-ui, sans-serif";
-          setTheme("light");
-          announceToScreenReader("Configurações de acessibilidade restauradas para o padrão");
-        });
-      }
-
-      // Sistema de Busca com Feedback Visual
-      const searchBtnToggle = document.getElementById('search-btn-toggle');
-      const searchBarContainer = document.getElementById('search-bar-container');
-      const searchInput = document.getElementById('search-input');
-      const searchCloseBtn = document.getElementById('search-close-btn');
-      const cards = document.querySelectorAll('.cards-grid .card');
-
-      function closeSearch() {
-        if (searchBarContainer) searchBarContainer.classList.add('hidden');
-        if (searchBtnToggle) searchBtnToggle.setAttribute('aria-expanded', 'false');
-        if (searchInput) searchInput.value = '';
-        cards.forEach((card) => card.style.display = 'flex');
-        announceToScreenReader("Barra de busca fechada");
-      }
-
-      if (searchBtnToggle && searchBarContainer) {
-        searchBtnToggle.addEventListener('click', () => {
-          const isHidden = searchBarContainer.classList.contains('hidden');
-          if (isHidden) {
-            searchBarContainer.classList.remove('hidden');
-            searchBtnToggle.setAttribute('aria-expanded', 'true');
-            if (searchInput) searchInput.focus();
-            announceToScreenReader("Barra de busca aberta");
-          } else {
-            closeSearch();
-          }
-        });
-      }
-
-      if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
-
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          const term = e.target.value.toLowerCase().trim();
-          let visibleCount = 0;
-
-          cards.forEach((card) => {
-            const text = card.textContent.toLowerCase();
-            if (text.includes(term)) {
-              card.style.display = 'flex';
-              visibleCount++;
-            } else {
-              card.style.display = 'none';
-            }
-          });
-
-          announceToScreenReader(`${visibleCount} serviço(s) encontrado(s) para a busca`);
-        });
-      }
-
-      // Filtros de Categoria
-      const filterButtons = document.querySelectorAll('.publico-tags .tag-btn');
-      const filterCountDisplay = document.getElementById('filter-count-display');
-
-      filterButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          filterButtons.forEach((b) => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-
-          const category = btn.getAttribute('data-filter');
-          let count = 0;
-
-          cards.forEach((card) => {
-            const cardCat = card.getAttribute('data-category');
-            if (category === 'todos' || cardCat === category) {
-              card.style.display = 'flex';
-              count++;
-            } else {
-              card.style.display = 'none';
-            }
-          });
-
-          const msg = category === 'todos' 
-            ? 'Exibindo todos os serviços' 
-            : `Exibindo ${count} serviço(s) na categoria selecionada`;
-
-          if (filterCountDisplay) filterCountDisplay.textContent = msg;
-          announceToScreenReader(msg);
-        });
-      });
-
-      // Atalhos numéricos universais (1, 2, 3, 4)
-      document.addEventListener("keydown", (e) => {
-        const activeElement = document.activeElement;
-        const isTyping = activeElement.tagName === "INPUT" || 
-                         activeElement.tagName === "TEXTAREA" || 
-                         activeElement.isContentEditable;
-
-        if (isTyping) return;
-
-        if (e.key === "1") {
-          const main = document.getElementById("conteudo-principal");
-          if (main) {
-            main.scrollIntoView({ behavior: "smooth" });
-            main.focus();
-            announceToScreenReader("Navegado para o conteúdo principal");
-          }
-        } else if (e.key === "2") {
-          const nav = document.getElementById("nav-menu");
-          if (nav) {
-            nav.scrollIntoView({ behavior: "smooth" });
-            const firstLink = nav.querySelector("a");
-            if (firstLink) firstLink.focus();
-            announceToScreenReader("Navegado para o menu principal");
-          }
-        } else if (e.key === "3") {
-          e.preventDefault();
-          if (searchBarContainer && searchInput) {
-            searchBarContainer.classList.remove("hidden");
-            if (searchBtnToggle) searchBtnToggle.setAttribute("aria-expanded", "true");
-            setTimeout(() => {
-              searchInput.focus();
-              searchInput.select();
-            }, 100);
-            announceToScreenReader("Navegado para o campo de busca");
-          }
-        } else if (e.key === "4") {
-          const footer = document.getElementById("rodape");
-          if (footer) {
-            footer.scrollIntoView({ behavior: "smooth" });
-            footer.focus();
-            announceToScreenReader("Navegado para o rodapé");
-          }
-        }
-      });
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
