@@ -1,420 +1,757 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal do Cidadão — Curitiba e Paraná</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Dyslexic&display=swap" rel="stylesheet">
+
+  <title>Portal do Cidadão - Acessível para todos</title>
+
   <link rel="stylesheet" href="estilo.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
-<body>
 
-  <button id="acc-mini-trigger" class="acc-mini-trigger hidden" title="Abrir Opções de Acessibilidade" aria-label="Abrir Acessibilidade">
-    ♿
-  </button>
+<body data-theme="light">
 
-  <aside id="accessibility-sidebar" class="accessibility-sidebar" aria-label="Painel de Acessibilidade">
-    <button class="acc-toggle-btn" id="acc-toggle-btn" title="Fechar Acessibilidade" aria-label="Fechar Acessibilidade">✕</button>
-    
-    <div class="acc-content">
-      <span class="acc-label">FONTE</span>
-      <button id="btn-font-decrease" class="acc-btn" title="Diminuir Fonte">A-</button>
-      <div class="acc-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+
+
+<header class="header">
+
+  <div class="container header-container">
+
+    <a href="#" class="logo">
+
+      <div class="logo-icon">🛡️</div>
+
+      <div class="logo-text">
+
+        <strong>Portal do Cidadão</strong>
+
+        <span>Acessível para todos</span>
+
       </div>
-      <button id="btn-font-increase" class="acc-btn" title="Aumentar Fonte">A+</button>
 
-      <button id="btn-contrast" class="acc-btn acc-btn-block" title="Alternar Contraste">
-        <span class="acc-icon">⚙️</span>
-        <span class="acc-btn-text">Contraste</span>
+    </a>
+
+
+
+    <nav class="nav-menu">
+
+      <a href="#servicos" class="nav-link">Serviços</a>
+
+      <a href="#saude" class="nav-link">Saúde</a>
+
+      <a href="#noticias" class="nav-link">Notícias</a>
+
+      <a href="#contato" class="nav-link">Contato</a>
+
+    </nav>
+
+
+
+    <div class="header-actions">
+
+      <button id="theme-toggle-header" class="theme-btn-header" aria-label="Alternar Tema Claro/Escuro">
+
+        🌙
+
       </button>
 
-      <button id="btn-pause" class="acc-btn acc-btn-block" title="Pausar Animações">
-        <span class="acc-icon">⏸️</span>
-        <span class="acc-btn-text">Pausar</span>
-      </button>
+      <button id="search-btn-toggle" class="search-btn" aria-label="Buscar no portal" aria-expanded="false">🔍</button>
 
-      <button id="btn-dyslexia" class="acc-btn acc-btn-block" title="Modo Dislexia">
-        <span class="acc-text-bold">Dy</span>
-        <span class="acc-btn-text">Dislexia</span>
-      </button>
-
-      <button id="btn-reset" class="acc-btn acc-btn-reset" title="Resetar Tudo">Resetar</button>
     </div>
-  </aside>
 
-  <header class="header">
-    <div class="container header-container">
-      <a href="#" class="logo">
-        <span class="logo-icon">🏛️</span>
-        <div class="logo-text">
-          <strong>Portal do Cidadão</strong>
-          <span>Curitiba & Estado do Paraná</span>
+  </div>
+
+
+
+  <div id="search-bar-container" class="search-bar-container hidden">
+
+    <div class="container search-bar-content">
+
+      <input
+
+        type="search"
+
+        id="search-input"
+
+        placeholder="O que você procura? (ex: vacina, bolsa família, consulta...)"
+
+        aria-label="Campo de busca"
+
+      >
+
+      <button id="search-close-btn" class="search-close-btn" aria-label="Fechar busca">&times;</button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+  <section class="hero-section">
+
+    <div class="container hero-container">
+
+      <div class="badge-wcag">
+
+        ♿ Portal 100% Acessível — WCAG 2.1 AAA
+
+      </div>
+
+      <h1 class="hero-title">
+
+        Bem-vindo ao<br>
+
+        <span class="highlight-blue">Portal do Cidadão</span>
+
+      </h1>
+
+      <p class="hero-subtitle">
+
+        Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.
+
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#servicos" class="btn btn-primary">Ver Serviços &rarr;</a>
+
+        <a href="tel:156" class="btn btn-outline">📞 Ligar: 156</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section class="publicos-section">
+
+    <div class="container">
+
+      <div class="accessibility-banner">
+
+        <span class="banner-icon">♿</span>
+
+        <p>Use a <strong>Barra de Acessibilidade</strong> à direita para alterar o Tema (Claro/Escuro), ajustar fonte para Baixa Visão e ativar o modo Dislexia.</p>
+
+      </div>
+
+
+
+      <div class="publico-tags">
+
+        <a href="https://www.curitiba.pr.gov.br/servicos/pessoa-idosa" target="_blank" rel="noopener noreferrer" class="tag-btn">👴 Idosos</a>
+
+        <a href="https://saude.curitiba.pr.gov.br/linha-de-cuidado-da-gestante.html" target="_blank" rel="noopener noreferrer" class="tag-btn">🤰 Gestantes</a>
+
+        <a href="https://educacao.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="tag-btn">👦 Crianças</a>
+
+        <a href="https://www.curitiba.pr.gov.br/servicos/juventude" target="_blank" rel="noopener noreferrer" class="tag-btn">🧑 Jovens</a>
+
+        <a href="https://www.trabalho.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="tag-btn">👨‍💼 Trabalhadores</a>
+
+        <a href="https://www.curitiba.pr.gov.br/servicos/pessoa-com-deficiencia" target="_blank" rel="noopener noreferrer" class="tag-btn">♿ Pessoas com Deficiência</a>
+
+        <a href="https://fas.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="tag-btn">👨‍👩‍👧 Famílias de Baixa Renda</a>
+
+        <a href="https://www.curitiba.pr.gov.br/servicos/atendimento-a-migrantes-e-refugiados" target="_blank" rel="noopener noreferrer" class="tag-btn">🌐 Imigrantes</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section id="servicos" class="section-padding bg-section">
+
+    <div class="container">
+
+      <h2 class="section-title">Acesso Rápido</h2>
+
+
+
+      <div class="cards-grid">
+
+        <article class="card">
+
+          <div class="card-icon icon-red">❤️</div>
+
+          <h3>Saúde</h3>
+
+          <p>Consultas, exames, vacinas e UBS próximas</p>
+
+          <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-blue">📖</div>
+
+          <h3>Benefícios</h3>
+
+          <p>Aposentadoria, BPC, Bolsa Família e INSS</p>
+
+          <a href="https://meu.inss.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-green">📖</div>
+
+          <h3>Educação</h3>
+
+          <p>Matrículas, bolsas e cursos profissionalizantes</p>
+
+          <a href="https://educacao.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-yellow">🔔</div>
+
+          <h3>Avisos Oficiais</h3>
+
+          <p>Comunicados, editais e prazos importantes</p>
+
+          <a href="https://www.curitiba.pr.gov.br/diariooficial" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-purple">🏠</div>
+
+          <h3>Habitação</h3>
+
+          <p>Minha Casa Minha Vida e regularização fundiária</p>
+
+          <a href="http://www.cohabct.com.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-pink">👥</div>
+
+          <h3>Assistência Social</h3>
+
+          <p>CRAS, CREAS e acompanhamento familiar</p>
+
+          <a href="https://fas.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-cyan">🛡️</div>
+
+          <h3>Segurança</h3>
+
+          <p>Boletim de ocorrência e delegacia online</p>
+
+          <a href="https://www.delegaciacitadainter.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+
+
+        <article class="card">
+
+          <div class="card-icon icon-lightgreen">📞</div>
+
+          <h3>Ouvidoria</h3>
+
+          <p>Reclamações, sugestões e atendimento 156</p>
+
+          <a href="https://156.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section id="saude" class="section-padding">
+
+    <div class="container">
+
+      <h2 class="section-title">❤️ Saúde em Dia — Curitiba</h2>
+
+      <h3 class="subsection-title">📅 Atendimentos e Vacinação Esta Semana</h3>
+
+
+
+      <div class="agenda-list">
+
+        <div class="agenda-item">
+
+          <div class="date-badge">
+
+            <span class="day">13 Feb</span>
+
+            <span class="time">08:00</span>
+
+          </div>
+
+          <div class="agenda-info">
+
+            <h4>Vacinação de Rotina e Calendário Infantil</h4>
+
+            <p>US Ouvidor Pardinho (Rebouças) & US Mãe Curitibana</p>
+
+          </div>
+
         </div>
-      </a>
 
-      <nav class="nav-menu" id="nav-menu">
-        <ul class="nav-list">
-          <li><a href="#servicos" class="nav-link">Serviços</a></li>
-          <li><a href="#avisos-noticias" class="nav-link">Notícias</a></li>
-          <li><a href="#regionais" class="nav-link">Ruas da Cidadania</a></li>
-          <li><a href="#faq" class="nav-link">Dúvidas</a></li>
-        </ul>
-      </nav>
 
-      <button id="menu-mobile-btn" class="menu-mobile-btn" aria-label="Abrir Menu">☰</button>
+
+        <div class="agenda-item">
+
+          <div class="date-badge">
+
+            <span class="day">16 Feb</span>
+
+            <span class="time">09:00</span>
+
+          </div>
+
+          <div class="agenda-info">
+
+            <h4>Acompanhamento Pré-natal e Saúde da Mulher</h4>
+
+            <p>US Bairro Alto & US Campina do Siqueira</p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="agenda-item">
+
+          <div class="date-badge">
+
+            <span class="day">18 Feb</span>
+
+            <span class="time">13:30</span>
+
+          </div>
+
+          <div class="agenda-info">
+
+            <h4>Programa de Atenção ao Idoso (60+)</h4>
+
+            <p>US Santa Felicidade</p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="agenda-item">
+
+          <div class="date-badge">
+
+            <span class="day">20 Feb</span>
+
+            <span class="time">08:30</span>
+
+          </div>
+
+          <div class="agenda-info">
+
+            <h4>Atendimento e Acolhimento — Saúde Mental</h4>
+
+            <p>CAPS II Portão / Fazendinha</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="btn-text-link">Agendar pelo aplicativo Saúde Já Curitiba &rarr;</a>
+
+
+
+      <div class="programas-container">
+
+        <h3>💊 Programas Gratuitos de Saúde</h3>
+
+
+
+        <div class="programa-card">
+
+          <div class="programa-icon">🏥</div>
+
+          <div>
+
+            <h4>Farmácia Curitibana</h4>
+
+            <p>Distribuição de medicamentos básicos e especializados pelo SUS</p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="programa-card">
+
+          <div class="programa-icon">🏥</div>
+
+          <div>
+
+            <h4>Rede Mãe Curitibana Vale a Pena</h4>
+
+            <p>Acompanhamento pré-natal completo e suporte ao recém-nascido</p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="programa-card">
+
+          <div class="programa-icon">🏥</div>
+
+          <div>
+
+            <h4>Programa Saúde na Escola (PSE)</h4>
+
+            <p>Ações preventivas e avaliações de saúde nas escolas municipais</p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="disque-saude-banner">
+
+          📞 <strong>Central 3350-9000 (Central Saúde Já Curitiba)</strong> — Atendimento telefônico diário para orientações e triagem.
+
+        </div>
+
+      </div>
+
     </div>
-  </header>
 
-  <main id="conteudo-principal">
+  </section>
 
-    <section class="hero-section">
-      <div class="container hero-container">
-        <h1 class="hero-title">
-          Bem-vindo ao <br>
-          <span class="highlight-blue">Portal do Cidadão</span>
-        </h1>
-        
-        <p class="hero-subtitle">
-          Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.
+
+
+  <section id="noticias" class="section-padding bg-section">
+
+    <div class="container">
+
+      <h2 class="section-title">📰 Notícias e Avisos</h2>
+
+
+
+      <div class="news-grid">
+
+        <article class="news-card">
+
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Médico utilizando celular para atendimento">
+
+          <div class="news-content">
+
+            <span class="news-tag tag-saude">SAÚDE</span>
+
+            <h3>Campanhas de vacinação seguem ativas nas Unidades de Saúde</h3>
+
+            <p>Confira os horários de funcionamento e os pontos de vacinação em todas as regionais da cidade.</p>
+
+            <div class="news-footer">
+
+              <span>12 Feb 2026</span>
+
+              <a href="https://www.curitiba.pr.gov.br/noticias/saude" target="_blank" rel="noopener noreferrer" class="news-link">Ler mais ↗</a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="news-card">
+
+          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Pessoa assinando documento">
+
+          <div class="news-content">
+
+            <span class="news-tag tag-beneficios">BENEFÍCIOS</span>
+
+            <h3>Atualização do Cadastro Único para programas sociais</h3>
+
+            <p>Famílias devem manter os dados atualizados nos CRAS para garantir acesso a benefícios federais e municipais.</p>
+
+            <div class="news-footer">
+
+              <span>10 Feb 2026</span>
+
+              <a href="https://www.gov.br/pt-br/servicos/atualizar-cadastro-unico" target="_blank" rel="noopener noreferrer" class="news-link">Ler mais ↗</a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="news-card">
+
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Estudantes em sala de aula">
+
+          <div class="news-content">
+
+            <span class="news-tag tag-educacao">EDUCAÇÃO</span>
+
+            <h3>Inscrições para cursos de qualificação profissional gratuitos</h3>
+
+            <p>Abertura de novas turmas para capacitação técnica e inserção no mercado de trabalho local.</p>
+
+            <div class="news-footer">
+
+              <span>08 Feb 2026</span>
+
+              <a href="https://agencia.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="news-link">Ler mais ↗</a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="news-card">
+
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Maquete de casa e chaves">
+
+          <div class="news-content">
+
+            <span class="news-tag tag-habitacao">HABITAÇÃO</span>
+
+            <h3>Programas habitacionais e regularização de lotes</h3>
+
+            <p>COHAB divulga novos prazos para atualização de cadastro e projetos de urbanização.</p>
+
+            <div class="news-footer">
+
+              <span>05 Feb 2026</span>
+
+              <a href="http://www.cohabct.com.br/" target="_blank" rel="noopener noreferrer" class="news-link">Ler mais ↗</a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section id="contato" class="section-padding">
+
+    <div class="container">
+
+      <div class="help-box">
+
+        <h2 class="help-title">Precisa de Ajuda?</h2>
+
+        <p class="help-subtitle">
+
+          Atendemos todos os cidadãos gratuitamente — por telefone, aplicativo, presencialmente ou com visita domiciliar para quem não pode se deslocar.
+
         </p>
-        
-        <div class="hero-buttons">
-          <a href="#servicos" class="btn btn-primary">Ver Serviços <span>→</span></a>
-          <a href="tel:156" class="btn btn-outline">📞 Ligar: 156</a>
-        </div>
 
-        <div class="search-box-container">
-          <div class="search-input-wrapper">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="search-input" placeholder="Digite o que você procura (Ex: IPTU, Vacina, Ônibus, Cursos...)" autocomplete="off">
-            <button id="search-clear-btn" class="search-clear-btn hidden" aria-label="Limpar busca">&times;</button>
-          </div>
-          <div id="search-results-stats" class="search-results-stats hidden"></div>
-        </div>
 
-        <div class="hero-notice-banner">
-          <span class="notice-emoji">♿</span>
-          <p>Use a <strong>Barra de Acessibilidade</strong> à direita para ajustar fonte, contraste, pausar animações e ativar modo dislexia a qualquer momento.</p>
-        </div>
-      </div>
-    </section>
 
-    <section id="avisos-noticias" class="section-padding bg-cream-alt">
-      <div class="container">
-        <div class="section-intro">
-          <h2 class="section-title">Avisos e Destaques</h2>
-          <p class="section-description">Fique por dentro das últimas atualizações da cidade e do estado.</p>
-        </div>
+        <div class="help-grid">
 
-        <div class="category-filters">
-          <button class="filter-btn active" data-filter="todos">Todos</button>
-          <button class="filter-btn" data-filter="saude">Saúde</button>
-          <button class="filter-btn" data-filter="beneficios">Benefícios</button>
-          <button class="filter-btn" data-filter="educacao">Educação</button>
-          <button class="filter-btn" data-filter="habitacao">Habitação</button>
-          <button class="filter-btn" data-filter="inclusao">Inclusão</button>
-        </div>
+          <a href="tel:156" class="help-card" aria-label="Ligar para Central 156">
 
-        <div id="grid-noticias" class="cards-grid">
-          
-          <article class="card card-news" data-category="saude" data-keywords="saude vacina gripe ubs posto medica consulta">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Médico utilizando celular" class="card-img">
-            </div>
-            <div class="card-body">
-              <span class="badge-pill pill-saude">SAÚDE</span>
-              <h3 class="news-title">Campanha de vacinação contra gripe aberta para toda a população</h3>
-              <p class="news-text">Crianças, gestantes, adultos e idosos podem se vacinar gratuitamente nas UBS até 31 de agosto, das 7h às 19h.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
-            </div>
-          </article>
+            <div class="help-icon">📞</div>
 
-          <article class="card card-news" data-category="beneficios" data-keywords="beneficios bolsa familia cras inss assistencia social">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Pessoa assinando documento" class="card-img">
-            </div>
-            <div class="card-body">
-              <span class="badge-pill pill-beneficios">BENEFÍCIOS</span>
-              <h3 class="news-title">Inscrições abertas para o programa Bolsa Família em 2026</h3>
-              <p class="news-text">Famílias em situação de vulnerabilidade social podem se cadastrar presencialmente no CRAS ou pelo aplicativo Meu INSS.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/conteudo/assistencia-social/283" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
-            </div>
-          </article>
+            <div class="help-info">
 
-          <article class="card card-news" data-category="educacao" data-keywords="educacao cursos vagas prefeitura aula tecnologia profissionalizante">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Jovens estudando juntos" class="card-img">
-            </div>
-            <div class="card-body">
-              <span class="badge-pill pill-educacao">EDUCAÇÃO</span>
-              <h3 class="news-title">Prefeitura abre 3.200 vagas em cursos profissionalizantes gratuitos</h3>
-              <p class="news-text">Jovens e adultos podem se inscrever em cursos de tecnologia, saúde, construção civil e gastronomia com certificado.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.educacao.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card card-news" data-category="habitacao" data-keywords="habitacao cohab casa propria moradia lote reforma">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Chaves e modelo de casa" class="card-img">
-            </div>
-            <div class="card-body">
-              <span class="badge-pill pill-habitacao">HABITAÇÃO</span>
-              <h3 class="news-title">Programa de Moradia Popular abre novo lote de inscrições na COHAB</h3>
-              <p class="news-text">Famílias cadastradas podem atualizar dados e novos interessados podem realizar a pré-inscrição online de forma simples.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.cohabct.com.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="card card-news" data-category="inclusao" data-keywords="inclusao digital tecnologia rua da cidadania informatica oficinas">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Grupo trabalhando com computadores" class="card-img">
-            </div>
-            <div class="card-body">
-              <span class="badge-pill pill-inclusao">INCLUSÃO</span>
-              <h3 class="news-title">Programa de Inclusão Digital e Capacitação Tecnológica</h3>
-              <p class="news-text">Oficinas gratuitas de informática básica e ferramentas digitais nas Ruas da Cidadania para toda a comunidade.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais <span>→</span></a>
-            </div>
-          </article>
-
-        </div>
-        
-        <div id="no-results-msg" class="no-results hidden">
-          <p>Nenhum serviço ou notícia foi encontrado para o termo pesquisado.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicos" class="section-padding">
-      <div class="container">
-        <div class="section-intro">
-          <h2 class="section-title">Acesso Rápido aos Serviços da Prefeitura</h2>
-          <p class="section-description">Principais portais e sistemas da Prefeitura Municipal de Curitiba.</p>
-        </div>
-
-        <div id="grid-servicos" class="cards-grid">
-          
-          <article class="card card-service" data-keywords="156 central atendimento chamados rua iluminação protocolo prefeitura solicitações">
-            <div class="card-body">
-              <div class="service-icon">📞</div>
               <h3>Central 156</h3>
-              <p>Solicitação de reparos, tapa-buracos, iluminação, recolhimento de entulho e acompanhamento de protocolos.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://156.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar 156 <span>→</span></a>
-            </div>
-          </article>
 
-          <article class="card card-service" data-keywords="saude ja consulta vacina sus posto medico agendamento dentista carteira vacinacao">
-            <div class="card-body">
-              <div class="service-icon">🏥</div>
+              <p>Ligar para 156 (24h)</p>
+
+            </div>
+
+          </a>
+
+
+
+          <a href="tel:33509000" class="help-card" aria-label="Ligar para Central Saúde Já Curitiba">
+
+            <div class="help-icon">💬</div>
+
+            <div class="help-info">
+
               <h3>Saúde Já Curitiba</h3>
-              <p>Agendamento de consultas médicas e odontológicas na rede municipal e histórico de vacinação.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar Saúde Já <span>→</span></a>
-            </div>
-          </article>
 
-          <article class="card card-service" data-keywords="iptu imposto certidao negativa taxa carne 2 via imovel arrecadacao tributos">
-            <div class="card-body">
-              <div class="service-icon">📑</div>
-              <h3>IPTU & Certidões</h3>
-              <p>Emissão de 2ª via do carnê do IPTU, consulta de débitos imobiliários e certidão negativa de tributos.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://iptu.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Emitir Guia <span>→</span></a>
-            </div>
-          </article>
+              <p>Ligar para (41) 3350-9000</p>
 
-          <article class="card card-service" data-keywords="urbs cartao transporte onibus recarga horario linha passagem horario itinerario">
-            <div class="card-body">
-              <div class="service-icon">🚌</div>
-              <h3>URBS & Transporte</h3>
-              <p>Recarga do Cartão Transporte, emissão de 2ª via, consulta de horários e itinerários das linhas de ônibus.</p>
             </div>
-            <div class="card-footer">
-              <a href="https://www.urbs.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar URBS <span>→</span></a>
-            </div>
-          </article>
 
-          <article class="card card-service" data-keywords="nota curitibana nfse sorteio premios nota fiscal desconto iptu cadastramento">
-            <div class="card-body">
-              <div class="service-icon">🎟️</div>
-              <h3>Nota Curitibana</h3>
-              <p>Resgate de créditos de Notas Fiscais de Serviços, participação em sorteios e desconto no IPTU.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://notacuritibana.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar Nota <span>→</span></a>
-            </div>
-          </article>
+          </a>
 
-          <article class="card card-service" data-keywords="emprego vaga curriculo agencia trabalhador sine seguro desemprego trabalho">
-            <div class="card-body">
-              <div class="service-icon">💼</div>
-              <h3>Agência do Trabalhador</h3>
-              <p>Cadastro de currículos, consulta de vagas abertas no SINE municipal e agendamento de seguro-desemprego.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.curitiba.pr.gov.br/conteudo/agencia-do-trabalhador/281" target="_blank" rel="noopener noreferrer" class="card-link">Buscar Vagas <span>→</span></a>
-            </div>
-          </article>
 
-          <article class="card card-service" data-keywords="iss alvara empresas mei nota fiscal eletronica licenca meio ambiente vigilancia">
-            <div class="card-body">
-              <div class="service-icon">🏢</div>
-              <h3>Alvará & ISS Eletrônico</h3>
-              <p>Emissão e renovação de Alvará de Funcionamento, gestão de ISS para empresas e Microempreendedores (MEI).</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://isscuritiba.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Consultar ISS <span>→</span></a>
-            </div>
-          </article>
 
-          <article class="card card-service" data-keywords="cohab casa propria moradia inscricao habitacao popular loteamento">
-            <div class="card-body">
-              <div class="service-icon">🏠</div>
-              <h3>COHAB — Habitação</h3>
-              <p>Inscrição e atualização no cadastro da casa própria e programas de habitação popular do município.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://www.cohabct.com.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar COHAB <span>→</span></a>
-            </div>
-          </article>
+          <a href="tel:156" class="help-card" aria-label="Ligar para agendar visita domiciliar via CRAS">
 
-          <article class="card card-service" data-keywords="transparencia contas publicas licitacoes orcamento gastos salarios servidores contratos">
-            <div class="card-body">
-              <div class="service-icon">📊</div>
-              <h3>Portal da Transparência</h3>
-              <p>Consulta pública de gastos, receitas, contratos, licitações e remuneração dos servidores municipais.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://transparencia.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Consultar Dados <span>→</span></a>
-            </div>
-          </article>
+            <div class="help-icon">🏠</div>
 
-          <article class="card card-service" data-keywords="setran estar digital estacionamento regulamentado recurso multa transito">
-            <div class="card-body">
-              <div class="service-icon">🅿️</div>
-              <h3>SETRAN & EstaR Digital</h3>
-              <p>Compra de créditos de estacionamento EstaR Digital, defesa de autuações e recursos de trânsito municipal.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://transito.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar SETRAN <span>→</span></a>
-            </div>
-          </article>
+            <div class="help-info">
 
-          <article class="card card-service" data-keywords="fas assistencia social cras creas cadunico cadastro unico bolsa familia resgate social">
-            <div class="card-body">
-              <div class="service-icon">🤝</div>
-              <h3>Assistência Social (FAS)</h3>
-              <p>Agendamento no CRAS, atualização do Cadastro Único (CadÚnico) e serviços de acolhimento social.</p>
-            </div>
-            <div class="card-footer">
-              <a href="https://fas.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar FAS <span>→</span></a>
-            </div>
-          </article>
+              <h3>Visita Domiciliar</h3>
 
-          <article class="card card-service" data-keywords="meio ambiente castracao gratuita animais adocao lixo vegetacao poda arvore">
-            <div class="card-body">
-              <div class="service-icon">🐾</div>
-              <h3>Proteção Animal & Meio Ambiente</h3>
-              <p>Agendamento de castração gratuita para cães e gatos, adoção de animais e autorização para poda de árvores.</p>
+              <p>Solicitar via 156 (CRAS/FAS)</p>
+
             </div>
-            <div class="card-footer">
-              <a href="https://meioambiente.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar Portal <span>→</span></a>
+
+          </a>
+
+
+
+          <a href="tel:100" class="help-card" aria-label="Ligar para atendimento prioritário e Direitos Humanos">
+
+            <div class="help-icon">♿</div>
+
+            <div class="help-info">
+
+              <h3>Atendimento Prioritário</h3>
+
+              <p>Ligar Disque 100 (Idosos/PCD)</p>
+
             </div>
-          </article>
+
+          </a>
 
         </div>
+
       </div>
-    </section>
 
-    <section id="regionais" class="section-padding bg-cream-alt">
-      <div class="container">
-        <div class="section-intro">
-          <h2 class="section-title">Ruas da Cidadania & Regionais</h2>
-          <p class="section-description">Atendimento presencial nas dez regionais da Prefeitura de Curitiba.</p>
-        </div>
-
-        <div class="regionais-grid">
-          <div class="regional-card">
-            <h3>Rua da Cidadania Matriz</h3>
-            <p>📍 Praça Rui Barbosa, 101 — Centro</p>
-            <p>📞 Telefone: (41) 3313-5800</p>
-            <p>🕒 Horário: 08h às 17h</p>
-          </div>
-          <div class="regional-card">
-            <h3>Rua da Cidadania Boqueirão</h3>
-            <p>📍 Av. Marechal Floriano Peixoto, 8430 — Boqueirão</p>
-            <p>📞 Telefone: (41) 3313-5500</p>
-            <p>🕒 Horário: 08h às 17h</p>
-          </div>
-          <div class="regional-card">
-            <h3>Rua da Cidadania Santa Felicidade</h3>
-            <p>📍 Rua Santa Bertila Boscardin, 213 — Santa Felicidade</p>
-            <p>📞 Telefone: (41) 3374-5000</p>
-            <p>🕒 Horário: 08h às 17h</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="section-padding">
-      <div class="container">
-        <div class="section-intro">
-          <h2 class="section-title">Perguntas Frequentes</h2>
-        </div>
-
-        <div class="faq-container">
-          <details class="faq-item">
-            <summary class="faq-question">Como funciona a busca de serviços?</summary>
-            <p class="faq-answer">Você pode digitar o nome do serviço ou palavra-chave (ex: "vacina", "IPTU", "ônibus") na barra de pesquisa no topo para filtrar notícias e cartões instantaneamente.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary class="faq-question">Como utilizar os recursos de acessibilidade?</summary>
-            <p class="faq-answer">Utilize a barra fixa no lado direito da tela para ajustar o tamanho da letra, ativar contraste elevado para visão reduzida ou ativar a fonte especial para leitores com Dislexia.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-info">
-        <h3>Portal do Cidadão</h3>
-        <p>Desenvolvido para garantir autonomia e acessibilidade total a todos os serviços municipais e estaduais.</p>
-      </div>
-      <div class="footer-contacts">
-        <h4>Telefones de Emergência</h4>
-        <p><strong>Central 156:</strong> Atendimento Prefeitura</p>
-        <p><strong>SAMU:</strong> 192 | <strong>Polícia:</strong> 190</p>
-      </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; Portal do Cidadão — Todos os direitos reservados.</p>
+
+  </section>
+
+
+
+  <div class="accessibility-widget">
+
+    <button id="toggle-acc-menu" class="acc-floating-btn" aria-label="Abrir menu de acessibilidade">
+
+      ♿
+
+    </button>
+
+
+
+    <div id="acc-menu" class="acc-menu hidden" role="dialog" aria-label="Opções de Acessibilidade">
+
+      <div class="acc-menu-header">
+
+        <h4>Opções de Acessibilidade</h4>
+
+        <button id="btn-close-acc" class="close-acc-btn">&times;</button>
+
+      </div>
+
+      <hr>
+
+
+
+      <span class="acc-section-label">🎨 Modos de Visualização</span>
+
+      <button id="btn-theme-light">☀️ Tema Claro</button>
+
+      <button id="btn-theme-dark">🌙 Tema Escuro</button>
+
+      <button id="btn-high-contrast">🌓 Alto Contraste (Preto/Amarelo)</button>
+
+
+
+      <span class="acc-section-label">👁️ Baixa Visão</span>
+
+      <button id="btn-increase-font">🔍 A+ Aumentar Fonte</button>
+
+      <button id="btn-decrease-font">🔍 A- Diminuir Fonte</button>
+
+      <button id="btn-letter-spacing">↔️ Aumentar Espaçamento</button>
+
+
+
+      <span class="acc-section-label">📖 Leitura & Dislexia</span>
+
+      <button id="btn-dyslexic-font">📖 Fonte para Dislexia</button>
+
+
+
+      <hr>
+
+      <button id="btn-reset-acc" class="btn-reset">🔄 Restaurar Padrões</button>
+
     </div>
-  </footer>
+
+  </div>
+
+
 
   <script src="main.js"></script>
+
 </body>
+
 </html>

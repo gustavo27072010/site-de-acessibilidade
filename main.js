@@ -1,191 +1,142 @@
-/**
- * PORTAL DO CIDADÃO - SCRIPT PRINCIPAL
- * Funcionalidades:
- * 1. Pesquisa em tempo real (Filtra notícias e serviços)
- * 2. Filtro por categorias (Pílulas)
- * 3. Barra de acessibilidade (Aumentar/Diminuir Fonte, Contraste, Dislexia, Pausar)
- * 4. Menu responsivo mobile
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-
   /* ==========================================================================
-     1. SISTEMA DE BUSCA EM TEMPO REAL
+     1. LÓGICA DA BARRA DE BUSCA EM TEMPO REAL
      ========================================================================== */
+  const searchBtnToggle = document.getElementById('search-btn-toggle');
+  const searchBarContainer = document.getElementById('search-bar-container');
   const searchInput = document.getElementById('search-input');
-  const searchClearBtn = document.getElementById('search-clear-btn');
-  const searchStats = document.getElementById('search-results-stats');
-  const allCards = document.querySelectorAll('.card');
-  const noResultsMsg = document.getElementById('no-results-msg');
+  const searchCloseBtn = document.getElementById('search-close-btn');
 
-  function performSearch() {
-    const query = searchInput.value.toLowerCase().trim();
-    let visibleCount = 0;
+  // Seleciona todos os cards e elementos interativos pesquisáveis no portal
+  const searchableItems = document.querySelectorAll(
+    '.cards-grid .card, .agenda-item, .news-card, .help-card, .programa-card'
+  );
 
-    // Mostrar/Ocultar botão de limpar
-    if (query.length > 0) {
-      searchClearBtn.classList.remove('hidden');
-    } else {
-      searchClearBtn.classList.add('hidden');
-      searchStats.classList.add('hidden');
-    }
-
-    allCards.forEach(card => {
-      const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
-      const text = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
-      const keywords = card.getAttribute('data-keywords') || '';
-
-      const match = title.includes(query) || text.includes(query) || keywords.includes(query);
-
-      if (match || query === '') {
-        card.classList.remove('hidden');
-        visibleCount++;
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-
-    // Atualizar estatísticas de resultado
-    if (query.length > 0) {
-      searchStats.classList.remove('hidden');
-      searchStats.textContent = `Encontrados ${visibleCount} resultado(s) para "${query}"`;
-    }
-
-    // Mensagem de nenhum resultado
-    if (visibleCount === 0 && query.length > 0) {
-      noResultsMsg.classList.remove('hidden');
-    } else {
-      noResultsMsg.classList.add('hidden');
-    }
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('input', performSearch);
-  }
-
-  if (searchClearBtn) {
-    searchClearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      performSearch();
+  // Exibir ou oculta a caixa de texto de busca
+  searchBtnToggle.addEventListener('click', () => {
+    const isHidden = searchBarContainer.classList.contains('hidden');
+    
+    if (isHidden) {
+      searchBarContainer.classList.remove('hidden');
+      searchBtnToggle.setAttribute('aria-expanded', 'true');
       searchInput.focus();
-    });
-  }
+    } else {
+      closeSearch();
+    }
+  });
 
+  // Fechar no botão X
+  searchCloseBtn.addEventListener('click', closeSearch);
 
-  /* ==========================================================================
-     2. FILTRO POR CATEGORIAS (PÍLULAS DE ABA)
-     ========================================================================== */
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  // Filtragem dinâmica dos cards conforme digitação
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remover classe ativa dos outros
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    searchableItems.forEach((item) => {
+      const itemText = item.textContent.toLowerCase();
 
-      const filterValue = btn.getAttribute('data-filter');
-
-      const newsCards = document.querySelectorAll('.card-news');
-      newsCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-
-        if (filterValue === 'todos' || filterValue === cardCategory) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+      if (itemText.includes(searchTerm)) {
+        item.classList.remove('search-hidden');
+      } else {
+        item.classList.add('search-hidden');
+      }
     });
   });
 
+  // Função para resetar e fechar a busca
+  function closeSearch() {
+    searchBarContainer.classList.add('hidden');
+    searchBtnToggle.setAttribute('aria-expanded', 'false');
+    searchInput.value = '';
+    
+    searchableItems.forEach((item) => {
+      item.classList.remove('search-hidden');
+    });
+  }
 
   /* ==========================================================================
-     3. CONTROLE DA BARRA DE ACESSIBILIDADE
+     2. PAINEL E RECURSOS DE ACESSIBILIDADE
      ========================================================================== */
-  const accSidebar = document.querySelector('.accessibility-sidebar');
-  const accToggleBtn = document.getElementById('acc-toggle-btn');
-  const btnFontIncrease = document.getElementById('btn-font-increase');
-  const btnFontDecrease = document.getElementById('btn-font-decrease');
-  const btnContrast = document.getElementById('btn-contrast');
-  const btnPause = document.getElementById('btn-pause');
-  const btnDyslexia = document.getElementById('btn-dyslexia');
-  const btnReset = document.getElementById('btn-reset');
-  const fontDots = document.querySelectorAll('.acc-dots .dot');
+  const toggleAccMenuBtn = document.getElementById('toggle-acc-menu');
+  const accMenu = document.getElementById('acc-menu');
+  const btnCloseAcc = document.getElementById('btn-close-acc');
+  
+  const themeToggleHeader = document.getElementById('theme-toggle-header');
+  const btnThemeLight = document.getElementById('btn-theme-light');
+  const btnThemeDark = document.getElementById('btn-theme-dark');
+  const btnHighContrast = document.getElementById('btn-high-contrast');
+  
+  const btnIncreaseFont = document.getElementById('btn-increase-font');
+  const btnDecreaseFont = document.getElementById('btn-decrease-font');
+  const btnLetterSpacing = document.getElementById('btn-letter-spacing');
+  const btnDyslexicFont = document.getElementById('btn-dyslexic-font');
+  const btnResetAcc = document.getElementById('btn-reset-acc');
 
-  let currentFontSizeLevel = 0; // 0 normal, 1, 2, 3
-  const fontSizes = ['16px', '18px', '20px', '22px'];
+  let currentFontSize = 100; // Porcentagem do tamanho da fonte
+  let isCustomSpacing = false;
 
-  // Recolher / Expandir Painel
-  if (accToggleBtn) {
-    accToggleBtn.addEventListener('click', () => {
-      accSidebar.classList.toggle('collapsed');
-      accToggleBtn.textContent = accSidebar.classList.contains('collapsed') ? '‹' : '›';
-    });
+  // Abrir / Fechar menu de acessibilidade
+  toggleAccMenuBtn.addEventListener('click', () => {
+    accMenu.classList.toggle('hidden');
+  });
+
+  btnCloseAcc.addEventListener('click', () => {
+    accMenu.classList.add('hidden');
+  });
+
+  // Alternador do tema via botão rápido no cabeçalho
+  themeToggleHeader.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+
+  // Botões de tema no menu flutuante
+  btnThemeLight.addEventListener('click', () => setTheme('light'));
+  btnThemeDark.addEventListener('click', () => setTheme('dark'));
+  btnHighContrast.addEventListener('click', () => setTheme('high-contrast'));
+
+  function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    themeToggleHeader.textContent = theme === 'dark' ? '☀️' : '🌙';
   }
 
-  // Aumentar Fonte
-  if (btnFontIncrease) {
-    btnFontIncrease.addEventListener('click', () => {
-      if (currentFontSizeLevel < fontSizes.length - 1) {
-        currentFontSizeLevel++;
-        updateFontSize();
-      }
-    });
-  }
+  // Aumentar/Diminuir Fonte
+  btnIncreaseFont.addEventListener('click', () => {
+    if (currentFontSize < 140) {
+      currentFontSize += 10;
+      document.documentElement.style.setProperty('--font-scale', `${currentFontSize}%`);
+    }
+  });
 
-  // Diminuir Fonte
-  if (btnFontDecrease) {
-    btnFontDecrease.addEventListener('click', () => {
-      if (currentFontSizeLevel > 0) {
-        currentFontSizeLevel--;
-        updateFontSize();
-      }
-    });
-  }
+  btnDecreaseFont.addEventListener('click', () => {
+    if (currentFontSize > 80) {
+      currentFontSize -= 10;
+      document.documentElement.style.setProperty('--font-scale', `${currentFontSize}%`);
+    }
+  });
 
-  function updateFontSize() {
-    document.documentElement.style.fontSize = fontSizes[currentFontSizeLevel];
-    fontDots.forEach((dot, index) => {
-      if (index <= currentFontSizeLevel) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-  }
+  // Aumentar Espaçamento
+  btnLetterSpacing.addEventListener('click', () => {
+    isCustomSpacing = !isCustomSpacing;
+    document.documentElement.style.setProperty(
+      '--letter-spacing', 
+      isCustomSpacing ? '0.12em' : 'normal'
+    );
+  });
 
-  // Alternar Contraste
-  if (btnContrast) {
-    btnContrast.addEventListener('click', () => {
-      document.body.classList.toggle('high-contrast');
-      btnContrast.classList.toggle('active');
-    });
-  }
+  // Fonte para Dislexia
+  btnDyslexicFont.addEventListener('click', () => {
+    document.body.classList.toggle('dyslexic-font');
+  });
 
-  // Pausar Animações
-  if (btnPause) {
-    btnPause.addEventListener('click', () => {
-      document.body.classList.toggle('pause-animations');
-      btnPause.classList.toggle('active');
-    });
-  }
-
-  // Modo Dislexia
-  if (btnDyslexia) {
-    btnDyslexia.addEventListener('click', () => {
-      document.body.classList.toggle('font-dyslexia');
-      btnDyslexia.classList.toggle('active');
-    });
-  }
-
-  // Resetar Acessibilidade
-  if (btnReset) {
-    btnReset.addEventListener('click', () => {
-      currentFontSizeLevel = 0;
-      updateFontSize();
-      document.body.classList.remove('high-contrast', 'pause-animations', 'font-dyslexia');
-      [btnContrast, btnPause, btnDyslexia].forEach(btn => btn && btn.classList.remove('active'));
-    });
-  }
-
+  // Restaurar Padrões de Acessibilidade
+  btnResetAcc.addEventListener('click', () => {
+    setTheme('light');
+    currentFontSize = 100;
+    isCustomSpacing = false;
+    document.documentElement.style.setProperty('--font-scale', '1rem');
+    document.documentElement.style.setProperty('--letter-spacing', 'normal');
+    document.body.classList.remove('dyslexic-font');
+  });
 });
