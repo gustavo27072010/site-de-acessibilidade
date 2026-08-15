@@ -1,40 +1,132 @@
 /* ==========================================================================
-   PORTAL DO CIDADÃO — STYLE.CSS (VERSÃO EXTENDED ENTERPRISE)
-   Sistema de Design Modular, Temas Dinâmicos e Acessibilidade WCAG 2.1 AAA
+   01. DESIGN TOKENS & VARIÁVEIS DO SISTEMA
    ========================================================================== */
+:root {
+  /* --- PALETA DE CORES: MODO CLARO (PADRÃO) --- */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
 
-/* --------------------------------------------------------------------------
-   1. RESET CSS & NORMALIZAÇÃO GLOBAL
-   -------------------------------------------------------------------------- */
-*,
-*::before,
-*::after {
+  --primary-color: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+
+  --accent-color: #10b981;
+  --accent-hover: #059669;
+
+  --border-color: #e2e8f0;
+  --border-focus: #0284c7;
+
+  /* --- CORES DE STATUS & BADGES --- */
+  --badge-municipal-bg: #dbeafe;
+  --badge-municipal-text: #1e40af;
+  --badge-estadual-bg: #fef3c7;
+  --badge-estadual-text: #92400e;
+
+  /* --- ÍCONES E ACENTOS --- */
+  --icon-red-bg: #fee2e2;
+  --icon-blue-bg: #e0f2fe;
+  --icon-orange-bg: #ffedd5;
+  --icon-yellow-bg: #fef9c3;
+  --icon-cyan-bg: #cffaff;
+
+  /* --- ELEVAÇÃO E SHADOWS --- */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* --- BORDAS E TRANSIÇÕES --- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- TIPOGRAFIA E ESPAÇAMENTOS --- */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --max-width: 1200px;
+}
+
+/* --- TEMA ESCURO (DARK MODE) --- */
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --primary-color: #38bdf8;
+  --primary-hover: #7dd3fc;
+  --primary-light: #0369a1;
+
+  --border-color: #334155;
+  --border-focus: #38bdf8;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}
+
+/* --- ALTO CONTRASTE (WCAG AAA) --- */
+[data-theme="high-contrast"] {
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
+  --bg-tertiary: #1a1a1a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-muted: #ffff00;
+
+  --primary-color: #ffff00;
+  --primary-hover: #ffffff;
+  --primary-light: #333300;
+
+  --border-color: #ffffff;
+  --border-focus: #ffff00;
+
+  --badge-municipal-bg: #00008b;
+  --badge-municipal-text: #ffffff;
+  --badge-estadual-bg: #8b4513;
+  --badge-estadual-text: #ffffff;
+}
+
+/* ==========================================================================
+   02. RESET CSS E ESTILOS BASE
+   ========================================================================== */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-  font-size: 100%; /* Padrão 16px, ajustável via JS para acessibilidade */
   scroll-behavior: smooth;
-  text-size-adjust: 100%;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  min-height: 100vh;
-  background-color: var(--bg-color);
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-main);
   line-height: 1.6;
   text-rendering: optimizeLegibility;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Ocultação Acessível para Leitores de Tela (SR-Only) */
+/* --- UTILITÁRIOS DE ACESSIBILIDADE --- */
 .sr-only {
   position: absolute !important;
   width: 1px !important;
@@ -47,509 +139,892 @@ body {
   border: 0 !important;
 }
 
-/* --------------------------------------------------------------------------
-   2. VARIÁVEIS DE DESIGN (DESIGN TOKENS) & PALETAS DE TEMA
-   -------------------------------------------------------------------------- */
-:root {
-  /* Tema Claro (Padrão) */
-  --bg-color: #f4f7f6;
-  --surface-color: #ffffff;
-  --surface-hover: #f9fafb;
-  --text-primary: #1f2937;
-  --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
-  
-  --primary-color: #0284c7;
-  --primary-hover: #0369a1;
-  --primary-light: #e0f2fe;
-  
-  --border-color: #e5e7eb;
-  --border-focus: #0284c7;
-  
-  --danger-color: #ef4444;
-  --danger-hover: #dc2626;
-
-  /* Sombras Dimensionais */
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --panel-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
-  /* Tipografia */
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --font-dyslexic: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+.hidden {
+  display: none !important;
 }
 
-/* Tema Escuro (Dark Mode) */
-[data-theme="dark"] {
-  --bg-color: #0f172a;
-  --surface-color: #1e293b;
-  --surface-hover: #334155;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  
-  --primary-color: #38bdf8;
-  --primary-hover: #0284c7;
-  --primary-light: #075985;
-  
-  --border-color: #334155;
-  --border-focus: #38bdf8;
-  
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --panel-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+/* --- ANEL DE FOCO ACESSÍVEL PARA NAVEGAÇÃO VIA TECLADO --- */
+:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
-/* Tema Alto Contraste (WCAG AAA Strict) */
-[data-theme="high-contrast"] {
-  --bg-color: #000000;
-  --surface-color: #000000;
-  --surface-hover: #1a1a1a;
-  --text-primary: #ffff00;
-  --text-secondary: #ffffff;
-  --text-muted: #ffffff;
-  
-  --primary-color: #ffff00;
-  --primary-hover: #ffffff;
-  --primary-light: #1a1a1a;
-  
-  --border-color: #ffff00;
-  --border-focus: #ffffff;
-  
-  --danger-color: #ff0000;
-  --danger-hover: #ff5555;
-  
-  --card-shadow: none;
-  --card-shadow-hover: none;
-  --panel-shadow: none;
+/* ==========================================================================
+   03. LAYOUT CONTAINER & ATALHOS (SKIP LINKS)
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-/* --------------------------------------------------------------------------
-   3. ESTILIZAÇÃO DO CABEÇALHO PRINCIPAL (MAIN HEADER)
-   -------------------------------------------------------------------------- */
-.main-header {
+/* --- SKIP LINKS --- */
+.skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ==========================================================================
+   04. BARRA DE AVISOS DO SISTEMA (SYSTEM ALERT BAR)
+   ========================================================================== */
+.system-alert-bar {
+  background-color: var(--primary-light);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.system-alert-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 2rem;
-  background-color: var(--surface-color);
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.alert-badge {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.75rem;
+}
+
+.alert-text {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.alert-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.alert-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0.2rem 0.5rem;
+}
+
+/* ==========================================================================
+   05. CABEÇALHO & BARRA DE BUSCA (HEADER & SEARCH)
+   ========================================================================== */
+.header {
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
 }
 
-.logo h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  letter-spacing: -0.025em;
+.header-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  height: 4.5rem;
 }
 
-.header-actions {
+.logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-/* Botões Genéricos de Ação no Cabeçalho */
-.btn-icon {
-  background-color: transparent;
-  border: 1px solid var(--border-color);
+  text-decoration: none;
   color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 0.925rem;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.375rem;
-  transition: all 0.2s ease-in-out;
 }
 
-.btn-icon:hover {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
+.logo-icon {
+  font-size: 2rem;
 }
 
-.btn-icon:active {
-  transform: translateY(0);
-}
-
-.btn-icon:focus-visible {
-  outline: 3px solid var(--border-focus);
-  outline-offset: 2px;
-}
-
-/* --------------------------------------------------------------------------
-   4. BARRA DE PESQUISA EXPANSÍVEL (SEARCH CONTAINER)
-   -------------------------------------------------------------------------- */
-.search-container {
+.logo-text {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  background-color: var(--surface-color);
-  border-bottom: 1px solid var(--border-color);
-  animation: slideDown 0.25s cubic-bezier(0, 0, 0.2, 1);
+  flex-direction: column;
 }
 
-.search-container.hidden {
-  display: none;
+.logo-text strong {
+  font-size: 1.125rem;
+  line-height: 1.2;
 }
 
-.search-container input {
-  flex: 1;
-  padding: 0.75rem 1.25rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  background-color: var(--bg-color);
-  color: var(--text-primary);
-  font-size: 1rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.search-container input::placeholder {
+.logo-text span {
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
-.search-container input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px var(--primary-light);
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   5. PAINEL FLUTUANTE DE ACESSIBILIDADE (ACCESSIBILITY MENU)
-   -------------------------------------------------------------------------- */
-.acc-panel {
-  position: fixed;
-  top: 5.5rem;
-  right: 2rem;
-  width: 340px;
-  max-width: calc(100vw - 4rem);
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  box-shadow: var(--panel-shadow);
-  padding: 1.5rem;
-  z-index: 200;
-  animation: fadeInScale 0.2s ease-out;
-}
-
-.acc-panel.hidden {
-  display: none;
-}
-
-.acc-panel-header {
+/* --- NAVEGAÇÃO PRINCIPAL --- */
+.nav-list {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
+  list-style: none;
+  gap: 1.5rem;
 }
 
-.acc-panel-header h2 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.acc-panel-body h3 {
-  font-size: 0.75rem;
-  font-weight: 600;
+.nav-link {
+  text-decoration: none;
   color: var(--text-secondary);
-  margin: 1.25rem 0 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.acc-panel-body h3:first-child {
-  margin-top: 0;
-}
-
-.btn-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn-option {
-  flex: 1;
-  padding: 0.625rem 0.5rem;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-color);
-  color: var(--text-primary);
-  border-radius: 0.375rem;
-  cursor: pointer;
-  font-size: 0.875rem;
   font-weight: 500;
-  text-align: center;
-  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
 }
 
-.btn-option:hover {
-  border-color: var(--primary-color);
-  background-color: var(--surface-hover);
+.nav-link:hover {
   color: var(--primary-color);
 }
 
-.btn-option:focus-visible {
-  outline: 2px solid var(--border-focus);
+/* --- BOTOES DE AÇÃO NO CABEÇALHO --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-action-icon {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-action-icon:hover {
+  background-color: var(--border-color);
+  transform: translateY(-1px);
+}
+
+/* --- BARRA DE PESQUISA EXPANSÍVEL --- */
+.search-bar-container {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.search-bar-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-icon-inside {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.search-bar-container input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.search-bar-container input:focus {
+  border-color: var(--primary-color);
+}
+
+.search-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+/* --- BREADCRUMBS --- */
+.breadcrumb-container {
+  background-color: var(--bg-tertiary);
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-list {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb-list li::after {
+  content: "/";
+  margin-left: 0.5rem;
+}
+
+.breadcrumb-list li:last-child::after {
+  content: "";
+}
+
+.breadcrumb-list a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   06. SEÇÃO HERO
+   ========================================================================== */
+.hero-section {
+  padding: 4rem 0 3rem 0;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge-status-container {
+  margin-bottom: 1.5rem;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.highlight-blue {
+  color: var(--primary-color);
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 650px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-color);
+  background-color: var(--bg-tertiary);
   color: var(--text-primary);
-  font-weight: 600;
-  transition: background-color 0.2s ease;
+  border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
   background-color: var(--border-color);
 }
 
-.btn-danger {
-  width: 100%;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  border: none;
-  background-color: var(--danger-color);
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin-top: 1.25rem;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+/* ==========================================================================
+   07. PAINEL DE STATUS & FILTROS POR CATEGORIA
+   ========================================================================== */
+.status-panel-section {
+  margin-bottom: 2rem;
 }
 
-.btn-danger:hover {
-  background-color: var(--danger-hover);
-}
-
-.btn-danger:active {
-  transform: scale(0.98);
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   6. SEÇÃO PRINCIPAL E HERO (CONTENT & HERO SECTION)
-   -------------------------------------------------------------------------- */
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem 4rem 2rem;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 3.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero h2 {
-  font-size: 2.25rem;
-  font-weight: 800;
-  margin-bottom: 0.75rem;
-  color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-.hero p {
-  color: var(--text-secondary);
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-
-/* --------------------------------------------------------------------------
-   7. SEÇÃO DE SERVIÇOS E CARDS DE ACESSO RÁPIDO
-   -------------------------------------------------------------------------- */
-.services-section h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 3px solid var(--primary-color);
-  display: inline-block;
-  color: var(--text-primary);
-}
-
-/* Grid Layout Responsivo */
-.cards-grid {
+.status-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
 }
 
-/* Card Individual */
-.card {
-  background-color: var(--surface-color);
+.status-card {
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 0.875rem;
-  padding: 1.75rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-green { background-color: var(--accent-color); }
+
+.status-info {
   display: flex;
   flex-direction: column;
-  box-shadow: var(--card-shadow);
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.25s ease;
-  position: relative;
-  overflow: hidden;
+  font-size: 0.85rem;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--card-shadow-hover);
+/* --- FILTROS DE CATEGORIA --- */
+.publicos-section {
+  padding: 1.5rem 0;
+}
+
+.section-header-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.filter-count {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.publico-tags {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.tag-btn {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.tag-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.tag-btn.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
   border-color: var(--primary-color);
 }
 
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.25rem;
-  line-height: 1;
-  display: inline-block;
+/* ==========================================================================
+   08. GRID DE CARDS DE SERVIÇOS
+   ========================================================================== */
+.section-padding {
+  padding: 3rem 0;
 }
 
-.card h3 {
+.bg-section {
+  background-color: var(--bg-tertiary);
+}
+
+.section-intro {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.section-description {
+  color: var(--text-secondary);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.icon-red { background-color: var(--icon-red-bg); }
+.icon-blue { background-color: var(--icon-blue-bg); }
+.icon-orange { background-color: var(--icon-orange-bg); }
+.icon-yellow { background-color: var(--icon-yellow-bg); }
+.icon-cyan { background-color: var(--icon-cyan-bg); }
+
+.badge-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-tag.municipal {
+  background-color: var(--badge-municipal-bg);
+  color: var(--badge-municipal-text);
+}
+
+.badge-tag.estadual {
+  background-color: var(--badge-estadual-bg);
+  color: var(--badge-estadual-text);
+}
+
+.card-body h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 0.625rem;
-  color: var(--text-primary);
+  margin-bottom: 0.5rem;
 }
 
-.card p {
+.card-body p {
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.card-features {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
+.card-features li {
+  margin-bottom: 0.25rem;
+}
+
+.card-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
 .card-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.375rem;
-  transition: color 0.2s ease, gap 0.2s ease;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .card-link:hover {
-  color: var(--primary-hover);
-  gap: 0.625rem;
   text-decoration: underline;
 }
 
-.card-link:focus-visible {
-  outline: 2px solid var(--border-focus);
-  border-radius: 0.25rem;
+/* ==========================================================================
+   09. RUAS DA CIDADANIA, FAQ & CENTRAIS DE EMERGÊNCIA
+   ========================================================================== */
+.regionais-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
 }
 
-/* --------------------------------------------------------------------------
-   8. PERSONALIZAÇÃO DA BARRA DE ROLAGEM (CUSTOM SCROLLBAR)
-   -------------------------------------------------------------------------- */
-::-webkit-scrollbar {
-  width: 10px;
+.regional-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-color);
+.regional-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 5px;
+.regional-address, .regional-phone, .regional-hours {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+.regional-phone a {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
-/* --------------------------------------------------------------------------
-   9. MEDIA QUERIES (RESPONSIVIDADE AVANÇADA)
-   -------------------------------------------------------------------------- */
+/* --- FAQ ACCORDION --- */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-/* Dispositivos Móveis (Telas até 640px) */
-@media (max-width: 640px) {
-  .main-header {
-    padding: 1rem;
+.faq-item {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+}
+
+.faq-question {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-answer {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 0.75rem;
+}
+
+/* --- CENTRAIS DE EMERGÊNCIA --- */
+.help-box {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.help-header {
+  margin-bottom: 1.5rem;
+}
+
+.help-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.help-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-fast);
+}
+
+.help-card:hover {
+  border-color: var(--primary-color);
+}
+
+.help-icon {
+  font-size: 2rem;
+}
+
+.help-info h3 {
+  font-size: 1.1rem;
+}
+
+.help-info p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   10. WIDGET FLUTUANTE DE ACESSIBILIDADE & RODAPÉ
+   ========================================================================== */
+.accessibility-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 2000;
+}
+
+.acc-floating-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  font-size: 1.75rem;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.acc-floating-btn:hover {
+  transform: scale(1.05);
+}
+
+.acc-menu {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 0;
+  width: 280px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.acc-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-acc-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.acc-section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.acc-btn-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+}
+
+.acc-btn-group button, .btn-reset {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.acc-btn-group button:hover, .btn-reset:hover {
+  background-color: var(--border-color);
+}
+
+/* --- RODAPÉ --- */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+  padding-top: 3rem;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-col h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  background-color: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+  padding: 1.25rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   11. DESIGN RESPONSIVO (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .header-container {
+    height: auto;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    flex-wrap: wrap;
   }
 
-  .logo h1 {
-    font-size: 1.2rem;
+  .nav-menu {
+    order: 3;
+    width: 100%;
+    margin-top: 0.5rem;
+    overflow-x: auto;
   }
 
-  .btn-icon {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.85rem;
+  .nav-list {
+    gap: 1rem;
+    padding-bottom: 0.25rem;
   }
 
-  .content {
-    padding: 1.5rem 1rem;
+  .hero-section {
+    padding: 2.5rem 0 2rem 0;
   }
 
-  .hero h2 {
-    font-size: 1.75rem;
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
   }
 
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .acc-panel {
-    right: 1rem;
-    left: 1rem;
-    width: auto;
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .cards-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-/* Tablets (Telas de 641px até 1024px) */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
