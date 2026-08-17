@@ -626,3 +626,13 @@ a:hover {
     right: -10px;
   }
 }
+/* Classe para ativar a fonte para dislexia */
+body.dyslexic-mode,
+body.dyslexic-mode * {
+  font-family: 'OpenDyslexic', 'Inter', sans-serif !important;
+  letter-spacing: 0.35px; /* Melhora o espaçamento das letras */
+  word-spacing: 1.2px;    /* Melhora a separação das palavras */
+}
+body {
+  font-family: 'OpenDyslexic', 'Inter', sans-serif;
+}

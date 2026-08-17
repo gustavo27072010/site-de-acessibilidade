@@ -140,3 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('dyslexic-font');
   });
 });
+const btnDyslexic = document.getElementById('btn-dyslexic-font');
+
+if (btnDyslexic) {
+  btnDyslexic.addEventListener('click', () => {
+    // Alterna a classe na tag <body>
+    document.body.classList.toggle('dyslexic-mode');
+  });
+}

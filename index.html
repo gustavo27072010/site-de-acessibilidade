@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonte OpenDyslexic para Acessibilidade -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic.css">
+  <style>
+    /* Estilos para modo Dislexia */
+    body.dyslexic-mode, 
+    body.dyslexic-mode * {
+      font-family: 'OpenDyslexic', 'Inter', sans-serif !important;
+      letter-spacing: 0.05em;
+      word-spacing: 0.1em;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body data-theme="light">
 
@@ -403,5 +415,16 @@
   </div>
 
   <script src="main.js"></script>
+  <script>
+    // Script em JavaScript puro para ativar a fonte de dislexia através do botão
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnDyslexic = document.getElementById('btn-dyslexic-font');
+      if (btnDyslexic) {
+        btnDyslexic.addEventListener('click', function() {
+          document.body.classList.toggle('dyslexic-mode');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
