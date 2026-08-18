@@ -1,638 +1,378 @@
 /* ==========================================================================
-   1. VARIÁVEIS CSS E TEMAS (LIGHT, DARK, ALTO CONTRASTE)
-   ========================================================================== */
-:root {
-  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  --bg-color: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-section-alt: #f1f5f9;
-  --text-color: #0f172a;
-  --text-muted: #475569;
-  --primary-color: #0284c7;
-  --primary-hover: #0369a1;
-  --border-color: #cbd5e1;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --font-scale: 100%;
-  --letter-spacing: normal;
-  --focus-outline: 3px solid #0284c7;
-}
-
-[data-theme="dark"] {
-  --bg-color: #0f172a;
-  --bg-card: #1e293b;
-  --bg-section-alt: #020617;
-  --text-color: #f8fafc;
-  --text-muted: #94a3b8;
-  --primary-color: #38bdf8;
-  --primary-hover: #0284c7;
-  --border-color: #334155;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --focus-outline: 3px solid #38bdf8;
-}
-
-[data-theme="high-contrast"] {
-  --bg-color: #000000;
-  --bg-card: #000000;
-  --bg-section-alt: #050505;
-  --text-color: #ffff00;
-  --text-muted: #ffffff;
-  --primary-color: #ffff00;
-  --primary-hover: #ffffff;
-  --border-color: #ffff00;
-  --shadow: none;
-  --focus-outline: 3px solid #ffffff;
-}
-
-/* Fonte Especial para Dislexia */
-body.dyslexic-font {
-  font-family: Arial, Helvetica, sans-serif !important;
-  line-height: 1.8 !important;
-}
-
-/* ==========================================================================
-   2. REGRAS GERAIS E ACESSIBILIDADE
-   ========================================================================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: var(--font-scale);
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  letter-spacing: var(--letter-spacing);
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Destaque de Foco para Navegação por Teclado */
-a:focus-visible, 
-button:focus-visible, 
-input:focus-visible {
-  outline: var(--focus-outline);
-  outline-offset: 3px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.section-padding {
-  padding: 4rem 0;
-}
-
-.bg-section {
-  background-color: var(--bg-section-alt);
-}
-
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ==========================================================================
-   3. CABEÇALHO & BUSCA RETRÁTIL
-   ========================================================================== */
-.header {
-  position: sticky;
-  top: 0;
-  background-color: var(--bg-card);
-  border-bottom: 2px solid var(--border-color);
-  z-index: 100;
-  box-shadow: var(--shadow);
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-color);
-}
-
-.logo-icon {
-  font-size: 2rem;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.logo-text strong {
-  font-size: 1.25rem;
-  line-height: 1.2;
-}
-
-.logo-text span {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.nav-menu {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-link {
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.header-actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.theme-btn-header,
-.search-btn {
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--text-color);
-  transition: background-color 0.2s;
-}
-
-.theme-btn-header:hover,
-.search-btn:hover {
-  background-color: var(--bg-section-alt);
-}
-
-/* Barra de Busca */
-.search-bar-container {
-  background-color: var(--bg-card);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 2px solid var(--primary-color);
-  padding: 1rem 0;
-}
-
-.search-bar-container.hidden {
-  display: none;
-}
-
-.search-bar-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.search-bar-content input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-.search-close-btn {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: var(--text-color);
-  padding: 0 0.5rem;
-}
-
-.search-hidden {
-  display: none !important;
-}
-
-/* ==========================================================================
-   4. HERO SECTION & PÚBLICOS
-   ========================================================================== */
-.hero-section {
-  padding: 4rem 0;
-  text-align: center;
-  background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-color) 100%);
-}
-
-.badge-wcag {
-  display: inline-block;
-  background-color: rgba(2, 132, 199, 0.15);
-  color: var(--primary-color);
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--border-color);
-}
-
-.hero-title {
-  font-size: 2.75rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.highlight-blue {
-  color: var(--primary-color);
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 0.8rem 1.5rem;
-  font-weight: 700;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: #ffffff;
-}
-
-[data-theme="high-contrast"] .btn-primary {
-  color: #000000;
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-  text-decoration: none;
-}
-
-.btn-outline {
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-/* Tags de Públicos */
-.publicos-section {
-  padding: 2rem 0;
-}
-
-.accessibility-banner {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.banner-icon {
-  font-size: 1.5rem;
-}
-
-.publico-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-}
-
-.tag-btn {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  box-shadow: var(--shadow);
-}
-
-.tag-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-/* ==========================================================================
-   5. CARDS DE SERVIÇO & NOTÍCIAS
-   ========================================================================== */
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.cards-grid, .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.card, .news-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-}
-
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.card h3, .news-content h3 {
-  margin-bottom: 0.5rem;
-}
-
-.card p, .news-content p {
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.card-link, .news-link {
-  font-weight: 700;
-}
-
-.news-card {
-  padding: 0;
-  overflow: hidden;
-}
-
-.news-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.news-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.news-tag {
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.news-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   6. AGENDA E PROGRAMAS DE SAÚDE
-   ========================================================================== */
-.subsection-title {
-  margin-bottom: 1.5rem;
-}
-
-.agenda-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.agenda-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: var(--bg-card);
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-}
-
-.date-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 700;
-  min-width: 90px;
-}
-
-[data-theme="high-contrast"] .date-badge {
-  color: #000000;
-}
-
-.programas-container {
-  margin-top: 3rem;
-}
-
-.programa-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  margin-top: 1rem;
-}
-
-.disque-saude-banner {
-  margin-top: 1.5rem;
-  background-color: rgba(2, 132, 199, 0.15);
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid var(--primary-color);
-}
-
-/* ==========================================================================
-   7. SEÇÃO DE AJUDA & CONTATO
-   ========================================================================== */
-.help-box {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 3rem 2rem;
-  text-align: center;
-}
-
-.help-subtitle {
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-.help-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-.help-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  color: var(--text-color);
-  text-align: left;
-}
-
-.help-card:hover {
-  border-color: var(--primary-color);
-  text-decoration: none;
-}
-
-.help-icon {
-  font-size: 1.8rem;
-}
-
-/* ==========================================================================
-   8. MENU FLUTUANTE DE ACESSIBILIDADE
-   ========================================================================== */
-.accessibility-widget {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.acc-floating-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  font-size: 1.8rem;
-  border: 2px solid var(--border-color);
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-[data-theme="high-contrast"] .acc-floating-btn {
-  color: #000000;
-}
-
-.acc-menu {
-  position: absolute;
-  bottom: 75px;
-  right: 0;
-  width: 300px;
-  background-color: var(--bg-card);
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.acc-menu.hidden {
-  display: none;
-}
-
-.acc-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close-acc-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-color);
-}
-
-.acc-section-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  margin-top: 0.5rem;
-}
-
-.acc-menu button:not(.close-acc-btn) {
-  padding: 0.6rem;
-  text-align: left;
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.acc-menu button.btn-reset {
-  background-color: #dc2626;
-  color: #ffffff;
-  border: none;
-  text-align: center;
-  font-weight: 700;
-  margin-top: 0.5rem;
-}
-
-/* ==========================================================================
-   9. MEDIA QUERIES (DESIGN RESPONSIVO)
-   ========================================================================== */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .agenda-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .acc-menu {
-    width: 280px;
-    right: -10px;
-  }
-}
-/* Classe para ativar a fonte para dislexia */
-body.dyslexic-mode,
-body.dyslexic-mode * {
-  font-family: 'OpenDyslexic', 'Inter', sans-serif !important;
-  letter-spacing: 0.35px; /* Melhora o espaçamento das letras */
-  word-spacing: 1.2px;    /* Melhora a separação das palavras */
-}
-body {
-  font-family: 'OpenDyslexic', 'Inter', sans-serif;
-}
+   1. CONFIGURAÇÕES GERAIS & VARIÁVEIS
+      ========================================================================== */
+      :root {
+        /* Cores Principais */
+          --blue-primary: #1d5ed8;       /* Azul do cabeçalho e destaques */
+            --blue-dark: #0f2b5c;          /* Azul escuro para títulos hero */
+              --bg-page: #fdfbf7;            /* Fundo suave/creme da página */
+                --card-bg: #ffffff;            /* Fundo dos cartões */
+                  
+                    /* Cores de Texto */
+                      --text-main: #2b2b2b;          /* Texto principal */
+                        --text-muted: #666666;         /* Texto secundário/descrições */
+                          
+                            /* Cores de Alerta & Badges */
+                              --alert-bg: #fef5d9;           /* Amarelo suave da caixa de alerta */
+                                --alert-border: #f8e4a5;       /* Borda do alerta */
+                                  --alert-text: #784c0e;         /* Texto do alerta */
+                                    
+                                      /* Cores dos Ícones dos Cartões */
+                                        --icon-bg-red: #fde8e8;
+                                          --icon-bg-green: #e1f7e7;
+                                            --icon-bg-yellow: #fef6d8;
+                                              --icon-bg-blue: #e3f2fd;
+                                                
+                                                  /* Bordas e Sombras */
+                                                    --card-border: #e2e8f0;
+                                                      --radius-card: 24px;
+                                                        --radius-pill: 50px;
+                                                          --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+                                                            --shadow-float: 0 4px 16px rgba(29, 94, 216, 0.35);
+                                                              
+                                                                /* Tipografias */
+                                                                  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                                                                    --font-serif: "Georgia", "Times New Roman", serif;
+                                                                    }
+
+                                                                    * {
+                                                                      box-sizing: border-box;
+                                                                        margin: 0;
+                                                                          padding: 0;
+                                                                          }
+
+                                                                          body {
+                                                                            background-color: var(--bg-page);
+                                                                              color: var(--text-main);
+                                                                                font-family: var(--font-sans);
+                                                                                  line-height: 1.5;
+                                                                                    -webkit-font-smoothing: antialiased;
+                                                                                    }
+
+                                                                                    .container {
+                                                                                      width: 100%;
+                                                                                        max-width: 1100px;
+                                                                                          margin: 0 auto;
+                                                                                            padding: 0 20px;
+                                                                                            }
+
+                                                                                            /* ==========================================================================
+                                                                                               2. CABEÇALHO (HEADER)
+                                                                                                  ========================================================================== */
+                                                                                                  .header {
+                                                                                                    background-color: var(--blue-primary);
+                                                                                                      color: #ffffff;
+                                                                                                        padding: 16px 20px;
+                                                                                                          position: sticky;
+                                                                                                            top: 0;
+                                                                                                              z-index: 90;
+                                                                                                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                                                                                                                }
+
+                                                                                                                .header-container {
+                                                                                                                  display: flex;
+                                                                                                                    justify-content: space-between;
+                                                                                                                      align-items: center;
+                                                                                                                      }
+
+                                                                                                                      .logo {
+                                                                                                                        display: flex;
+                                                                                                                          align-items: center;
+                                                                                                                            gap: 12px;
+                                                                                                                            }
+
+                                                                                                                            .logo-icon {
+                                                                                                                              font-size: 2rem;
+                                                                                                                                line-height: 1;
+                                                                                                                                }
+
+                                                                                                                                .logo-text strong {
+                                                                                                                                  display: block;
+                                                                                                                                    font-size: 1.35rem;
+                                                                                                                                      font-family: var(--font-serif);
+                                                                                                                                        font-weight: 700;
+                                                                                                                                          line-height: 1.1;
+                                                                                                                                          }
+
+                                                                                                                                          .logo-text small {
+                                                                                                                                            font-size: 0.8rem;
+                                                                                                                                              opacity: 0.9;
+                                                                                                                                                font-weight: 400;
+                                                                                                                                                }
+
+                                                                                                                                                .search-btn {
+                                                                                                                                                  background: transparent;
+                                                                                                                                                    border: none;
+                                                                                                                                                      color: #ffffff;
+                                                                                                                                                        font-size: 1.4rem;
+                                                                                                                                                          cursor: pointer;
+                                                                                                                                                            padding: 4px;
+                                                                                                                                                              display: flex;
+                                                                                                                                                                align-items: center;
+                                                                                                                                                                  justify-content: center;
+                                                                                                                                                                  }
+
+                                                                                                                                                                  /* Esconde menu de navegação tradicional no mobile */
+                                                                                                                                                                  .nav-links {
+                                                                                                                                                                    display: none;
+                                                                                                                                                                    }
+
+                                                                                                                                                                    /* ==========================================================================
+                                                                                                                                                                       3. HERO SECTION (BOAS-VINDAS)
+                                                                                                                                                                          ========================================================================== */
+                                                                                                                                                                          .hero {
+                                                                                                                                                                            padding: 32px 0 20px 0;
+                                                                                                                                                                              text-align: center;
+                                                                                                                                                                              }
+
+                                                                                                                                                                              .badge {
+                                                                                                                                                                                display: inline-flex;
+                                                                                                                                                                                  align-items: center;
+                                                                                                                                                                                    gap: 8px;
+                                                                                                                                                                                      background-color: #ffffff;
+                                                                                                                                                                                        border: 1px solid #d0e1fd;
+                                                                                                                                                                                          color: var(--blue-primary);
+                                                                                                                                                                                            font-size: 0.85rem;
+                                                                                                                                                                                              font-weight: 600;
+                                                                                                                                                                                                padding: 8px 18px;
+                                                                                                                                                                                                  border-radius: var(--radius-pill);
+                                                                                                                                                                                                    margin-bottom: 24px;
+                                                                                                                                                                                                      box-shadow: var(--shadow-sm);
+                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                      .hero h1 {
+                                                                                                                                                                                                        font-family: var(--font-serif);
+                                                                                                                                                                                                          font-size: 2.2rem;
+                                                                                                                                                                                                            color: var(--blue-dark);
+                                                                                                                                                                                                              line-height: 1.25;
+                                                                                                                                                                                                                margin-bottom: 20px;
+                                                                                                                                                                                                                  font-weight: 800;
+                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                  .hero h1 span {
+                                                                                                                                                                                                                    color: var(--blue-primary);
+                                                                                                                                                                                                                      display: block;
+                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                      .hero p {
+                                                                                                                                                                                                                        font-size: 1.05rem;
+                                                                                                                                                                                                                          color: var(--text-muted);
+                                                                                                                                                                                                                            max-width: 600px;
+                                                                                                                                                                                                                              margin: 0 auto 28px auto;
+                                                                                                                                                                                                                                line-height: 1.6;
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                .hero p strong {
+                                                                                                                                                                                                                                  color: var(--text-main);
+                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                  .hero-buttons {
+                                                                                                                                                                                                                                    display: flex;
+                                                                                                                                                                                                                                      flex-direction: column;
+                                                                                                                                                                                                                                        gap: 12px;
+                                                                                                                                                                                                                                          margin-bottom: 24px;
+                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                          .btn {
+                                                                                                                                                                                                                                            display: flex;
+                                                                                                                                                                                                                                              align-items: center;
+                                                                                                                                                                                                                                                justify-content: center;
+                                                                                                                                                                                                                                                  gap: 8px;
+                                                                                                                                                                                                                                                    padding: 16px 24px;
+                                                                                                                                                                                                                                                      border-radius: var(--radius-pill);
+                                                                                                                                                                                                                                                        font-size: 1.05rem;
+                                                                                                                                                                                                                                                          font-weight: 700;
+                                                                                                                                                                                                                                                            text-decoration: none;
+                                                                                                                                                                                                                                                              transition: transform 0.2s, background-color 0.2s;
+                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                              .btn-primary {
+                                                                                                                                                                                                                                                                background-color: var(--blue-primary);
+                                                                                                                                                                                                                                                                  color: #ffffff;
+                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                  .btn-outline {
+                                                                                                                                                                                                                                                                    background-color: transparent;
+                                                                                                                                                                                                                                                                      border: 2px solid var(--blue-primary);
+                                                                                                                                                                                                                                                                        color: var(--blue-primary);
+                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                        /* Caixas de Alerta */
+                                                                                                                                                                                                                                                                        .alert-box {
+                                                                                                                                                                                                                                                                          background-color: var(--alert-bg);
+                                                                                                                                                                                                                                                                            border: 1px solid var(--alert-border);
+                                                                                                                                                                                                                                                                              color: var(--alert-text);
+                                                                                                                                                                                                                                                                                padding: 18px 20px;
+                                                                                                                                                                                                                                                                                  border-radius: 20px;
+                                                                                                                                                                                                                                                                                    text-align: left;
+                                                                                                                                                                                                                                                                                      display: flex;
+                                                                                                                                                                                                                                                                                        align-items: flex-start;
+                                                                                                                                                                                                                                                                                          gap: 14px;
+                                                                                                                                                                                                                                                                                            font-size: 0.95rem;
+                                                                                                                                                                                                                                                                                              line-height: 1.5;
+                                                                                                                                                                                                                                                                                                margin-top: 10px;
+                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                .alert-box span {
+                                                                                                                                                                                                                                                                                                  font-size: 1.3rem;
+                                                                                                                                                                                                                                                                                                    line-height: 1;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    /* ==========================================================================
+                                                                                                                                                                                                                                                                                                       4. CHIPS (FILTROS DE PÚBLICO)
+                                                                                                                                                                                                                                                                                                          ========================================================================== */
+                                                                                                                                                                                                                                                                                                          .chips-section {
+                                                                                                                                                                                                                                                                                                            padding: 20px 0 30px 0;
+                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                            .chips-grid {
+                                                                                                                                                                                                                                                                                                              display: flex;
+                                                                                                                                                                                                                                                                                                                flex-wrap: wrap;
+                                                                                                                                                                                                                                                                                                                  gap: 10px;
+                                                                                                                                                                                                                                                                                                                    justify-content: center;
+                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                    .chip {
+                                                                                                                                                                                                                                                                                                                      background-color: #ffffff;
+                                                                                                                                                                                                                                                                                                                        border: 1px solid #e1e8f0;
+                                                                                                                                                                                                                                                                                                                          padding: 10px 20px;
+                                                                                                                                                                                                                                                                                                                            border-radius: var(--radius-pill);
+                                                                                                                                                                                                                                                                                                                              font-size: 0.95rem;
+                                                                                                                                                                                                                                                                                                                                font-weight: 600;
+                                                                                                                                                                                                                                                                                                                                  color: var(--text-main);
+                                                                                                                                                                                                                                                                                                                                    cursor: pointer;
+                                                                                                                                                                                                                                                                                                                                      box-shadow: var(--shadow-sm);
+                                                                                                                                                                                                                                                                                                                                        display: inline-flex;
+                                                                                                                                                                                                                                                                                                                                          align-items: center;
+                                                                                                                                                                                                                                                                                                                                            gap: 8px;
+                                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                            /* ==========================================================================
+                                                                                                                                                                                                                                                                                                                                               5. ACESSO RÁPIDO (CARDS DE SERVIÇOS)
+                                                                                                                                                                                                                                                                                                                                                  ========================================================================== */
+                                                                                                                                                                                                                                                                                                                                                  .services-section {
+                                                                                                                                                                                                                                                                                                                                                    padding: 20px 0 40px 0;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    .services-section h2 {
+                                                                                                                                                                                                                                                                                                                                                      font-family: var(--font-serif);
+                                                                                                                                                                                                                                                                                                                                                        font-size: 2rem;
+                                                                                                                                                                                                                                                                                                                                                          color: var(--blue-dark);
+                                                                                                                                                                                                                                                                                                                                                            margin-bottom: 24px;
+                                                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                                            .cards-grid {
+                                                                                                                                                                                                                                                                                                                                                              display: grid;
+                                                                                                                                                                                                                                                                                                                                                                grid-template-columns: 1fr;
+                                                                                                                                                                                                                                                                                                                                                                  gap: 20px;
+                                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                                  .card {
+                                                                                                                                                                                                                                                                                                                                                                    background-color: var(--card-bg);
+                                                                                                                                                                                                                                                                                                                                                                      border: 1px solid var(--card-border);
+                                                                                                                                                                                                                                                                                                                                                                        border-radius: var(--radius-card);
+                                                                                                                                                                                                                                                                                                                                                                          padding: 28px 24px;
+                                                                                                                                                                                                                                                                                                                                                                            box-shadow: var(--shadow-sm);
+                                                                                                                                                                                                                                                                                                                                                                              display: flex;
+                                                                                                                                                                                                                                                                                                                                                                                flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                  align-items: flex-start;
+                                                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                                                  .card-icon {
+                                                                                                                                                                                                                                                                                                                                                                                    width: 64px;
+                                                                                                                                                                                                                                                                                                                                                                                      height: 64px;
+                                                                                                                                                                                                                                                                                                                                                                                        border-radius: 20px;
+                                                                                                                                                                                                                                                                                                                                                                                          display: flex;
+                                                                                                                                                                                                                                                                                                                                                                                            align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                              justify-content: center;
+                                                                                                                                                                                                                                                                                                                                                                                                font-size: 1.8rem;
+                                                                                                                                                                                                                                                                                                                                                                                                  margin-bottom: 20px;
+                                                                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                                                                  /* Modificadores de cor para os ícones */
+                                                                                                                                                                                                                                                                                                                                                                                                  .icon-red { background-color: var(--icon-bg-red); color: #d32f2f; }
+                                                                                                                                                                                                                                                                                                                                                                                                  .icon-green { background-color: var(--icon-bg-green); color: #2e7d32; }
+                                                                                                                                                                                                                                                                                                                                                                                                  .icon-yellow { background-color: var(--icon-bg-yellow); color: #f57f17; }
+                                                                                                                                                                                                                                                                                                                                                                                                  .icon-blue { background-color: var(--icon-bg-blue); color: #1976d2; }
+
+                                                                                                                                                                                                                                                                                                                                                                                                  .card h3 {
+                                                                                                                                                                                                                                                                                                                                                                                                    font-size: 1.35rem;
+                                                                                                                                                                                                                                                                                                                                                                                                      color: var(--text-main);
+                                                                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;
+                                                                                                                                                                                                                                                                                                                                                                                                          margin-bottom: 8px;
+                                                                                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                                                                                          .card p {
+                                                                                                                                                                                                                                                                                                                                                                                                            color: var(--text-muted);
+                                                                                                                                                                                                                                                                                                                                                                                                              font-size: 0.95rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                line-height: 1.5;
+                                                                                                                                                                                                                                                                                                                                                                                                                  margin-bottom: 20px;
+                                                                                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                  .card-link {
+                                                                                                                                                                                                                                                                                                                                                                                                                    color: var(--blue-primary);
+                                                                                                                                                                                                                                                                                                                                                                                                                      text-decoration: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;
+                                                                                                                                                                                                                                                                                                                                                                                                                          font-size: 1.05rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                            display: inline-flex;
+                                                                                                                                                                                                                                                                                                                                                                                                                              align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                gap: 6px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                  margin-top: auto;
+                                                                                                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                  /* ==========================================================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                     6. BOTÃO FLUTUANTE DE ACESSIBILIDADE
+                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================================================================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                        .floating-accessibility {
+                                                                                                                                                                                                                                                                                                                                                                                                                                          position: fixed;
+                                                                                                                                                                                                                                                                                                                                                                                                                                            right: 16px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                              top: 50%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                transform: translateY(-50%);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  width: 54px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    height: 54px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      border-radius: 50%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        background-color: var(--blue-primary);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                          color: #ffffff;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            border: 2px solid #ffffff;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              font-size: 1.6rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                display: flex;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    justify-content: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                      box-shadow: var(--shadow-float);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        cursor: pointer;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          z-index: 1000;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          /* ==========================================================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             7. ADAPTAÇÃO PARA TABLETS E DESKTOPS
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========================================================================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @media (min-width: 768px) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  .nav-links {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      display: flex;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              gap: 24px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  .nav-links a {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      color: #ffffff;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          text-decoration: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              font-weight: 600;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  .hero-buttons {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      flex-direction: row;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          justify-content: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              .cards-grid {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      .floating-accessibility {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          right: 24px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              bottom: 24px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  top: auto;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      transform: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
