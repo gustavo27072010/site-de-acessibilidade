@@ -4,318 +4,406 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal do Cidadão - Curitiba</title>
-  
-  <!-- CSS Principal -->
   <link rel="stylesheet" href="estilo.css">
-  
-  <!-- Otimização de Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ==========================================
-       1. CABEÇALHO DA PÁGINA (HEADER)
-       ========================================== -->
-  <header class="header" role="banner">
+  <!-- CABEÇALHO -->
+  <header class="header">
     <div class="container header-container">
       <div class="logo">
-        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-icon">🛡️</span>
         <div class="logo-text">
           <strong>Portal do Cidadão</strong>
           <small>Acessível para todos</small>
         </div>
       </div>
-      <button class="search-btn" aria-label="Abrir campo de busca">🔍</button>
+      <nav class="nav-menu">
+        <a href="#servicos">Serviços</a>
+        <a href="#saude">Saúde</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <button class="search-btn" aria-label="Buscar">🔍</button>
     </div>
   </header>
 
-  <!-- ==========================================
-       2. SEÇÃO HERO (BOAS-VINDAS)
-       ========================================== -->
-  <section class="hero container" aria-labelledby="hero-title">
-    <div class="badge">
-      <span aria-hidden="true">♿</span> Portal 100% Acessível — WCAG 2.1 AAA
-    </div>
-    
-    <h1 id="hero-title">Bem-vindo ao<br><span>Portal do Cidadão</span></h1>
-    
-    <p>Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.</p>
+  <!-- HERO SECTION -->
+  <section class="hero container">
+    <h1>Bem-vindo ao<br><span>Portal do Cidadão</span></h1>
+    <p class="hero-subtitle">Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.</p>
     
     <div class="hero-buttons">
       <a href="#servicos" class="btn btn-primary">Ver Serviços &rarr;</a>
       <a href="tel:156" class="btn btn-outline">📞 Ligar: 156</a>
     </div>
 
-    <div class="alert-box" role="note">
-      <span aria-hidden="true">🖐️</span>
-      <p>Use a <strong>Barra de Acessibilidade</strong> para alterar o Tema (Claro/Escuro), ajustar fonte para Baixa Visão e ativar o modo Dislexia.</p>
+    <div class="alert-box">
+      <span>🖐️</span>
+      <p>Use a <strong>Barra de Acessibilidade</strong> à direita para ajustar fonte, contraste, pausar animações e ativar modo dislexia a qualquer momento.</p>
     </div>
   </section>
 
-  <!-- ==========================================
-       3. CHIPS DE NAVEGAÇÃO RÁPIDA (PERFIS)
-       ========================================== -->
-  <section class="chips-section container" aria-label="Filtros por perfil de público">
+  <!-- CHIPS DE PÚBLICOS -->
+  <section class="chips-section container">
     <div class="chips-grid">
-      <button class="chip" type="button">👴 Idosos</button>
-      <button class="chip" type="button">🤰 Gestantes</button>
-      <button class="chip" type="button">👧 Crianças</button>
-      <button class="chip" type="button">🧑‍🎓 Jovens</button>
-      <button class="chip" type="button">👷 Trabalhadores</button>
-      <button class="chip" type="button">♿ Pessoas com Deficiência</button>
-      <button class="chip" type="button">🏠 Famílias de Baixa Renda</button>
-      <button class="chip" type="button">🌐 Imigrantes</button>
+      <button class="chip">👴 Idosos</button>
+      <button class="chip">🤰 Gestantes</button>
+      <button class="chip">👧 Crianças</button>
+      <button class="chip">🧑‍🎓 Jovens</button>
+      <button class="chip">👷 Trabalhadores</button>
+      <button class="chip">♿ Pessoas com Deficiência</button>
+      <button class="chip">🏠 Famílias de Baixa Renda</button>
+      <button class="chip">🌐 Imigrantes</button>
     </div>
   </section>
 
-  <!-- ==========================================
-       4. CARDS DE SERVIÇOS (ACESSO RÁPIDO)
-       ========================================== -->
-  <section class="services-section container" id="servicos" aria-labelledby="services-title">
-    <h2 id="services-title">Acesso Rápido</h2>
-    
+  <!-- ACESSO RÁPIDO (9 CARDS) -->
+  <section class="services-section container" id="servicos">
+    <h2>Acesso Rápido</h2>
     <div class="cards-grid">
-      <article class="card">
-        <div class="card-icon icon-red" aria-hidden="true">❤️</div>
+
+      <div class="card">
+        <div class="card-icon icon-red">❤️</div>
         <h3>Saúde</h3>
-        <p>Agende consultas, veja exames, vacinas e encontre a UBS mais próxima.</p>
-        <a href="#" class="card-link">Consultar Saúde Já &rarr;</a>
-      </article>
+        <p>Consultas, exames, vacinas e UBS próximas</p>
+        <a href="#" class="card-link">Acessar &rarr;</a>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-blue" aria-hidden="true">📖</div>
-        <h3>Benefícios Sociais</h3>
-        <p>Consulte aposentadoria, BPC, Bolsa Família e serviços do INSS.</p>
-        <a href="#" class="card-link">Entrar no Meu INSS &rarr;</a>
-      </article>
+      <div class="card">
+        <div class="card-icon icon-blue">📖</div>
+        <h3>Benefícios</h3>
+        <p>Aposentadoria, BPC, Bolsa Família e INSS</p>
+        <a href="#" class="card-link">Acessar &rarr;</a>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-green" aria-hidden="true">🎓</div>
+      <div class="card">
+        <div class="card-icon icon-green">🎓</div>
         <h3>Educação</h3>
-        <p>Confira prazos de matrícula, bolsas de estudo e cursos gratuitos.</p>
-        <a href="#" class="card-link">Ver serviços de Educação &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon icon-yellow" aria-hidden="true">🔔</div>
-        <h3>Diário Oficial</h3>
-        <p>Leia comunicados do governo, editais e prazos públicos.</p>
+        <p>Matrículas, bolsas e cursos profissionalizantes</p>
         <a href="#" class="card-link">Acessar &rarr;</a>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-purple" aria-hidden="true">🏠</div>
+      <div class="card">
+        <div class="card-icon icon-yellow">🔔</div>
+        <h3>Avisos Oficiais</h3>
+        <p>Comunicados, editais e prazos importantes</p>
+        <a href="#" class="card-link">Acessar &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon icon-purple">🏠</div>
         <h3>Habitação</h3>
-        <p>Inscreva-se no Minha Casa Minha Vida ou regularize seu imóvel.</p>
+        <p>Minha Casa Minha Vida e regularização fundiária</p>
         <a href="#" class="card-link">Acessar &rarr;</a>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-pink" aria-hidden="true">👥</div>
+      <div class="card">
+        <div class="card-icon icon-pink">👥</div>
         <h3>Assistência Social</h3>
-        <p>Encontre a unidade do CRAS ou CREAS para apoio à sua família.</p>
+        <p>CRAS, CREAS e acompanhamento familiar</p>
         <a href="#" class="card-link">Acessar &rarr;</a>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-blue" aria-hidden="true">📄</div>
-        <h3>Impostos e IPTU</h3>
-        <p>Emita 2ª via de guias de pagamento, impostos e certidões negativas.</p>
-        <a href="#" class="card-link">Emitir guias e certidões &rarr;</a>
-      </article>
+      <div class="card">
+        <div class="card-icon icon-blue-light">🛡️</div>
+        <h3>Segurança</h3>
+        <p>Boletim de ocorrência e delegacia online</p>
+        <a href="#" class="card-link">Acessar &rarr;</a>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-green" aria-hidden="true">🌱</div>
-        <h3>Meio Ambiente</h3>
-        <p>Confira dias de coleta seletiva, agende poda de árvores ou adote animais.</p>
-        <a href="#" class="card-link">Ver serviços ambientais &rarr;</a>
-      </article>
+      <div class="card">
+        <div class="card-icon icon-green-light">📞</div>
+        <h3>Ouvidoria</h3>
+        <p>Reclamações, sugestões e atendimento 156</p>
+        <a href="#" class="card-link">Acessar &rarr;</a>
+      </div>
 
-      <article class="card">
-        <div class="card-icon icon-yellow" aria-hidden="true">🎭</div>
-        <h3>Cultura e Lazer</h3>
-        <p>Descubra a programação de eventos gratuitos, museus, teatros e parques.</p>
-        <a href="#" class="card-link">Ver agenda cultural &rarr;</a>
-      </article>
+      <div class="card">
+        <div class="card-icon icon-purple-light">📄</div>
+        <h3>Documentos</h3>
+        <p>RG, CPF, certidões e segunda via</p>
+        <a href="#" class="card-link">Acessar &rarr;</a>
+      </div>
+
     </div>
   </section>
 
-  <!-- ==========================================
-       5. SAÚDE EM DIA — CURITIBA
-       ========================================== -->
-  <section class="health-section container" aria-labelledby="health-title">
-    <h2 id="health-title">❤️ Saúde em Dia — Curitiba</h2>
-    
-    <div class="sub-block">
-      <h3>📅 Atendimentos e Vacinação Esta Semana</h3>
-      
-      <div class="schedule-item">
-        <span class="date-tag">13 Feb 08:00</span>
-        <strong>Vacinação de Rotina e Calendário Infantil</strong>
-        <p>US Ouvidor Pardinho (Rebouças) & US Mãe Curitibana</p>
-      </div>
+  <!-- SAÚDE EM DIA -->
+  <section class="health-container-wrapper container" id="saude">
+    <div class="health-card-box">
+      <h2>❤️ Saúde em Dia</h2>
 
-      <div class="schedule-item">
-        <span class="date-tag">16 Feb 09:00</span>
-        <strong>Acompanhamento Pré-natal e Saúde da Mulher</strong>
-        <p>US Bairro Alto & US Campina do Siqueira</p>
-      </div>
+      <div class="health-grid-layout">
+        <!-- Coluna da Esquerda -->
+        <div class="health-column">
+          <h3>📅 Atendimentos Disponíveis Esta Semana</h3>
 
-      <div class="schedule-item">
-        <span class="date-tag">18 Feb 13:30</span>
-        <strong>Programa de Atenção ao Idoso (60+)</strong>
-        <p>US Santa Felicidade</p>
-      </div>
+          <div class="schedule-card">
+            <div class="date-badge">
+              <span class="day">12 Ago</span>
+              <span class="time">07:30</span>
+            </div>
+            <div class="schedule-info">
+              <strong>Vacinação Infantil (0-5 anos)</strong>
+              <p>UBS Jardim América</p>
+            </div>
+          </div>
 
-      <div class="schedule-item">
-        <span class="date-tag">20 Feb 08:30</span>
-        <strong>Atendimento e Acolhimento — Saúde Mental</strong>
-        <p>CAPS II Portão / Fazendinha</p>
-      </div>
+          <div class="schedule-card">
+            <div class="date-badge">
+              <span class="day">15 Ago</span>
+              <span class="time">09:00</span>
+            </div>
+            <div class="schedule-info">
+              <strong>Pré-natal — 2.º trimestre</strong>
+              <p>UBS Centro</p>
+            </div>
+          </div>
 
-      <a href="#" class="action-link">Agendar pelo aplicativo Saúde Já Curitiba &rarr;</a>
-    </div>
+          <div class="schedule-card">
+            <div class="date-badge">
+              <span class="day">20 Ago</span>
+              <span class="time">14:00</span>
+            </div>
+            <div class="schedule-info">
+              <strong>Saúde do Idoso (60+)</strong>
+              <p>Hospital das Clínicas</p>
+            </div>
+          </div>
 
-    <div class="sub-block">
-      <h3>💊 Programas Gratuitos de Saúde</h3>
-      
-      <div class="program-item">
-        <strong>🏥 Farmácia Curitibana</strong>
-        <p>Distribuição de medicamentos básicos e especializados pelo SUS.</p>
-      </div>
+          <div class="schedule-card">
+            <div class="date-badge">
+              <span class="day">28 Ago</span>
+              <span class="time">08:30</span>
+            </div>
+            <div class="schedule-info">
+              <strong>Saúde Mental — CAPS</strong>
+              <p>CAPS Adulto Leste</p>
+            </div>
+          </div>
 
-      <div class="program-item">
-        <strong>🏥 Rede Mãe Curitibana Vale a Pena</strong>
-        <p>Acompanhamento pré-natal completo e suporte ao recém-nascido.</p>
-      </div>
-
-      <div class="program-item">
-        <strong>🏥 Programa Saúde na Escola (PSE)</strong>
-        <p>Ações preventivas e avaliações de saúde nas escolas municipais.</p>
-      </div>
-
-      <div class="phone-info">
-        📞 <strong>Central 3350-9000 (Central Saúde Já Curitiba)</strong> — Atendimento telefônico diário para orientações e triagem.
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       6. NOTÍCIAS E AVISOS
-       ========================================== -->
-  <section class="news-section container" aria-labelledby="news-title">
-    <h2 id="news-title">📰 Notícias e Avisos</h2>
-
-    <article class="news-card">
-      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Médico segurando um smartphone durante consulta médica">
-      <div class="news-content">
-        <span class="category">SAÚDE</span>
-        <h3>Campanhas de vacinação seguem ativas nas Unidades de Saúde</h3>
-        <p>Confira os horários de funcionamento e os pontos de vacinação em todas as regionais da cidade.</p>
-        <time datetime="2026-02-12" class="news-date">12 Feb 2026</time>
-        <a href="#" class="read-more">Ler mais &rarr;</a>
-      </div>
-    </article>
-
-    <article class="news-card">
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Homem sorrindo para a câmera">
-      <div class="news-content">
-        <span class="category">BENEFÍCIOS</span>
-        <h3>Atualização do Cadastro Único para programas sociais</h3>
-        <p>Famílias devem manter os dados atualizados nos CRAS para garantir acesso a benefícios federais e municipais.</p>
-        <time datetime="2026-02-10" class="news-date">10 Feb 2026</time>
-        <a href="#" class="read-more">Ler mais &rarr;</a>
-      </div>
-    </article>
-
-    <article class="news-card">
-      <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Pessoas trabalhando juntas em computadores durante aula de programação">
-      <div class="news-content">
-        <span class="category">EDUCAÇÃO</span>
-        <h3>Inscrições para cursos de qualificação profissional gratuitos</h3>
-        <p>Abertura de novas turmas para capacitação técnica e inserção no mercado de trabalho local.</p>
-        <time datetime="2026-02-08" class="news-date">08 Feb 2026</time>
-        <a href="#" class="read-more">Ler mais &rarr;</a>
-      </div>
-    </article>
-
-    <article class="news-card">
-      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Molho de chaves de casa ao lado de uma maquete residencial de madeira">
-      <div class="news-content">
-        <span class="category">HABITAÇÃO</span>
-        <h3>Programas habitacionais e regularização de lotes</h3>
-        <p>COHAB divulga novos prazos para atualização de cadastro e projetos de urbanização.</p>
-        <time datetime="2026-02-05" class="news-date">05 Feb 2026</time>
-        <a href="#" class="read-more">Ler mais &rarr;</a>
-      </div>
-    </article>
-  </section>
-
-  <!-- ==========================================
-       7. PRECISA DE AJUDA?
-       ========================================== -->
-  <section class="help-section container" aria-labelledby="help-title">
-    <h2 id="help-title">Precisa de Ajuda?</h2>
-    <p class="help-desc">Atendemos todos os cidadãos gratuitamente — por telefone, aplicativo, presencialmente ou com visita domiciliar para quem não pode se deslocar.</p>
-
-    <div class="help-grid">
-      <div class="help-item">
-        <span aria-hidden="true">📞</span>
-        <div>
-          <strong>Central 156</strong>
-          <a href="tel:156">Ligar para 156 (24h)</a>
+          <a href="#" class="health-link">Agendar consulta ou exame &rarr;</a>
         </div>
-      </div>
 
-      <div class="help-item">
-        <span aria-hidden="true">💬</span>
-        <div>
-          <strong>Saúde Já Curitiba</strong>
-          <a href="tel:4133509000">Ligar para (41) 3350-9000</a>
-        </div>
-      </div>
+        <!-- Coluna da Direita -->
+        <div class="health-column">
+          <h3>🔗 Programas Gratuitos de Saúde</h3>
 
-      <div class="help-item">
-        <span aria-hidden="true">🏠</span>
-        <div>
-          <strong>Visita Domiciliar</strong>
-          <a href="#">Solicitar via 156 (CRAS/FAS)</a>
-        </div>
-      </div>
+          <div class="program-card">
+            <span class="program-icon">🏥</span>
+            <div>
+              <strong>Farmácia Popular</strong>
+              <p>Medicamentos gratuitos ou com até 90% de desconto</p>
+            </div>
+          </div>
 
-      <div class="help-item">
-        <span aria-hidden="true">♿</span>
-        <div>
-          <strong>Atendimento Prioritário</strong>
-          <a href="tel:100">Ligar Disque 100 (Idosos/PCD)</a>
+          <div class="program-card">
+            <span class="program-icon">🏥</span>
+            <div>
+              <strong>Rede Cegonha</strong>
+              <p>Acompanhamento completo da gestação ao parto</p>
+            </div>
+          </div>
+
+          <div class="program-card">
+            <span class="program-icon">🏥</span>
+            <div>
+              <strong>Saúde na Escola</strong>
+              <p>Triagem visual, auditiva e odontológica gratuita</p>
+            </div>
+          </div>
+
+          <div class="phone-highlight-box">
+            📞 <strong>Disque Saúde: 136</strong>
+            <p>Atendimento gratuito 24 horas para dúvidas sobre serviços e encaminhamentos do SUS.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       8. BARRA FIXA DE ACESSIBILIDADE E BOTÃO FLUTUANTE
-       ========================================== -->
-  <footer class="accessibility-bar" role="contentinfo" aria-label="Painel de acessibilidade fixo">
-    <div class="acc-title">♿ Opções de Acessibilidade</div>
-    <div class="acc-buttons">
-      <button type="button">Modos de Visualização</button>
-      <button type="button">☀️ Tema Claro</button>
-      <button type="button">🌙 Tema Escuro</button>
-      <button type="button">🟡 Alto Contraste (Preto/Amarelo)</button>
-      <button type="button">🔍 Baixa Visão</button>
-      <button type="button">🔍 A+ Aumentar Fonte</button>
-      <button type="button">🔍 A- Diminuir Fonte</button>
-      <button type="button">↔️ Aumentar Espaçamento</button>
-      <button type="button">📖 Leitura & Dislexia</button>
-      <button type="button">📖 Fonte para Dislexia</button>
-      <button type="button" class="reset-btn">Restaurar Padrões</button>
+  <!-- NOTÍCIAS E AVISOS -->
+  <section class="news-section container" id="noticias">
+    <h2>📰 Notícias e Avisos</h2>
+
+    <div class="news-grid">
+      <article class="news-card">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Médico utilizando celular">
+        <div class="news-body">
+          <span class="tag-category">SAÚDE</span>
+          <h3>Campanha de vacinação contra gripe aberta para toda a população</h3>
+          <p>Crianças, gestantes, adultos e idosos podem se vacinar gratuitamente nas UBS até 31 de agosto, das 7h às 19h.</p>
+          <div class="news-footer">
+            <span class="news-date">05 Ago 2026</span>
+            <a href="#" class="read-more">Ler mais ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80" alt="Pessoa assinando documento">
+        <div class="news-body">
+          <span class="tag-category">BENEFÍCIOS</span>
+          <h3>Inscrições abertas para o programa Bolsa Família em 2026</h3>
+          <p>Famílias em situação de vulnerabilidade social podem se cadastrar presencialmente no CRAS ou pelo aplicativo Meu INSS.</p>
+          <div class="news-footer">
+            <span class="news-date">04 Ago 2026</span>
+            <a href="#" class="read-more">Ler mais ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Estudantes com notebook">
+        <div class="news-body">
+          <span class="tag-category">EDUCAÇÃO</span>
+          <h3>Prefeitura abre 3.200 vagas em cursos profissionalizantes gratuitos</h3>
+          <p>Jovens e adultos podem se inscrever em cursos de tecnologia, saúde, construção civil e gastronomia com certificado.</p>
+          <div class="news-footer">
+            <span class="news-date">03 Ago 2026</span>
+            <a href="#" class="read-more">Ler mais ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Chaves e maquete residencial">
+        <div class="news-body">
+          <span class="tag-category">HABITAÇÃO</span>
+          <h3>Novas unidades do Minha Casa Minha Vida entregues no bairro Leste</h3>
+          <p>480 famílias de baixa renda recebem as chaves de apartamentos com acessibilidade total e áreas de lazer adaptadas.</p>
+          <div class="news-footer">
+            <span class="news-date">02 Ago 2026</span>
+            <a href="#" class="read-more">Ler mais ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Atendimento acessível">
+        <div class="news-body">
+          <span class="tag-category">INCLUSÃO</span>
+          <h3>Centro de referência para pessoas com deficiência amplia atendimento</h3>
+          <p>O CREF passa a funcionar de segunda a sábado oferecendo reabilitação, assistência jurídica e suporte psicossocial.</p>
+          <div class="news-footer">
+            <span class="news-date">01 Ago 2026</span>
+            <a href="#" class="read-more">Ler mais ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Celular com aplicativos">
+        <div class="news-body">
+          <span class="tag-category">CIDADE</span>
+          <h3>Aplicativo Cidadão Digital permite solicitar 80 serviços pelo celular</h3>
+          <p>Da segunda via de documentos ao agendamento de consultas, o app está disponível gratuitamente para Android e iOS.</p>
+          <div class="news-footer">
+            <span class="news-date">31 Jul 2026</span>
+            <a href="#" class="read-more">Ler mais ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRECISA DE AJUDA? -->
+  <section class="help-blue-wrapper container" id="contato">
+    <div class="help-blue-card">
+      <h2>Precisa de Ajuda?</h2>
+      <p>Atendemos todos os cidadãos gratuitamente — por telefone, aplicativo, presencialmente ou com visita domiciliar para quem não pode se deslocar.</p>
+
+      <div class="help-options-grid">
+        <div class="help-option">
+          <span class="icon">📞</span>
+          <div>
+            <strong>Central 156</strong>
+            <p>Atendimento 24 horas</p>
+          </div>
+        </div>
+
+        <div class="help-option">
+          <span class="icon">💬</span>
+          <div>
+            <strong>WhatsApp Cidadão</strong>
+            <p>(11) 99999-0156</p>
+          </div>
+        </div>
+
+        <div class="help-option">
+          <span class="icon">🏠</span>
+          <div>
+            <strong>Visita Domiciliar</strong>
+            <p>Para quem não pode sair</p>
+          </div>
+        </div>
+
+        <div class="help-option">
+          <span class="icon">♿</span>
+          <div>
+            <strong>Atendimento Prioritário</strong>
+            <p>Idosos, gestantes e PCD</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="logo-icon">🛡️</span>
+        <strong>Portal do Cidadão</strong>
+        <span>© 2026 — Serviço público gratuito para todos os cidadãos brasileiros</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacidade</a>
+        <a href="#">Acessibilidade</a>
+        <a href="#">Mapa do Site</a>
+      </div>
     </div>
   </footer>
 
-  <button class="floating-accessibility" aria-label="Menu rápido de Acessibilidade">♿</button>
+  <!-- BARRA FLUTUANTE LATERAL DE ACESSIBILIDADE (IGUAL AO FIGMA) -->
+  <aside class="sidebar-accessibility">
+    <button class="sidebar-toggle" aria-label="Abrir opções de acessibilidade">›</button>
+    <div class="sidebar-content">
+      <span class="sidebar-title">FONTE</span>
+      <div class="btn-group">
+        <button class="small-btn">A<sup>-</sup></button>
+        <button class="small-btn">A<sup>+</sup></button>
+      </div>
+      
+      <button class="sidebar-btn font-large">
+        <strong>A</strong>
+        <small>A+</small>
+      </button>
+
+      <button class="sidebar-btn">
+        <span class="icon">🔆</span>
+        <small>Contraste</small>
+      </button>
+
+      <button class="sidebar-btn">
+        <span class="icon">⏸️</span>
+        <small>Pausar</small>
+      </button>
+
+      <button class="sidebar-btn">
+        <strong>Dy</strong>
+        <small>Dislexia</small>
+      </button>
+
+      <button class="sidebar-btn reset">
+        <small>Resetar</small>
+      </button>
+    </div>
+  </aside>
 
 </body>
 </html>
