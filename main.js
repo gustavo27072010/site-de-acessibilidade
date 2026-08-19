@@ -1,150 +1,155 @@
 document.addEventListener('DOMContentLoaded', () => {
-  /* ==========================================================================
-     1. LÓGICA DA BARRA DE BUSCA EM TEMPO REAL
-     ========================================================================== */
-  const searchBtnToggle = document.getElementById('search-btn-toggle');
-  const searchBarContainer = document.getElementById('search-bar-container');
-  const searchInput = document.getElementById('search-input');
-  const searchCloseBtn = document.getElementById('search-close-btn');
 
-  // Seleciona todos os cards e elementos interativos pesquisáveis no portal
-  const searchableItems = document.querySelectorAll(
-    '.cards-grid .card, .agenda-item, .news-card, .help-card, .programa-card'
-  );
+  /* ===================================================
+     1. BARRA FLUTUANTE DE ACESSIBILIDADE (ABRIR/FECHAR)
+  =================================================== */
+  const sidebar = document.getElementById('sidebarAcessibilidade');
+  const toggleBtn = document.getElementById('sidebarToggle');
 
-  // Exibir ou oculta a caixa de texto de busca
-  searchBtnToggle.addEventListener('click', () => {
-    const isHidden = searchBarContainer.classList.contains('hidden');
-    
-    if (isHidden) {
-      searchBarContainer.classList.remove('hidden');
-      searchBtnToggle.setAttribute('aria-expanded', 'true');
-      searchInput.focus();
-    } else {
-      closeSearch();
-    }
-  });
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
 
-  // Fechar no botão X
-  searchCloseBtn.addEventListener('click', closeSearch);
-
-  // Filtragem dinâmica dos cards conforme digitação
-  searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase().trim();
-
-    searchableItems.forEach((item) => {
-      const itemText = item.textContent.toLowerCase();
-
-      if (itemText.includes(searchTerm)) {
-        item.classList.remove('search-hidden');
+      if (sidebar.classList.contains('active')) {
+        toggleBtn.textContent = '›';
+        toggleBtn.setAttribute('aria-expanded', 'true');
       } else {
-        item.classList.add('search-hidden');
+        toggleBtn.textContent = '♿';
+        toggleBtn.setAttribute('aria-expanded', 'false');
       }
     });
-  });
+  }
 
-  // Função para resetar e fechar a busca
-  function closeSearch() {
-    searchBarContainer.classList.add('hidden');
-    searchBtnToggle.setAttribute('aria-expanded', 'false');
-    searchInput.value = '';
-    
-    searchableItems.forEach((item) => {
-      item.classList.remove('search-hidden');
+  /* ===================================================
+     2. AJUSTE DE FONTE (AUMENTAR, DIMINUIR E FONTE GRANDE)
+  =================================================== */
+  let fontScale = 1.0;
+  const maxScale = 1.4;
+  const minScale = 0.8;
+
+  const btnAumentar = document.getElementById('btnAumentarFonte');
+  const btnDiminuir = document.getElementById('btnDiminuirFonte');
+  const btnFonteGrande = document.getElementById('btnFonteGrande');
+
+  function aplicarTamanhoFonte(escala) {
+    document.documentElement.style.fontSize = `${escala * 100}%`;
+  }
+
+  if (btnAumentar) {
+    btnAumentar.addEventListener('click', () => {
+      if (fontScale < maxScale) {
+        fontScale += 0.1;
+        aplicarTamanhoFonte(fontScale);
+      }
     });
   }
 
-  /* ==========================================================================
-     2. PAINEL E RECURSOS DE ACESSIBILIDADE
-     ========================================================================== */
-  const toggleAccMenuBtn = document.getElementById('toggle-acc-menu');
-  const accMenu = document.getElementById('acc-menu');
-  const btnCloseAcc = document.getElementById('btn-close-acc');
-  
-  const themeToggleHeader = document.getElementById('theme-toggle-header');
-  const btnThemeLight = document.getElementById('btn-theme-light');
-  const btnThemeDark = document.getElementById('btn-theme-dark');
-  const btnHighContrast = document.getElementById('btn-high-contrast');
-  
-  const btnIncreaseFont = document.getElementById('btn-increase-font');
-  const btnDecreaseFont = document.getElementById('btn-decrease-font');
-  const btnLetterSpacing = document.getElementById('btn-letter-spacing');
-  const btnDyslexicFont = document.getElementById('btn-dyslexic-font');
-  const btnResetAcc = document.getElementById('btn-reset-acc');
-
-  let currentFontSize = 100; // Porcentagem do tamanho da fonte
-  let isCustomSpacing = false;
-
-  // Abrir / Fechar menu de acessibilidade
-  toggleAccMenuBtn.addEventListener('click', () => {
-    accMenu.classList.toggle('hidden');
-  });
-
-  btnCloseAcc.addEventListener('click', () => {
-    accMenu.classList.add('hidden');
-  });
-
-  // Alternador do tema via botão rápido no cabeçalho
-  themeToggleHeader.addEventListener('click', () => {
-    const currentTheme = document.body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-  });
-
-  // Botões de tema no menu flutuante
-  btnThemeLight.addEventListener('click', () => setTheme('light'));
-  btnThemeDark.addEventListener('click', () => setTheme('dark'));
-  btnHighContrast.addEventListener('click', () => setTheme('high-contrast'));
-
-  function setTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
-    themeToggleHeader.textContent = theme === 'dark' ? '☀️' : '🌙';
+  if (btnDiminuir) {
+    btnDiminuir.addEventListener('click', () => {
+      if (fontScale > minScale) {
+        fontScale -= 0.1;
+        aplicarTamanhoFonte(fontScale);
+      }
+    });
   }
 
-  // Aumentar/Diminuir Fonte
-  btnIncreaseFont.addEventListener('click', () => {
-    if (currentFontSize < 140) {
-      currentFontSize += 10;
-      document.documentElement.style.setProperty('--font-scale', `${currentFontSize}%`);
-    }
+  if (btnFonteGrande) {
+    btnFonteGrande.addEventListener('click', () => {
+      fontScale = fontScale === 1.2 ? 1.0 : 1.2;
+      aplicarTamanhoFonte(fontScale);
+    });
+  }
+
+  /* ===================================================
+     3. RECURSO DE DISLEXIA E OUTROS EFEITOS
+  =================================================== */
+  const btnDislexia = document.getElementById('btnDislexia');
+  const btnContraste = document.getElementById('btnContraste');
+  const btnPausar = document.getElementById('btnPausarAnimacoes');
+  const btnResetar = document.getElementById('btnResetar');
+
+  if (btnDislexia) {
+    btnDislexia.addEventListener('click', () => {
+      document.body.classList.toggle('fonte-dislexia');
+    });
+  }
+
+  if (btnContraste) {
+    btnContraste.addEventListener('click', () => {
+      document.body.classList.toggle('alto-contraste');
+    });
+  }
+
+  if (btnPausar) {
+    btnPausar.addEventListener('click', () => {
+      document.body.classList.toggle('sem-animacoes');
+    });
+  }
+
+  if (btnResetar) {
+    btnResetar.addEventListener('click', () => {
+      fontScale = 1.0;
+      aplicarTamanhoFonte(fontScale);
+      document.body.classList.remove('alto-contraste', 'fonte-dislexia', 'sem-animacoes');
+    });
+  }
+
+  /* ===================================================
+     4. BUSCA INTERNA NO SITE (FILTRO EM TEMPO REAL)
+  =================================================== */
+  const searchBtn = document.querySelector('.search-btn');
+
+  if (searchBtn) {
+    // Cria o campo de entrada de busca dinamicamente ao clicar na lupa
+    searchBtn.addEventListener('click', () => {
+      let searchInput = document.getElementById('campoBuscaInterna');
+
+      if (!searchInput) {
+        searchInput = document.createElement('input');
+        searchInput.id = 'campoBuscaInterna';
+        searchInput.type = 'text';
+        searchInput.placeholder = 'Digite para buscar no site...';
+        searchInput.className = 'input-busca-head';
+
+        searchBtn.parentNode.insertBefore(searchInput, searchBtn);
+        searchInput.focus();
+
+        // Evento para filtrar o conteúdo do site ao digitar
+        searchInput.addEventListener('input', (e) => {
+          const termo = e.target.value.toLowerCase().trim();
+          filtrarConteudoInterno(termo);
+        });
+      } else {
+        searchInput.classList.toggle('escondido');
+        if (!searchInput.classList.contains('escondido')) {
+          searchInput.focus();
+        }
+      }
+    });
+  }
+
+  function filtrarConteudoInterno(termo) {
+    const cards = document.querySelectorAll('.card, .news-card');
+
+    cards.forEach(card => {
+      const textoCard = card.textContent.toLowerCase();
+      if (textoCard.includes(termo)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  /* ===================================================
+     5. FILTRO DOS CHIPS DE PÚBLICO
+  =================================================== */
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
   });
 
-  btnDecreaseFont.addEventListener('click', () => {
-    if (currentFontSize > 80) {
-      currentFontSize -= 10;
-      document.documentElement.style.setProperty('--font-scale', `${currentFontSize}%`);
-    }
-  });
-
-  // Aumentar Espaçamento
-  btnLetterSpacing.addEventListener('click', () => {
-    isCustomSpacing = !isCustomSpacing;
-    document.documentElement.style.setProperty(
-      '--letter-spacing', 
-      isCustomSpacing ? '0.12em' : 'normal'
-    );
-  });
-
-  // Fonte para Dislexia
-  btnDyslexicFont.addEventListener('click', () => {
-    document.body.classList.toggle('dyslexic-font');
-  });
-
-  // Restaurar Padrões de Acessibilidade
-  btnResetAcc.addEventListener('click', () => {
-    setTheme('light');
-    currentFontSize = 100;
-    isCustomSpacing = false;
-    document.documentElement.style.setProperty('--font-scale', '1rem');
-    document.documentElement.style.setProperty('--letter-spacing', 'normal');
-    document.body.classList.remove('dyslexic-font');
-  });
 });
-const btnDyslexic = document.getElementById('btn-dyslexic-font');
-
-if (btnDyslexic) {
-  btnDyslexic.addEventListener('click', () => {
-    // Alterna a classe na tag <body>
-    document.body.classList.toggle('dyslexic-mode');
-  });
-}
