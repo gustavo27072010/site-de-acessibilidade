@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal do Cidadão - Curitiba</title>
-  <link rel="stylesheet" href="estilo.css">
+  <!-- Verifique se o nome do arquivo abaixo bate com o seu arquivo de estilo -->
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
@@ -50,18 +51,18 @@
   <!-- CHIPS DE PÚBLICOS -->
   <section class="chips-section container">
     <div class="chips-grid">
-      <button class="chip">👴 Idosos</button>
-      <button class="chip">🤰 Gestantes</button>
-      <button class="chip">👧 Crianças</button>
-      <button class="chip">🧑‍🎓 Jovens</button>
-      <button class="chip">👷 Trabalhadores</button>
-      <button class="chip">♿ Pessoas com Deficiência</button>
-      <button class="chip">🏠 Famílias de Baixa Renda</button>
-      <button class="chip">🌐 Imigrantes</button>
+      <button class="chip" type="button">👴 Idosos</button>
+      <button class="chip" type="button">🤰 Gestantes</button>
+      <button class="chip" type="button">👧 Crianças</button>
+      <button class="chip" type="button">🧑‍🎓 Jovens</button>
+      <button class="chip" type="button">👷 Trabalhadores</button>
+      <button class="chip" type="button">♿ Pessoas com Deficiência</button>
+      <button class="chip" type="button">🏠 Famílias de Baixa Renda</button>
+      <button class="chip" type="button">🌐 Imigrantes</button>
     </div>
   </section>
 
- <!-- ACESSO RÁPIDO (9 CARDS COM LINKS OFICIAIS DA PREFEITURA DE CURITIBA) -->
+  <!-- ACESSO RÁPIDO (9 CARDS COM LINKS OFICIAIS DA PREFEITURA DE CURITIBA) -->
   <section class="services-section container" id="servicos">
     <h2>Acesso Rápido</h2>
     <div class="cards-grid">
@@ -330,7 +331,7 @@
           <span class="icon">💬</span>
           <div>
             <strong>WhatsApp Cidadão</strong>
-            <p>(11) 99999-0156</p>
+            <p>(41) 99999-0156</p>
           </div>
         </div>
 
@@ -370,40 +371,51 @@
   </footer>
 
   <!-- BARRA FLUTUANTE LATERAL DE ACESSIBILIDADE -->
-  <aside class="sidebar-accessibility">
-    <button class="sidebar-toggle" aria-label="Abrir opções de acessibilidade">›</button>
+  <aside class="sidebar-accessibility" id="sidebarAcessibilidade">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir opções de acessibilidade">›</button>
     <div class="sidebar-content">
       <span class="sidebar-title">FONTE</span>
       <div class="btn-group">
-        <button class="small-btn">A<sup>-</sup></button>
-        <button class="small-btn">A<sup>+</sup></button>
+        <button class="small-btn" id="btnDiminuirFonte">A<sup>-</sup></button>
+        <button class="small-btn" id="btnAumentarFonte">A<sup>+</sup></button>
       </div>
       
-      <button class="sidebar-btn font-large">
+      <button class="sidebar-btn font-large" id="btnFonteGrande">
         <strong>A</strong>
         <small>A+</small>
       </button>
 
-      <button class="sidebar-btn">
+      <button class="sidebar-btn" id="btnContraste">
         <span class="icon">🔆</span>
         <small>Contraste</small>
       </button>
 
-      <button class="sidebar-btn">
+      <button class="sidebar-btn" id="btnPausarAnimacoes">
         <span class="icon">⏸️</span>
         <small>Pausar</small>
       </button>
 
-      <button class="sidebar-btn">
+      <button class="sidebar-btn" id="btnDislexia">
         <strong>Dy</strong>
         <small>Dislexia</small>
       </button>
 
-      <button class="sidebar-btn reset">
+      <button class="sidebar-btn reset" id="btnResetar">
         <small>Resetar</small>
       </button>
     </div>
   </aside>
 
+  <!-- SCRIPT PARA INTERAÇÃO COM O CSS -->
+  <script>
+    const toggleBtn = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebarAcessibilidade');
+
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+      });
+    }
+  </script>
 </body>
 </html>
