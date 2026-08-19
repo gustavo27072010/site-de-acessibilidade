@@ -512,6 +512,9 @@ body {
   justify-content: center;
   cursor: pointer;
 }
+.sidebar-accessibility.active {
+  right: 0; /* Exibe a barra quando tiver a classe active */
+}
 .sidebar-accessibility {
   position: fixed;
   right: -200px; /* Esconde a barra fora da tela inicialmente */
@@ -519,10 +522,6 @@ body {
   transform: translateY(-50%);
   transition: right 0.3s ease;
   z-index: 9999;
-}
-
-.sidebar-accessibility.active {
-  right: 0; /* Exibe a barra quando tiver a classe active */
 }
 
 .sidebar-btn.reset { background: #7f1d1d; color: #fca5a5; }
