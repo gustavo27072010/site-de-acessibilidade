@@ -553,4 +553,45 @@ body.fonte-dislexia {
 
 .input-busca-head.escondido {
   display: none;
+  /* Posicionamento da Barra Lateral */
+.sidebar-accessibility {
+  position: fixed;
+  right: -180px; /* Mantém a caixa oculta para fora da tela */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  transition: right 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+/* Estado da barra aberta quando o JS ativa */
+.sidebar-accessibility.active {
+  right: 0;
+}
+
+/* Botão da Cadeira de Rodas (Gatilho) */
+.sidebar-toggle {
+  background-color: #0056b3;
+  color: #ffffff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 0 0 50%;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: -2px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Conteúdo da caixa de ferramentas */
+.sidebar-content {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 15px;
+  width: 180px;
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 }
