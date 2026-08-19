@@ -1,89 +1,69 @@
 /* ==========================================================================
-   1. RESET, VARIÁVEIS DE DESIGN SYSTEM & BASE
+   1. CONFIGURAÇÕES GERAIS E FONTES
    ========================================================================== */
-:root {
-  /* Cores Primárias e Secundárias */
-  --blue-primary: #155eef;        /* Azul vibrante dos botões e ícones flutuantes */
-  --blue-header: #1255e2;         /* Azul exato do fundo da Navbar */
-  --blue-title: #0f2942;          /* Tom escuro quase preto para títulos */
-  --bg-creme: #fcfaf6;             /* Fundo Off-White/Creme do protótipo */
-  --card-bg: #ffffff;             /* Fundo branco puro dos cards */
-  
-  /* Cores de Alerta (Banner Amarelo) */
-  --alert-bg: #fef7da;            /* Amarelo creme claro */
-  --alert-border: #fbe29f;        /* Borda leve do alerta */
-  --alert-text: #7a4604;          /* Marrom do texto e ícone do alerta */
-  
-  /* Cores de Fundo dos Ícones dos Cards */
-  --icon-bg-red: #fde8e8;         /* Saúde */
-  --icon-bg-blue: #e3effd;        /* Benefícios / Segurança */
-  --icon-bg-green: #e1f7e7;       /* Educação / Ouvidoria */
-  --icon-bg-yellow: #fef6d8;      /* Avisos */
-  --icon-bg-purple: #f3e8ff;      /* Habitação / Documentos */
-  --icon-bg-pink: #fce8f3;        /* Assistência Social */
-  
-  /* Cores de Texto */
-  --text-main: #1d2939;           /* Preto suave para textos principais */
-  --text-muted: #667085;          /* Cinza para descrições */
-  
-  /* Raios de Borda (Border Radius Exacts) */
-  --radius-card: 28px;            /* Bordas bem arredondadas dos cartões */
-  --radius-icon: 20px;            /* Fundo arredondado do ícone */
-  --radius-pill: 100px;           /* Pílulas (chips e badges) */
-  
-  /* Sombras e Bordas */
-  --card-border: #e4e7ec;
-  --shadow-card: 0px 4px 20px rgba(16, 24, 40, 0.03);
-  --shadow-floating: 0px 8px 24px rgba(21, 94, 239, 0.35);
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap');
 
-  /* Tipografia */
-  --font-serif: "Georgia", "Times New Roman", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+:root {
+  --blue-header: #1255e2;
+  --blue-primary: #155eef;
+  --blue-title: #0a1b39;
+  --bg-page: #fdfbf7;
+  --card-bg: #ffffff;
+  
+  --alert-bg: #fef8e7;
+  --alert-border: #f6e3b5;
+  --alert-text: #734002;
+  
+  --icon-bg-red: #fde8e8;
+  --icon-bg-blue: #e3effd;
+  --icon-bg-green: #e1f7e7;
+  --icon-bg-yellow: #fef6d8;
+  --icon-bg-purple: #f3e8ff;
+  --icon-bg-pink: #fce8f3;
+  
+  --text-main: #1d2939;
+  --text-muted: #475467;
+  --border-light: #eaecf0;
+  
+  --radius-card: 24px;
+  --radius-pill: 100px;
+  
+  --font-serif: 'Merriweather', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
 }
 
-/* Reset Global */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-creme);
+  background-color: var(--bg-page);
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.5;
-  overflow-x: hidden;
+  padding-bottom: 120px; /* Espaço para a barra fixa inferior */
 }
 
-/* Containers Layout */
 .container {
   width: 100%;
   max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* ==========================================================================
-   2. HEADER / NAVBAR (CABEÇALHO)
+   2. HEADER & HERO
    ========================================================================== */
 .header {
   background-color: var(--blue-header);
   color: #ffffff;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding: 16px 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .header-container {
@@ -95,75 +75,20 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
-.logo-icon {
-  font-size: 2rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-}
+.logo-icon { font-size: 2rem; }
+.logo-text strong { display: block; font-family: var(--font-serif); font-size: 1.35rem; }
+.logo-text small { display: block; font-size: 0.8rem; opacity: 0.85; }
+.search-btn { background: transparent; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
 
-.logo div strong {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
+.hero { padding: 32px 0 20px 0; }
 
-.logo div small {
-  display: block;
-  font-size: 0.8rem;
-  opacity: 0.85;
-  font-weight: 400;
-  margin-top: 2px;
-}
-
-.search-btn {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
-
-.search-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.nav-links {
-  display: none; /* Oculto no mobile conforme Figma */
-}
-
-/* ==========================================================================
-   3. HERO SECTION (BOAS-VINDAS E ALERTA)
-   ========================================================================== */
-.hero {
-  padding-top: 36px;
-  padding-bottom: 24px;
-  text-align: left; /* Alinhado à esquerda no mobile */
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Badge WCAG */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background-color: #ffffff;
   border: 1px solid #d0e1fd;
   color: var(--blue-primary);
@@ -171,191 +96,113 @@ body {
   font-weight: 600;
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  margin-bottom: 24px;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.02);
-}
-
-/* Título Principal */
-.hero h1 {
-  font-family: var(--font-serif);
-  font-size: 2.35rem;
-  color: var(--blue-title);
-  line-height: 1.18;
-  font-weight: 700;
-  letter-spacing: -0.02em;
   margin-bottom: 20px;
 }
 
-.hero h1 span {
-  color: var(--blue-primary);
-  display: block;
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--blue-title);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-weight: 900;
 }
+
+.hero h1 span { color: var(--blue-primary); }
 
 .hero p {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
-.hero p strong {
-  color: var(--text-main);
-  font-weight: 700;
-}
-
-/* Botões do Hero */
 .hero-buttons {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .btn {
   width: 100%;
   padding: 16px 24px;
   border-radius: var(--radius-pill);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: transform 0.15s ease, background 0.2s ease;
-  cursor: pointer;
-  border: none;
 }
 
-.btn-primary {
-  background-color: var(--blue-primary);
-  color: #ffffff;
-}
+.btn-primary { background-color: var(--blue-primary); color: #ffffff; }
+.btn-outline { background-color: transparent; border: 2px solid var(--blue-primary); color: var(--blue-primary); }
 
-.btn-primary:active {
-  transform: scale(0.98);
-  background-color: #104ecc;
-}
-
-.btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--blue-primary);
-  color: var(--blue-primary);
-}
-
-/* Caixa amarela de Alerta de Acessibilidade */
 .alert-box {
   background-color: var(--alert-bg);
   border: 1px solid var(--alert-border);
   color: var(--alert-text);
-  padding: 20px;
-  border-radius: 20px;
+  padding: 16px;
+  border-radius: 18px;
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
   font-size: 0.95rem;
-  line-height: 1.55;
-  width: 100%;
-}
-
-.alert-box span {
-  font-size: 1.4rem;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.alert-box strong {
-  color: #5c3300;
 }
 
 /* ==========================================================================
-   4. CHIPS DE PÚBLICO (FILTROS)
+   3. CHIPS & CARDS
    ========================================================================== */
-.chips-section {
-  padding-top: 12px;
-  padding-bottom: 32px;
-}
-
-.chips-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-start;
-}
+.chips-section { padding: 10px 0 30px 0; }
+.chips-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .chip {
   background-color: #ffffff;
-  border: 1px solid var(--card-border);
-  padding: 10px 18px;
+  border: 1px solid var(--border-light);
+  padding: 8px 16px;
   border-radius: var(--radius-pill);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-main);
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.02);
-  transition: all 0.2s ease;
 }
 
-.chip:hover {
-  border-color: var(--blue-primary);
-  color: var(--blue-primary);
-}
-
-/* ==========================================================================
-   5. ACESSO RÁPIDO (GRID DE CARDS)
-   ========================================================================== */
-.services-section {
-  padding-top: 10px;
-  padding-bottom: 50px;
-}
-
-.services-section h2 {
+.services-section { padding-bottom: 40px; }
+.services-section h2, .health-section h2, .news-section h2, .help-section h2 {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: 1.8rem;
   color: var(--blue-title);
-  margin-bottom: 24px;
-  font-weight: 700;
+  margin-bottom: 20px;
+  font-weight: 900;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 16px;
 }
 
 .card {
   background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
-  padding: 28px 24px;
-  box-shadow: var(--shadow-card);
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 12px 28px rgba(16, 24, 40, 0.08);
-}
-
-/* Ícones dos Cards */
 .card-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-icon);
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  flex-shrink: 0;
+  font-size: 1.6rem;
+  margin-bottom: 16px;
 }
 
 .icon-red { background-color: var(--icon-bg-red); }
@@ -365,125 +212,232 @@ body {
 .icon-purple { background-color: var(--icon-bg-purple); }
 .icon-pink { background-color: var(--icon-bg-pink); }
 
-.card h3 {
-  font-size: 1.4rem;
-  color: var(--text-main);
+.card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+.card-link { color: var(--blue-primary); text-decoration: none; font-weight: 700; }
+
+/* ==========================================================================
+   4. SAÚDE EM DIA — CURITIBA
+   ========================================================================== */
+.health-section { padding-bottom: 40px; }
+
+.sub-block {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.sub-block h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: var(--blue-title);
+}
+
+.schedule-item, .program-item {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-light);
+}
+
+.schedule-item:last-child, .program-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.date-tag {
+  display: inline-block;
+  font-size: 0.8rem;
   font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-
-.card p {
-  color: var(--text-muted);
-  font-size: 0.98rem;
-  line-height: 1.5;
-  margin-bottom: 24px;
-}
-
-/* Link Acessar -> */
-.card-link {
   color: var(--blue-primary);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.05rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: auto;
-  transition: gap 0.2s ease;
+  background-color: var(--icon-bg-blue);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-bottom: 4px;
 }
 
-.card-link:hover {
-  gap: 10px;
+.schedule-item strong, .program-item strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.schedule-item p, .program-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.action-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--blue-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.phone-info {
+  background-color: var(--icon-bg-yellow);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-top: 12px;
 }
 
 /* ==========================================================================
-   6. BOTÃO FLUTUANTE DE ACESSIBILIDADE
+   5. NOTÍCIAS E AVISOS
    ========================================================================== */
+.news-section { padding-bottom: 40px; }
+
+.news-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.news-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-content { padding: 20px; }
+
+.news-content .category {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--blue-primary);
+  letter-spacing: 0.05em;
+}
+
+.news-content h3 {
+  font-size: 1.2rem;
+  margin: 6px 0;
+  color: var(--text-main);
+}
+
+.news-content p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.news-date {
+  display: block;
+  font-size: 0.8rem;
+  color: #98a2b3;
+  margin-bottom: 8px;
+}
+
+.read-more {
+  color: var(--blue-primary);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. PRECISA DE AJUDA?
+   ========================================================================== */
+.help-section { padding-bottom: 40px; }
+.help-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+.help-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.help-item {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.help-item span { font-size: 1.5rem; }
+.help-item strong { display: block; font-size: 1rem; }
+.help-item a { color: var(--blue-primary); font-size: 0.9rem; text-decoration: none; font-weight: 600; }
+
+/* ==========================================================================
+   7. BARRA INFERIOR FIXA DE ACESSIBILIDADE
+   ========================================================================== */
+.accessibility-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-light);
+  padding: 12px 20px;
+  z-index: 900;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.05);
+}
+
+.acc-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.acc-buttons {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 4px;
+}
+
+.acc-buttons button {
+  background-color: #f2f4f7;
+  border: 1px solid var(--border-light);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.acc-buttons .reset-btn {
+  background-color: #fee4e2;
+  color: #d92d20;
+}
+
 .floating-accessibility {
   position: fixed;
   right: 16px;
-  top: 52%;
-  transform: translateY(-50%);
-  width: 58px;
-  height: 58px;
+  bottom: 80px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background-color: var(--blue-primary);
   color: #ffffff;
   border: 2px solid #ffffff;
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-floating);
+  box-shadow: 0 4px 16px rgba(21, 94, 239, 0.4);
   cursor: pointer;
-  z-index: 9999;
-  transition: transform 0.2s ease;
+  z-index: 1000;
 }
 
-.floating-accessibility:active {
-  transform: translateY(-50%) scale(0.92);
-}
-
-/* ==========================================================================
-   7. ADAPTAÇÃO TABLET E DESKTOP (BREAKPOINTS)
-   ========================================================================== */
+/* RESPONSIVO TABLET/DESKTOP */
 @media (min-width: 768px) {
-  .hero-content {
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 3.2rem;
-  }
-
-  .hero-buttons {
-    flex-direction: row;
-    justify-content: center;
-    max-width: 500px;
-  }
-
-  .btn {
-    width: auto;
-  }
-
-  .chips-grid {
-    justify-content: center;
-  }
-
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .floating-accessibility {
-    right: 28px;
-    top: auto;
-    bottom: 28px;
-    transform: none;
-  }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-section { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .news-section h2 { grid-column: 1 / -1; }
+  .help-grid { grid-template-columns: repeat(2, 1fr); display: grid; }
 }
 
 @media (min-width: 1024px) {
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  .nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: opacity 0.2s;
-  }
-
-  .nav-links a:hover {
-    opacity: 0.8;
-  }
-
-  .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
 }
