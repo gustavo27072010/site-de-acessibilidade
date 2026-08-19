@@ -512,6 +512,18 @@ body {
   justify-content: center;
   cursor: pointer;
 }
+.sidebar-accessibility {
+  position: fixed;
+  right: -200px; /* Esconde a barra fora da tela inicialmente */
+  top: 50%;
+  transform: translateY(-50%);
+  transition: right 0.3s ease;
+  z-index: 9999;
+}
+
+.sidebar-accessibility.active {
+  right: 0; /* Exibe a barra quando tiver a classe active */
+}
 
 .sidebar-btn.reset { background: #7f1d1d; color: #fca5a5; }
 
@@ -523,19 +535,3 @@ body {
   .nav-menu { display: none; }
   .hero h1 { font-size: 2.2rem; }
 }
-<script>
-    const toggleBtn = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebarAcessibilidade');
-
-    // Abre/fecha o menu ao clicar no botão da cadeira de rodas
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-      
-      // Alterna o ícone do botão entre a cadeira de rodas e a seta de fechar
-      if (sidebar.classList.contains('active')) {
-        toggleBtn.innerHTML = '›';
-      } else {
-        toggleBtn.innerHTML = '♿';
-      }
-    });
-  </script>
