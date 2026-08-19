@@ -1,46 +1,139 @@
 /**
-  * Arquivo principal de interações do Portal do Cidadão
-  * Garante o funcionamento de todos os recursos de acessibilidade e busca
-  */
+ * Arquivo principal de interações do Portal do Cidadão
+ * Gerencia a barra de busca dinâmica, ferramentas de acessibilidade e filtros.
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ===================================================
-     1. CONTROLE DA BARRA FLUTUANTE DE ACESSIBILIDADE
+     1. SISTEMA DE BUSCA INTERNA EM TEMPO REAL
+  =================================================== */
+  const searchBtn = document.getElementById('btnBuscar');
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', (event) => {
+      // Impede o comportamento padrão do botão se estiver dentro de um formulário
+      event.preventDefault();
+
+      let searchInput = document.getElementById('campoBuscaInterna');
+
+      // Se o campo de texto ainda não existe no HTML, cria dinamicamente
+      if (!searchInput) {
+        searchInput = document.createElement('input');
+        searchInput.id = 'campoBuscaInterna';
+        searchInput.type = 'search';
+        searchInput.placeholder = 'Buscar serviços ou notícias...';
+        searchInput.className = 'input-busca-head';
+        searchInput.setAttribute('aria-label', 'Campo de busca no site');
+
+        // Insere o campo exatamente antes do ícone de lupa no cabeçalho
+        searchBtn.parentNode.insertBefore(searchInput, searchBtn);
+        searchInput.focus();
+
+        // Evento 1: Filtragem instantânea conforme o usuário digita
+        searchInput.addEventListener('input', (e) => {
+          const termo = e.target.value.toLowerCase().trim();
+          executarBuscaNoSite(termo);
+        });
+
+        // Evento 2: Rolagem suave até os resultados ao pressionar Enter
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            const termo = e.target.value.toLowerCase().trim();
+            executarBuscaNoSite(termo);
+
+            // Rola a tela até a seção de serviços para mostrar o resultado
+            const secaoServicos = document.getElementById('servicos');
+            if (secaoServicos) {
+              secaoServicos.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+
+      } else {
+        // Se o campo já existe, alterna o estado de exibição (visível / escondido)
+        searchInput.classList.toggle('escondido');
+        
+        if (!searchInput.classList.contains('escondido')) {
+          searchInput.focus();
+        } else {
+          // Limpa a busca ao fechar o campo e exibe tudo novamente
+          searchInput.value = '';
+          executarBuscaNoSite('');
+        }
+      }
+    });
+  }
+
+  /**
+   * Função responsável por ocultar ou exibir elementos da página com base no termo buscado
+   * @param {string} termo - Texto digitado pelo usuário
+   */
+  function executarBuscaNoSite(termo) {
+    // Seleciona todos os elementos pesquisáveis do site
+    const cardsServico = document.querySelectorAll('.card');
+    const cardsNoticias = document.querySelectorAll('.news-card');
+
+    // 1. Filtrar Cards de Serviços
+    cardsServico.forEach(card => {
+      const titulo = card.querySelector('h3')?.textContent.toLowerCase() || '';
+      const descricao = card.querySelector('p')?.textContent.toLowerCase() || '';
+
+      // Verifica se o termo está no título ou na descrição
+      if (titulo.includes(termo) || descricao.includes(termo)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // 2. Filtrar Cards de Notícias
+    cardsNoticias.forEach(newsCard => {
+      const titulo = newsCard.querySelector('h3')?.textContent.toLowerCase() || '';
+      const resumo = newsCard.querySelector('p')?.textContent.toLowerCase() || '';
+      const categoria = newsCard.querySelector('.tag-category')?.textContent.toLowerCase() || '';
+
+      if (titulo.includes(termo) || resumo.includes(termo) || categoria.includes(termo)) {
+        newsCard.style.display = 'flex';
+      } else {
+        newsCard.style.display = 'none';
+      }
+    });
+  }
+
+
+  /* ===================================================
+     2. CONTROLE DA BARRA FLUTUANTE DE ACESSIBILIDADE
   =================================================== */
   const sidebar = document.getElementById('sidebarAcessibilidade');
   const toggleBtn = document.getElementById('sidebarToggle');
 
   if (toggleBtn && sidebar) {
     toggleBtn.addEventListener('click', () => {
-      // Alterna a classe 'active' que desliza o painel para dentro/fora da tela
       sidebar.classList.toggle('active');
-
       const estaAberto = sidebar.classList.contains('active');
-
-      // Atualiza o texto do botão e os atributos ARIA para leitores de tela
       toggleBtn.textContent = estaAberto ? '›' : '♿';
       toggleBtn.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
     });
   }
 
+
   /* ===================================================
-     2. AJUSTE DINÂMICO DE TAMANHO DA FONTE
+     3. AJUSTE DINÂMICO DO TAMANHO DA FONTE
   =================================================== */
-  let fontScale = 1.0; // 1.0 = 100% do tamanho padrão
-  const maxScale = 1.4; // Limite máximo de aumento (140%)
-  const minScale = 0.8; // Limite mínimo de redução (80%)
+  let fontScale = 1.0;
+  const maxScale = 1.4;
+  const minScale = 0.8;
 
   const btnAumentar = document.getElementById('btnAumentarFonte');
   const btnDiminuir = document.getElementById('btnDiminuirFonte');
   const btnFonteGrande = document.getElementById('btnFonteGrande');
 
-  // Atualiza o tamanho da fonte no elemento raiz (HTML)
   function aplicarTamanhoFonte(escala) {
     document.documentElement.style.fontSize = `${escala * 100}%`;
   }
 
-  // Aumenta a fonte gradualmente
   if (btnAumentar) {
     btnAumentar.addEventListener('click', () => {
       if (fontScale < maxScale) {
@@ -50,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Diminui a fonte gradualmente
   if (btnDiminuir) {
     btnDiminuir.addEventListener('click', () => {
       if (fontScale > minScale) {
@@ -60,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Alterna diretamente para a versão Fonte Grande
   if (btnFonteGrande) {
     btnFonteGrande.addEventListener('click', () => {
       fontScale = fontScale === 1.2 ? 1.0 : 1.2;
@@ -68,122 +159,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
   /* ===================================================
-     3. RECURSOS DE MODOS DE LEITURA (DISLEXIA E CONTRASTE)
+     4. MODOS DE LEITURA E ACESSIBILIDADE VISUAL
   =================================================== */
   const btnDislexia = document.getElementById('btnDislexia');
   const btnContraste = document.getElementById('btnContraste');
   const btnPausar = document.getElementById('btnPausarAnimacoes');
   const btnResetar = document.getElementById('btnResetar');
 
-  // Modo Dislexia: Alterna fonte com maior espaçamento
   if (btnDislexia) {
     btnDislexia.addEventListener('click', () => {
       document.body.classList.toggle('fonte-dislexia');
     });
   }
 
-  // Modo Alto Contraste
   if (btnContraste) {
     btnContraste.addEventListener('click', () => {
       document.body.classList.toggle('alto-contraste');
     });
   }
 
-  // Pausa de transições visuais
   if (btnPausar) {
     btnPausar.addEventListener('click', () => {
       document.body.classList.toggle('sem-animacoes');
     });
   }
 
-  // Botão Resetar:Restaura todas as opções para o estado inicial
   if (btnResetar) {
     btnResetar.addEventListener('click', () => {
       fontScale = 1.0;
       aplicarTamanhoFonte(fontScale);
       document.body.classList.remove('alto-contraste', 'fonte-dislexia', 'sem-animacoes');
-    });
-  }
-
-  /* ===================================================
-     4. SISTEMA DE BUSCA INTERNA EM TEMPO REAL
-  =================================================== */
-  const searchBtn = document.getElementById('btnBuscar');
-
-  if (searchBtn) {
-    searchBtn.addEventListener('click', () => {
-      let searchInput = document.getElementById('campoBuscaInterna');
-
-      // Se o campo de texto ainda não existir na tela, ele é criado dinamicamente
-      if (!searchInput) {
-        searchInput = document.createElement('input');
-        searchInput.id = 'campoBuscaInterna';
-        searchInput.type = 'text';
-        searchInput.placeholder = 'Buscar no site...';
-        searchInput.className = 'input-busca-head';
-
-        // Insere o campo antes do ícone de lupa
-        searchBtn.parentNode.insertBefore(searchInput, searchBtn);
-        searchInput.focus();
-
-        // Escuta o evento de digitação do usuário para filtrar os conteúdos
-        searchInput.addEventListener('input', (e) => {
-          const termo = e.target.value.toLowerCase().trim();
-          filtrarConteudoInterno(termo);
-        });
-      } else {
-        // Se já existir, alterna a exibição
-        searchInput.classList.toggle('escondido');
-        if (!searchInput.classList.contains('escondido')) {
-          searchInput.focus();
-        }
+      
+      // Reseta também o campo de busca caso esteja ativo
+      const inputBusca = document.getElementById('campoBuscaInterna');
+      if (inputBusca) {
+        inputBusca.value = '';
+        executarBuscaNoSite('');
       }
     });
   }
 
-  // Oculta ou exibe os cards de acordo com a palavra digitada na busca
-  function filtrarConteudoInterno(termo) {
-    const cards = document.querySelectorAll('.card, .news-card');
 
-    cards.forEach(card => {
-      const textoCard = card.textContent.toLowerCase();
-      if (textoCard.includes(termo)) {
-        card.style.display = ''; // Mantém a exibição padrão do CSS
-      } else {
-        card.style.display = 'none'; // Oculta o card divergente
-      }
-    });
-  }
   /* ===================================================
-     5. SELEÇÃO INTERATIVA E FILTRAGEM DOS CHIPS DE PÚBLICO
+     5. SELEÇÃO E FILTRAGEM PELOS CHIPS DE PÚBLICO
   =================================================== */
   const chips = document.querySelectorAll('.chip');
-  const cards = document.querySelectorAll('.card');
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
-      // Se clicar no mesmo chip já ativo, desmarca ele
       const jaAtivo = chip.classList.contains('active');
       
       chips.forEach(c => c.classList.remove('active'));
 
       if (!jaAtivo) {
         chip.classList.add('active');
-        const categoria = chip.textContent.trim().toLowerCase();
-
-        // Filtra os cards por correspondência de texto
-        cards.forEach(card => {
-          const textoCard = card.textContent.toLowerCase();
-          if (textoCard.includes(categoria) || categoria.includes('todos')) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        // Extrai o texto do chip ignorando os emojis
+        const termoChip = chip.textContent.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim().toLowerCase();
+        
+        executarBuscaNoSite(termoChip);
       } else {
-        // Se nenhum chip estiver ativo, exibe todos os cards
-        cards.forEach(card => card.style.display = 'flex');
+        // Se desmarcar o chip, restaura a exibição de todos os cards
+        executarBuscaNoSite('');
       }
     });
   });
+
+});
