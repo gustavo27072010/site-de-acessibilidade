@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Configurações básicas de codificação de caracteres e responsividade -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal do Cidadão - Curitiba/PR</title>
-
-  <!-- Vinculação do arquivo de estilos externo -->
   <link rel="stylesheet" href="estilo.css">
-
-  <!-- Otimização de conexão para carregamento de fontes do Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ===================================================
-       CABEÇALHO (HEADER)
-  =================================================== -->
+  <!-- CABEÇALHO -->
   <header class="header">
     <div class="container header-container">
-      <!-- Identificação da marca / Logotipo -->
       <div class="logo">
         <span class="logo-icon" aria-hidden="true">🛡️</span>
         <div class="logo-text">
@@ -30,7 +22,6 @@
         </div>
       </div>
 
-      <!-- Navegação principal do portal -->
       <nav class="nav-menu" aria-label="Navegação Principal">
         <a href="#servicos">Serviços</a>
         <a href="#saude">Saúde</a>
@@ -39,18 +30,14 @@
         <a href="#policia-cívil/militar">policia-cívil/militar</a>
       </nav>
 
-      <!-- Área reservada para o botão e campo de busca dinâmica -->
       <div class="search-box">
         <button class="search-btn" id="btnBuscar" aria-label="Abrir campo de busca no site">🔍</button>
       </div>
     </div>
   </header>
 
-<!-- ===================================================
-       SEÇÃO PRINCIPAL (HERO)
-  =================================================== -->
+  <!-- SEÇÃO PRINCIPAL (HERO) -->
   <section class="hero container">
-    <!-- Pílula de Acessibilidade (Figma) -->
     <div style="background-color: #e8f0fe; color: #0052cc; font-size: 0.85rem; font-weight: 700; padding: 6px 16px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px;">
       <span aria-hidden="true">♿</span> Portal 100% Acessível — WCAG 2.1 AAA
     </div>
@@ -59,21 +46,19 @@
     <p class="hero-subtitle">
       Um portal criado para <strong>todos os cidadãos</strong> — com autonomia, independência e acessibilidade plena em cada clique.
     </p>
-    
+
     <div class="hero-buttons">
       <a href="#servicos" class="btn btn-primary">Ver Serviços &rarr;</a>
       <a href="tel:156" class="btn btn-outline">📞 Ligar: 156</a>
     </div>
 
-    <!-- Caixa de alerta instrutiva sobre a acessibilidade -->
     <div class="alert-box">
       <span aria-hidden="true">🖐️</span>
       <p>Use a <strong>Barra de Acessibilidade</strong> à direita para ajustar fonte, contraste, pausar animações e ativar modo dislexia a qualquer momento.</p>
     </div>
   </section>
-  <!-- ===================================================
-       CHIPS DE FILTRO POR PÚBLICO-ALVO
-  =================================================== -->
+
+  <!-- CHIPS DE FILTRO POR PÚBLICO-ALVO -->
   <section class="chips-section container" aria-label="Filtro por público de atendimento">
     <div class="chips-grid">
       <button class="chip" type="button">👴 Idosos</button>
@@ -87,9 +72,7 @@
     </div>
   </section>
 
-  <!-- ===================================================
-       SERVIÇOS DE ACESSO RÁPIDO (CARDS)
-  =================================================== -->
+  <!-- SERVIÇOS DE ACESSO RÁPIDO -->
   <section class="services-section container" id="servicos">
     <h2>Acesso Rápido</h2>
     <div class="cards-grid">
@@ -158,20 +141,70 @@
       </article>
 
       <article class="card">
-        <div class="card-icon icon-white-light" aria hidden="true">👮</div>
-        <h3> delegacia da policia civil</h3>
-        <p>delegacia</p>
-        <a href="https://www.policiacivil.pr.gov.br" target="_blank" rel="noopener noreferrer" class="card-link">acessar &rarr;</a>
-
-        
-        
+        <div class="card-icon icon-white-light" aria-hidden="true">👮</div>
+        <h3>Delegacia da Polícia Civil</h3>
+        <p>Delegacia</p>
+        <a href="https://www.policiacivil.pr.gov.br" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+      </article>
 
     </div>
   </section>
 
   <!-- ===================================================
-       SEÇÃO DE NOTÍCIAS E COMUNICADOS
+       NOVA SEÇÃO: SAÚDE
   =================================================== -->
+  <section class="services-section container" id="saude">
+    <h2>❤️ Saúde</h2>
+    <p>Encontre atendimento, vacinas e serviços de saúde em Curitiba.</p>
+
+    <div class="cards-grid">
+
+      <article class="card">
+        <div class="card-icon icon-red" aria-hidden="true">🏥</div>
+        <h3>Unidades de Saúde (UBS)</h3>
+        <p>Encontre a unidade de saúde mais próxima da sua casa</p>
+        <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon icon-blue" aria-hidden="true">📅</div>
+        <h3>Consultas e Exames</h3>
+        <p>Agendamento e acompanhamento pelo Saúde Já</p>
+        <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Agendar &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon icon-green" aria-hidden="true">💉</div>
+        <h3>Vacinação</h3>
+        <p>Campanhas, calendário vacinal e locais de vacina</p>
+        <a href="https://www.curitiba.pr.gov.br/noticias/saude" target="_blank" rel="noopener noreferrer" class="card-link">Saiba mais &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon icon-yellow" aria-hidden="true">💊</div>
+        <h3>Medicamentos</h3>
+        <p>Farmácias e retirada de medicamentos pelo SUS</p>
+        <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon icon-pink" aria-hidden="true">🤰</div>
+        <h3>Saúde da Mulher e Gestante</h3>
+        <p>Pré-natal, exames e acompanhamento da gestação</p>
+        <a href="https://saudeja.curitiba.pr.gov.br/" target="_blank" rel="noopener noreferrer" class="card-link">Acessar &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon icon-red" aria-hidden="true">🚑</div>
+        <h3>Urgência e Emergência</h3>
+        <p>SAMU 192 — atendimento 24 horas, também nas UPAs</p>
+        <a href="tel:192" class="card-link">📞 Ligar: 192</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- NOTÍCIAS E COMUNICADOS -->
   <section class="news-section container" id="noticias">
     <h2>📰 Notícias e Avisos</h2>
 
@@ -214,10 +247,10 @@
           </div>
         </div>
       </article>
-      
+
       <article class="news-card">
-        <img src="https://st2.depositphotos.com/3483971/7464/i/450/depositphotos_74646323-stock-illustration-leader.jpg"
-        <div class="news-body"
+        <img src="https://st2.depositphotos.com/3483971/7464/i/450/depositphotos_74646323-stock-illustration-leader.jpg" alt="Ilustração de eleições">
+        <div class="news-body">
           <span class="tag-category">POLITICA</span>
           <h3>as eleições no brasil seguem sendo um dos assuntos mais comentados em todo o país</h3>
           <p>Jovens e adultos vem votando a favor de seus respectivos eleitores ao qual acham que devem ser elegidos.</p>
@@ -230,9 +263,7 @@
     </div>
   </section>
 
-  <!-- ===================================================
-       BLOCO DE CONTATO E AJUDA
-  =================================================== -->
+  <!-- CONTATO E AJUDA -->
   <section class="help-blue-wrapper container" id="contato">
     <div class="help-blue-card">
       <h2>Precisa de Ajuda?</h2>
@@ -285,55 +316,44 @@
     </div>
   </footer>
 
-  <!-- ===================================================
-       BARRA FLUTUANTE LATERAL DE ACESSIBILIDADE
-  =================================================== -->
+  <!-- BARRA FLUTUANTE LATERAL DE ACESSIBILIDADE -->
   <aside class="sidebar-accessibility" id="sidebarAcessibilidade" aria-label="Painel de Ferramentas de Acessibilidade">
-    <!-- Botão Gatilho (Ícone da Cadeira de Rodas) -->
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir ou fechar menu de acessibilidade" aria-expanded="false">♿</button>
-    
-    <!-- Menu Interno com os Botões de Ação -->
+
     <div class="sidebar-content">
       <span class="sidebar-title">FONTE</span>
-      
-      <!-- Controle de aumento e diminuição gradual de fonte -->
+
       <div class="btn-group">
         <button class="small-btn" id="btnDiminuirFonte" aria-label="Diminuir tamanho do texto">A<sup>-</sup></button>
         <button class="small-btn" id="btnAumentarFonte" aria-label="Aumentar tamanho do texto">A<sup>+</sup></button>
       </div>
-      
-      <!-- Alternador de Fonte Grande pré-definida -->
+
       <button class="sidebar-btn font-large" id="btnFonteGrande" aria-label="Ativar fonte grande">
         <strong>A</strong>
         <small>A+</small>
       </button>
 
-      <!-- Alternador de Alto Contraste -->
       <button class="sidebar-btn" id="btnContraste" aria-label="Alternar modo de alto contraste">
         <span class="icon" aria-hidden="true">🔆</span>
         <small>Contraste</small>
       </button>
 
-      <!-- Pausar Transições e Animações CSS -->
       <button class="sidebar-btn" id="btnPausarAnimacoes" aria-label="Pausar animações da tela">
         <span class="icon" aria-hidden="true">⏸️</span>
         <small>Pausar</small>
       </button>
 
-      <!-- Alternador de Tipografia para Dislexia -->
       <button class="sidebar-btn" id="btnDislexia" aria-label="Alternar fonte para facilidade de leitura por disléxicos">
         <strong>Dy</strong>
         <small>Dislexia</small>
       </button>
 
-      <!-- Botão para redefinir todas as configurações de acessibilidade -->
       <button class="sidebar-btn reset" id="btnResetar" aria-label="Redefinir todas as configurações para o padrão">
         <small>Resetar</small>
       </button>
     </div>
   </aside>
 
-  <!-- Carregamento do script Javascript funcional -->
   <script src="main.js"></script>
 </body>
 </html>
