@@ -620,3 +620,9 @@ body.sem-animacoes * {
   transition: none !important;
   animation: none !important;
 }
+a.chip {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}

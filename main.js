@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Se o campo já existe, alterna o estado de exibição (visível / escondido)
         searchInput.classList.toggle('escondido');
-        
+
         if (!searchInput.classList.contains('escondido')) {
           searchInput.focus();
         } else {
@@ -131,14 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnFonteGrande = document.getElementById('btnFonteGrande');
 
   function aplicarTamanhoFonte(escala) {
-    document.documentElement.style.fontSize = `${escala * 100}%`;
+    // Arredonda para evitar imprecisão de ponto flutuante (ex.: 1.2000000000000002)
+    fontScale = Math.round(escala * 10) / 10;
+    document.documentElement.style.fontSize = `${fontScale * 100}%`;
   }
 
   if (btnAumentar) {
     btnAumentar.addEventListener('click', () => {
       if (fontScale < maxScale) {
-        fontScale += 0.1;
-        aplicarTamanhoFonte(fontScale);
+        aplicarTamanhoFonte(fontScale + 0.1);
       }
     });
   }
@@ -146,16 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnDiminuir) {
     btnDiminuir.addEventListener('click', () => {
       if (fontScale > minScale) {
-        fontScale -= 0.1;
-        aplicarTamanhoFonte(fontScale);
+        aplicarTamanhoFonte(fontScale - 0.1);
       }
     });
   }
 
   if (btnFonteGrande) {
     btnFonteGrande.addEventListener('click', () => {
-      fontScale = fontScale === 1.2 ? 1.0 : 1.2;
-      aplicarTamanhoFonte(fontScale);
+      aplicarTamanhoFonte(fontScale === 1.2 ? 1.0 : 1.2);
     });
   }
 
@@ -188,36 +187,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnResetar) {
     btnResetar.addEventListener('click', () => {
-      fontScale = 1.0;
-      aplicarTamanhoFonte(fontScale);
+      aplicarTamanhoFonte(1.0);
       document.body.classList.remove('alto-contraste', 'fonte-dislexia', 'sem-animacoes');
-      
+
       // Reseta também o campo de busca caso esteja ativo
       const inputBusca = document.getElementById('campoBuscaInterna');
       if (inputBusca) {
         inputBusca.value = '';
-        executarBuscaNoSite('');
       }
+
+      // Limpa o chip ativo e mostra todos os cards novamente
+      document.querySelectorAll('button.chip').forEach(c => c.classList.remove('active'));
+      executarBuscaNoSite('');
     });
   }
 
 
   /* ===================================================
      5. SELEÇÃO E FILTRAGEM PELOS CHIPS DE PÚBLICO
+     Apenas chips <button> filtram a página. Chips que são
+     links (<a>, como "Crianças") apenas navegam para o destino.
   =================================================== */
-  const chips = document.querySelectorAll('.chip');
+  const chips = document.querySelectorAll('button.chip');
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       const jaAtivo = chip.classList.contains('active');
-      
+
       chips.forEach(c => c.classList.remove('active'));
 
       if (!jaAtivo) {
         chip.classList.add('active');
-        // Extrai o texto do chip ignorando os emojis
-        const termoChip = chip.textContent.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim().toLowerCase();
-        
+
+        // Extrai o texto do chip ignorando emojis (inclui 🤰, 🧑‍🎓 e variações)
+        const termoChip = chip.textContent
+          .replace(/[\p{Extended_Pictographic}\u200D\uFE0F]/gu, '')
+          .trim()
+          .toLowerCase();
+
         executarBuscaNoSite(termoChip);
       } else {
         // Se desmarcar o chip, restaura a exibição de todos os cards
