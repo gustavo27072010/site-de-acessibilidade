@@ -626,3 +626,11 @@ a.chip {
   display: inline-flex;
   align-items: center;
 }
+.escondido { display: none; }
+.input-busca-head { padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; margin-right: 8px; }
+.chip.active { background: #0052cc; color: #fff; }
+a.chip { text-decoration: none; color: inherit; display: inline-flex; align-items: center; }
+.alto-contraste { background: #000; color: #ffff00; }
+.alto-contraste .card, .alto-contraste .news-card { background: #000; border: 2px solid #ffff00; color: #ffff00; }
+.fonte-dislexia, .fonte-dislexia * { font-family: "Comic Sans MS", "Verdana", sans-serif !important; letter-spacing: 0.05em; }
+.sem-animacoes *, .sem-animacoes *::before, .sem-animacoes *::after { animation: none !important; transition: none !important; }

@@ -117,6 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleBtn.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
     });
   }
+    function executarBuscaNoSite(termos) {
+    const lista = (Array.isArray(termos) ? termos : [termos]).map(t => t.toLowerCase());
+    const bate = (texto) => lista.some(t => texto.includes(t));
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.display = bate(card.textContent.toLowerCase()) ? 'flex' : 'none';
+    });
+
+    document.querySelectorAll('.news-card').forEach(newsCard => {
+      newsCard.style.display = bate(newsCard.textContent.toLowerCase()) ? 'flex' : 'none';
+    });
+  }
 
 
   /* ===================================================
@@ -203,34 +215,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* ===================================================
-     5. SELEÇÃO E FILTRAGEM PELOS CHIPS DE PÚBLICO
-     Apenas chips <button> filtram a página. Chips que são
-     links (<a>, como "Crianças") apenas navegam para o destino.
+    /* ===================================================
+     5. FILTRAGEM PELOS CHIPS DE PÚBLICO
+     Só chips <button> filtram; o link "Crianças" apenas navega.
   =================================================== */
+  const palavrasPorPublico = {
+    'idosos': ['idosos', 'aposentadoria', 'inss', 'bpc', 'vacina', 'prioritário'],
+    'gestantes': ['gestante', 'pré-natal', 'mulher'],
+    'jovens': ['jovens', 'educação', 'cursos', 'bolsas', 'matrículas'],
+    'trabalhadores': ['trabalhadores', 'inss', 'aposentadoria', 'profissionalizantes', 'documentos'],
+    'pessoas com deficiência': ['deficiência', 'pcd', 'bpc', 'prioritário', 'visita domiciliar'],
+    'famílias de baixa renda': ['bolsa família', 'bpc', 'habitação', 'assistência social', 'cras']
+  };
+  // Imigrantes: serviços de documentação e atendimento
+  palavrasPorPublico['imigrantes'] = ['documentos', 'certidões', 'assistência social', 'ouvidoria'];
+
   const chips = document.querySelectorAll('button.chip');
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       const jaAtivo = chip.classList.contains('active');
-
       chips.forEach(c => c.classList.remove('active'));
 
-      if (!jaAtivo) {
-        chip.classList.add('active');
-
-        // Extrai o texto do chip ignorando emojis (inclui 🤰, 🧑‍🎓 e variações)
-        const termoChip = chip.textContent
-          .replace(/[\p{Extended_Pictographic}\u200D\uFE0F]/gu, '')
-          .trim()
-          .toLowerCase();
-
-        executarBuscaNoSite(termoChip);
-      } else {
-        // Se desmarcar o chip, restaura a exibição de todos os cards
+      if (jaAtivo) {
         executarBuscaNoSite('');
+        return;
       }
+
+      chip.classList.add('active');
+      const nome = chip.textContent
+        .replace(/[\p{Extended_Pictographic}\u200D\uFE0F]/gu, '')
+        .trim()
+        .toLowerCase();
+
+      executarBuscaNoSite(palavrasPorPublico[nome] || [nome]);
     });
   });
-
-});
