@@ -634,3 +634,12 @@ a.chip { text-decoration: none; color: inherit; display: inline-flex; align-item
 .alto-contraste .card, .alto-contraste .news-card { background: #000; border: 2px solid #ffff00; color: #ffff00; }
 .fonte-dislexia, .fonte-dislexia * { font-family: "Comic Sans MS", "Verdana", sans-serif !important; letter-spacing: 0.05em; }
 .sem-animacoes *, .sem-animacoes *::before, .sem-animacoes *::after { animation: none !important; transition: none !important; }
+[hidden] {
+  display: none !important;
+}
+
+button.chip {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}

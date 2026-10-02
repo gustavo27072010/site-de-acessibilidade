@@ -40,9 +40,14 @@
 
       <!-- Área reservada para o botão e campo de busca dinâmica -->
       <div class="search-box">
-        <a href="search-btn" id="btnBuscar" aria-label="Abrir campo de busca no site">🔍</a>
+        <button type="button" id="btnBuscar" aria-label="Abrir campo de busca no site"
+                aria-expanded="false" aria-controls="campoBusca">
+          🔍
+        </button>
+        <input type="search" id="campoBusca" name="q" placeholder="Buscar no site..."
+               aria-label="Buscar no site" hidden>
       </div>
-    </div>
+    </div><!-- fecha .container -->
   </header>
 
   <!-- ===================================================
@@ -76,14 +81,14 @@
   =================================================== -->
   <section class="chips-section container" aria-label="Filtro por público de atendimento">
     <div class="chips-grid">
-      <a class="chip" href="https://nav.dasa.com.br">👴 Idosos</a>
-      <a class="chip" href="https://atencaoprimaria.rs.gov.br">🤰 Gestantes</a>
-      <a class="chip" href="https://unblokedgames.github.io/noopener noreferrer">👧 Crianças</a>
-      <a class="chip" href="https://www.gov.br/mec/pt-br/participa-jovem">🧑‍🎓 Jovens</a>
-      <a class="chip" href="https://portalfat.trabalho.gov.br/programas-e-acoes-2/programa-de-protecao-do-emprego-ppe/">👷 Trabalhadores</a>
-      <a class="chip" href="https://freedom.ind.br/conheca-ongs-de-apoio-para-pessoas-com-deficiencia/">♿ Pessoas com Deficiência</a>
-      <a class="chip" href="https://br.techo.org/">🏠 Famílias de Baixa Renda</a>
-      <a class="chip" href="https://help.unhcr.org/brazil/onde-encontrar-ajuda/organizacoes-parceiras-da-sociedade-civil/">🌐 Imigrantes</a>
+      <a class="chip" href="https://nav.dasa.com.br" target="_blank" rel="noopener noreferrer">👴 Idosos</a>
+      <a class="chip" href="https://atencaoprimaria.rs.gov.br" target="_blank" rel="noopener noreferrer">🤰 Gestantes</a>
+      <a class="chip" href="https://www.curitiba.pr.gov.br/noticias/saude" target="_blank" rel="noopener noreferrer">👧 Crianças</a>
+      <a class="chip" href="https://www.gov.br/mec/pt-br/participa-jovem" target="_blank" rel="noopener noreferrer">🧑‍🎓 Jovens</a>
+      <a class="chip" href="https://portalfat.trabalho.gov.br/programas-e-acoes-2/programa-de-protecao-do-emprego-ppe/" target="_blank" rel="noopener noreferrer">👷 Trabalhadores</a>
+      <a class="chip" href="https://freedom.ind.br/conheca-ongs-de-apoio-para-pessoas-com-deficiencia/" target="_blank" rel="noopener noreferrer">♿ Pessoas com Deficiência</a>
+      <a class="chip" href="https://br.techo.org/" target="_blank" rel="noopener noreferrer">🏠 Famílias de Baixa Renda</a>
+      <a class="chip" href="https://help.unhcr.org/brazil/onde-encontrar-ajuda/organizacoes-parceiras-da-sociedade-civil/" target="_blank" rel="noopener noreferrer">🌐 Imigrantes</a>
     </div>
   </section>
 
@@ -168,7 +173,7 @@
   </section>
 
   <!-- ===================================================
-       INÍCIO — NOVA SEÇÃO: SAÚDE
+       SEÇÃO: SAÚDE
   =================================================== -->
   <section class="services-section container" id="saude">
     <h2>❤️ Saúde</h2>
@@ -220,9 +225,6 @@
 
     </div>
   </section>
-  <!-- ===================================================
-       FIM — NOVA SEÇÃO: SAÚDE
-  =================================================== -->
 
   <!-- ===================================================
        SEÇÃO DE NOTÍCIAS E COMUNICADOS
@@ -273,12 +275,12 @@
       <article class="news-card">
         <img src="https://st2.depositphotos.com/3483971/7464/i/450/depositphotos_74646323-stock-illustration-leader.jpg" alt="Ilustração de eleições">
         <div class="news-body">
-          <span class="tag-category">POLITICA</span>
-          <h3>as eleições no brasil seguem sendo um dos assuntos mais comentados em todo o país</h3>
-          <p>Jovens e adultos vem votando a favor de seus respectivos eleitores ao qual acham que devem ser elegidos.</p>
+          <span class="tag-category">POLÍTICA</span>
+          <h3>As eleições no Brasil seguem sendo um dos assuntos mais comentados em todo o país</h3>
+          <p>Jovens e adultos vêm votando a favor dos candidatos que acham que devem ser eleitos.</p>
           <div class="news-footer">
-            <span class="news-date">04/10/2026-25/10/2026</span>
-            <a href="https://www.tse.jus.br" target="_blank" rel="noopener noreferrer" class="read-more">ler mais ↗</a>
+            <span class="news-date">04/10/2026 - 25/10/2026</span>
+            <a href="https://www.tse.jus.br" target="_blank" rel="noopener noreferrer" class="read-more">Ler mais ↗</a>
           </div>
         </div>
       </article>
